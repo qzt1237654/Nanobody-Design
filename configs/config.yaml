@@ -1,0 +1,82 @@
+# ============================================================
+# VHH germline-absorbing SEDD -- single project config
+# ============================================================
+
+# Formal training currently uses one GPU.
+ngpus: 1
+
+# 20 canonical amino acids; no PAD/MASK token in the diffusion vocabulary.
+tokens: 20
+
+training:
+  # Number of mature/germline VHH pairs loaded per GPU per micro-batch.
+  batch_size: 64
+
+  # Number of micro-batches accumulated before one optimizer update.
+  accum: 1
+
+  # Number of optimizer updates.
+  n_iters: 500000
+
+  log_freq: 50
+  eval_freq: 500
+
+  # Regular model checkpoints and interruption-recovery checkpoint frequency.
+  snapshot_freq: 10000
+  snapshot_freq_for_preemption: 5000
+
+  # Generate VHH sequences at snapshot steps.
+  snapshot_sampling: true
+
+  # Exponential moving average decay for model parameters.
+  ema: 0.9999
+
+data:
+  tsv_path: /gpfs/work/bio/zhengtaoqi24/germline/VHHCorpus-2M_top1_pairs_clean.tsv
+  max_length: 128
+  train_ratio: 0.95
+  seed: 42
+  num_workers: 4
+
+graph:
+  # Forward process: mature VHH -> sample-specific germline absorbing state.
+  type: germline_absorb
+
+noise:
+  # sigma(t) = -log(1 - (1-eps)t), so move probability is (1-eps)t.
+  type: loglinear
+  eps: 0.001
+
+sampling:
+  # Reverse-process numerical solver.
+  predictor: euler
+  steps: 128
+  noise_removal: true
+
+  # Number of validation germlines used for snapshot generation.
+  batch_size: 8
+
+optim:
+  optimizer: AdamW
+  lr: 1e-4
+  weight_decay: 0.01
+  beta1: 0.9
+  beta2: 0.999
+  eps: 1e-8
+  warmup: 2000
+  grad_clip: 1.0
+
+model:
+  hidden_size: 512
+  cond_dim: 512
+
+  # Keep one source of truth for padded sequence length.
+  length: ${data.max_length}
+
+  n_blocks: 4
+  n_heads: 8
+  dropout: 0.0
+
+hydra:
+  run:
+    dir: exp_local/germline_vhh/${now:%Y.%m.%d}/${now:%H%M%S}
