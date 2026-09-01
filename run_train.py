@@ -2,10 +2,12 @@
 
 import datetime
 import os
+import sys
 
 import torch
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
+from tqdm import tqdm
 
 import graph_lib
 import losses
@@ -200,6 +202,21 @@ def _run(rank, world_size, cfg):
     num_train_steps = int(cfg.training.n_iters)
     mprint(f"Starting training at optimizer step {initial_step}.")
 
+    # 创建 tqdm 进度条（只在 rank 0 显示）
+    if rank == 0:
+        pbar = tqdm(
+            total=num_train_steps,
+            initial=initial_step,
+            desc="Training",
+            file=sys.stdout,
+            dynamic_ncols=True,
+            ascii=True  # 使用 ASCII 字符，避免编码问题
+        )
+    
+    # 用于累积 recovery rate
+    recovery_rate_accum = 0.0
+    recovery_count = 0
+
     while state["step"] < num_train_steps:
         previous_step = int(state["step"])
 
@@ -223,13 +240,61 @@ def _run(rank, world_size, cfg):
 
         step = int(state["step"])
 
+        # 更新进度条
+        if rank == 0:
+            pbar.update(1)
+
+        # 计算 recovery rate（每步都计算）
+        with torch.no_grad():
+            # 使用当前模型预测
+            t = torch.rand(batch.shape[0], device=device) * 0.999 + 0.001
+            sigma, _ = noise(t)
+            
+            # 前向加噪
+            perturbed = graph.sample_transition(batch, sigma[:, None], germline=germline)
+            if attention_mask is not None:
+                perturbed = torch.where(attention_mask.bool(), perturbed, batch)
+            
+            # 模型预测
+            log_score = score_model(perturbed, sigma, germline=germline, attention_mask=attention_mask)
+            pred = log_score.argmax(dim=-1)  # [B, L]
+            
+            # 计算准确率（只在有效位置）
+            if attention_mask is not None:
+                correct = (pred == batch) & attention_mask.bool()
+                recovery = correct.sum().float() / attention_mask.sum().float()
+            else:
+                correct = (pred == batch)
+                recovery = correct.float().mean()
+            
+            recovery_rate_accum += recovery.item()
+            recovery_count += 1
+
         if step % cfg.training.log_freq == 0:
             reduced_loss = loss.detach().clone()
             dist.all_reduce(reduced_loss)
             reduced_loss /= world_size
-            mprint(
-                f"step: {step}, training_loss: {reduced_loss.item():.5e}"
+            
+            # 计算平均 recovery rate
+            avg_recovery = recovery_rate_accum / max(recovery_count, 1)
+            
+            log_msg = (
+                f"step: {step}, "
+                f"loss: {reduced_loss.item():.5e}, "
+                f"recovery_rate: {avg_recovery:.4f}"
             )
+            mprint(log_msg)
+            
+            # 更新 tqdm 后缀
+            if rank == 0:
+                pbar.set_postfix({
+                    'loss': f'{reduced_loss.item():.4f}',
+                    'recovery': f'{avg_recovery:.4f}'
+                })
+            
+            # 重置累积
+            recovery_rate_accum = 0.0
+            recovery_count = 0
 
         if (
             step % cfg.training.snapshot_freq_for_preemption == 0
@@ -253,8 +318,29 @@ def _run(rank, world_size, cfg):
             )
             dist.all_reduce(eval_loss)
             eval_loss /= world_size
+            
+            # 计算验证集 recovery rate
+            with torch.no_grad():
+                t = torch.rand(eval_batch.shape[0], device=device) * 0.999 + 0.001
+                sigma_eval, _ = noise(t)
+                perturbed_eval = graph.sample_transition(eval_batch, sigma_eval[:, None], germline=eval_germline)
+                if eval_attention_mask is not None:
+                    perturbed_eval = torch.where(eval_attention_mask.bool(), perturbed_eval, eval_batch)
+                
+                log_score_eval = score_model(perturbed_eval, sigma_eval, germline=eval_germline, attention_mask=eval_attention_mask)
+                pred_eval = log_score_eval.argmax(dim=-1)
+                
+                if eval_attention_mask is not None:
+                    correct_eval = (pred_eval == eval_batch) & eval_attention_mask.bool()
+                    eval_recovery = correct_eval.sum().float() / eval_attention_mask.sum().float()
+                else:
+                    correct_eval = (pred_eval == eval_batch)
+                    eval_recovery = correct_eval.float().mean()
+            
             mprint(
-                f"step: {step}, evaluation_loss: {eval_loss.item():.5e}"
+                f"step: {step}, "
+                f"eval_loss: {eval_loss.item():.5e}, "
+                f"eval_recovery_rate: {eval_recovery.item():.4f}"
             )
 
         snapshot_now = (
@@ -299,5 +385,9 @@ def _run(rank, world_size, cfg):
                         handle.write(sequence + "\n")
 
             dist.barrier()
+
+    # 关闭进度条
+    if rank == 0:
+        pbar.close()
 
     mprint(f"Training finished at optimizer step {state['step']}.")

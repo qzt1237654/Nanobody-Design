@@ -1,14 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=vhh_sedd_train
-#SBATCH --output=logs/train_%j.out
-#SBATCH --error=logs/train_%j.err
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=8
-#SBATCH --partition=gpu3090
-#SBATCH --qos=4gpus
+
+#SBATCH --qos 4gpus
+#SBATCH --partition gpu3090
+#SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
-#SBATCH --mem=64G
+#SBATCH --cpus-per-task=4
+#SBATCH --time=0-12:00:00
+#SBATCH --mem=20G
+#SBATCH --mail-type=ALL
+#SBATCH --job-name=GPU_TEST
+#SBATCH --error=%j.err
+#SBATCH --output=%j.out
 
 # ============================================================
 # Full training job for VHH Germline-Absorbing SEDD
