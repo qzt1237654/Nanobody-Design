@@ -5,6 +5,11 @@ import logging
 from omegaconf import OmegaConf, open_dict
 
 
+def unwrap_model(model):
+    """Extract the base model from DDP wrapper if present."""
+    return model.module if hasattr(model, "module") else model
+
+
 def load_hydra_config_from_run(load_dir):
     cfg_path = os.path.join(load_dir, ".hydra/config.yaml")
     cfg = OmegaConf.load(cfg_path)
@@ -52,19 +57,33 @@ def restore_checkpoint(ckpt_dir, state, device):
         logging.warning(f"No checkpoint found at {ckpt_dir}. Returned the same state as input")
         return state
     else:
-        loaded_state = torch.load(ckpt_dir, map_location=device)
+        loaded_state = torch.load(ckpt_dir, map_location=device, weights_only=False)
         state['optimizer'].load_state_dict(loaded_state['optimizer'])
-        state['model'].module.load_state_dict(loaded_state['model'], strict=False)
+        
+        model_to_load = unwrap_model(state['model'])
+        model_to_load.load_state_dict(loaded_state['model'], strict=False)
+        
         state['ema'].load_state_dict(loaded_state['ema'])
         state['step'] = loaded_state['step']
+        
+        if 'scaler' in loaded_state and 'scaler' in state:
+            state['scaler'].load_state_dict(loaded_state['scaler'])
+            logging.info("Restored AMP GradScaler state")
+        
         return state
 
 
 def save_checkpoint(ckpt_dir, state):
+    model_to_save = unwrap_model(state['model'])
+    
     saved_state = {
         'optimizer': state['optimizer'].state_dict(),
-        'model': state['model'].module.state_dict(),
+        'model': model_to_save.state_dict(),
         'ema': state['ema'].state_dict(),
         'step': state['step']
     }
+    
+    if 'scaler' in state:
+        saved_state['scaler'] = state['scaler'].state_dict()
+    
     torch.save(saved_state, ckpt_dir)

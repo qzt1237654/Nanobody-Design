@@ -26,12 +26,20 @@ def main(cfg: DictConfig):
 
     ngpus = cfg.ngpus
 
-    mp.spawn(
-        run_train.run_multiprocess,
-        args=(ngpus, cfg, port),
-        nprocs=ngpus,
-        join=True
-    )
+    if ngpus == 1:
+        run_train.run_multiprocess(
+            rank=0,
+            world_size=1,
+            cfg=cfg,
+            port=port,
+        )
+    else:
+        mp.spawn(
+            run_train.run_multiprocess,
+            args=(ngpus, cfg, port),
+            nprocs=ngpus,
+            join=True
+        )
 
 
 if __name__ == "__main__":

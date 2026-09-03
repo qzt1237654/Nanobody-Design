@@ -16,11 +16,11 @@
 # Full training job for VHH Germline-Absorbing SEDD
 # ============================================================
 
-set -euo pipefail
+set -eo pipefail
 
-PROJECT_DIR="/gpfs/work/bio/zhengtaoqi24/Score-Entropy-Discrete-Diffusion-main"
+PROJECT_DIR="/gpfs/work/bio/zhengtaoqi24/Nanobody_design"
 DATA_FILE="/gpfs/work/bio/zhengtaoqi24/germline/VHHCorpus-2M_top1_pairs_clean.tsv"
-CONFIG_NAME="config_germline_vhh"
+CONFIG_NAME="config"
 
 mkdir -p "${PROJECT_DIR}/logs"
 cd "${PROJECT_DIR}"
@@ -74,11 +74,11 @@ echo "[OK] Data file exists: $(du -h "${DATA_FILE}" | cut -f1)"
 echo "[OK] Config exists: configs/${CONFIG_NAME}.yaml"
 echo ""
 echo "Starting full training..."
-echo "Command: srun python -u run_train.py --config-name=${CONFIG_NAME} data.tsv_path=${DATA_FILE} ngpus=1"
+echo "Command: srun python -u train.py data.tsv_path=${DATA_FILE} ngpus=1"
 echo "============================================================"
 
 # ---------- Full training ----------
-srun python -u run_train.py --config-name="${CONFIG_NAME}" data.tsv_path="${DATA_FILE}" ngpus=1
+srun python -u train.py data.tsv_path="${DATA_FILE}" ngpus=1
 
 EXIT_CODE=$?
 
