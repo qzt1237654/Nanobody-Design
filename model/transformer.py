@@ -277,16 +277,18 @@ class SEDD(nn.Module, PyTorchModelHubMixin):
         # projection that injects the germline embedding into the current x_t
         # representation position-by-position.
         #
-        # Zero initialization preserves the behavior of an existing pretrained
-        # SEDD/ESM-initialized model at step 0; training then learns how strongly
-        # and in which directions to use germline information.
+        # FIXED: Use small random initialization instead of zeros.
+        # Zero initialization prevented the model from learning to use germline
+        # information effectively. Small random init allows gradual learning while
+        # not disrupting training at the start.
         if self.germline_conditioning:
             self.germline_proj = nn.Linear(
                 config.model.hidden_size,
                 config.model.hidden_size,
                 bias=False,
             )
-            nn.init.zeros_(self.germline_proj.weight)
+            # Small random initialization: Xavier uniform with small gain
+            nn.init.xavier_uniform_(self.germline_proj.weight, gain=0.02)
         else:
             self.germline_proj = None
 

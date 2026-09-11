@@ -1,0 +1,955 @@
+2026-09-11 01:49:10,662 - /gpfs/work/bio/zhengtaoqi24/Nanobody_design/checkpoints/2026.09.11/014910
+2026-09-11 01:49:10,662 - {'ngpus': 1, 'tokens': 20, 'training': {'batch_size': 64, 'accum': 1, 'n_iters': 500000, 'log_freq': 50, 'eval_freq': 500, 'snapshot_freq': 10000, 'snapshot_freq_for_preemption': 5000, 'snapshot_sampling': True, 'ema': 0.9999, 'resume_checkpoint': None}, 'data': {'tsv_path': '/gpfs/work/bio/zhengtaoqi24/germline/VHHCorpus-2M_top1_pairs_clean.tsv', 'max_length': 128, 'train_ratio': 0.95, 'seed': 42, 'num_workers': 4}, 'graph': {'type': 'germline_absorb'}, 'noise': {'type': 'loglinear', 'eps': 0.001}, 'sampling': {'predictor': 'euler', 'steps': 128, 'noise_removal': True, 'batch_size': 8}, 'optim': {'optimizer': 'AdamW', 'lr': 0.0005, 'weight_decay': 0.01, 'beta1': 0.9, 'beta2': 0.999, 'eps': 1e-08, 'warmup': 5000, 'grad_clip': 1.0}, 'model': {'hidden_size': 768, 'cond_dim': 768, 'length': '${data.max_length}', 'n_blocks': 12, 'n_heads': 12, 'dropout': 0.1, 'scale_by_sigma': False}, 'work_dir': '/gpfs/work/bio/zhengtaoqi24/Nanobody_design/checkpoints/2026.09.11/014910', 'wandb_name': '014910'}
+2026-09-11 01:49:10,663 - Device: cuda:0
+2026-09-11 01:49:10,663 - GPU 0: NVIDIA GeForce RTX 3090, memory=23.58 GB
+2026-09-11 01:49:11,703 - Number of model parameters: 130,112,276
+2026-09-11 01:49:12,746 - No checkpoint found at /gpfs/work/bio/zhengtaoqi24/Nanobody_design/checkpoints/2026.09.11/014910/checkpoint_meta.pth. Returned the same state as input
+2026-09-11 01:49:12,746 - Loading VHH mature/germline pairs...
+2026-09-11 01:49:20,277 - Starting training at optimizer step 0.
+2026-09-11 01:50:00,377 - step: 50, lr: 5.000e-06, loss: 9.47213e+02, overall_recovery: 0.9150, mutation_recovery_per_seq: 0.0003, mutation_recovery_union: 0.8949, mutation_targets: 23268
+2026-09-11 01:50:39,484 - step: 100, lr: 1.000e-05, loss: 5.53912e+02, overall_recovery: 0.9232, mutation_recovery_per_seq: 0.0000, mutation_recovery_union: 0.9037, mutation_targets: 23816
+2026-09-11 01:51:18,518 - step: 150, lr: 1.500e-05, loss: 1.73086e+02, overall_recovery: 0.9243, mutation_recovery_per_seq: 0.0000, mutation_recovery_union: 0.9049, mutation_targets: 23456
+2026-09-11 01:51:57,610 - step: 200, lr: 2.000e-05, loss: 6.37238e+01, overall_recovery: 0.9257, mutation_recovery_per_seq: 0.0000, mutation_recovery_union: 0.9025, mutation_targets: 23036
+2026-09-11 01:52:36,618 - step: 250, lr: 2.500e-05, loss: 4.01110e+01, overall_recovery: 0.9222, mutation_recovery_per_seq: 0.0000, mutation_recovery_union: 0.8983, mutation_targets: 24111
+2026-09-11 01:53:15,544 - step: 300, lr: 3.000e-05, loss: 5.05223e+01, overall_recovery: 0.8992, mutation_recovery_per_seq: 0.0006, mutation_recovery_union: 0.8971, mutation_targets: 23040
+2026-09-11 01:53:54,840 - step: 350, lr: 3.500e-05, loss: 3.97497e+01, overall_recovery: 0.8991, mutation_recovery_per_seq: 0.0007, mutation_recovery_union: 0.8971, mutation_targets: 23895
+2026-09-11 01:54:33,927 - step: 400, lr: 4.000e-05, loss: 4.04019e+01, overall_recovery: 0.9125, mutation_recovery_per_seq: 0.0005, mutation_recovery_union: 0.8990, mutation_targets: 23005
+2026-09-11 01:55:12,848 - step: 450, lr: 4.500e-05, loss: 3.20030e+01, overall_recovery: 0.8736, mutation_recovery_per_seq: 0.0131, mutation_recovery_union: 0.9128, mutation_targets: 23291
+2026-09-11 01:55:51,949 - step: 500, lr: 5.000e-05, loss: 3.06389e+01, overall_recovery: 0.7894, mutation_recovery_per_seq: 0.0307, mutation_recovery_union: 0.9242, mutation_targets: 23206
+2026-09-11 01:55:52,110 - step: 500, eval_loss: 3.31555e+01, eval_overall_recovery_rate: 0.7163, eval_mutation_recovery_rate: 0.0369, eval_mutation_targets: 434
+2026-09-11 01:56:31,209 - step: 550, lr: 5.500e-05, loss: 3.68691e+01, overall_recovery: 0.7527, mutation_recovery_per_seq: 0.0382, mutation_recovery_union: 0.9214, mutation_targets: 23287
+2026-09-11 01:57:10,515 - step: 600, lr: 6.000e-05, loss: 3.67258e+01, overall_recovery: 0.7635, mutation_recovery_per_seq: 0.0419, mutation_recovery_union: 0.9235, mutation_targets: 23292
+2026-09-11 01:57:49,510 - step: 650, lr: 6.500e-05, loss: 3.33212e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0490, mutation_recovery_union: 0.9211, mutation_targets: 22945
+2026-09-11 01:58:28,694 - step: 700, lr: 7.000e-05, loss: 3.24204e+01, overall_recovery: 0.7234, mutation_recovery_per_seq: 0.0488, mutation_recovery_union: 0.9246, mutation_targets: 23158
+2026-09-11 01:59:07,724 - step: 750, lr: 7.500e-05, loss: 2.77179e+01, overall_recovery: 0.7214, mutation_recovery_per_seq: 0.0480, mutation_recovery_union: 0.9198, mutation_targets: 23715
+2026-09-11 01:59:46,777 - step: 800, lr: 8.000e-05, loss: 2.81472e+01, overall_recovery: 0.7196, mutation_recovery_per_seq: 0.0492, mutation_recovery_union: 0.9237, mutation_targets: 23060
+2026-09-11 02:00:26,024 - step: 850, lr: 8.500e-05, loss: 2.51151e+01, overall_recovery: 0.7268, mutation_recovery_per_seq: 0.0475, mutation_recovery_union: 0.9232, mutation_targets: 23601
+2026-09-11 02:01:04,988 - step: 900, lr: 9.000e-05, loss: 3.40210e+01, overall_recovery: 0.7020, mutation_recovery_per_seq: 0.0529, mutation_recovery_union: 0.9196, mutation_targets: 23394
+2026-09-11 02:01:44,094 - step: 950, lr: 9.500e-05, loss: 2.78800e+01, overall_recovery: 0.7113, mutation_recovery_per_seq: 0.0468, mutation_recovery_union: 0.9270, mutation_targets: 23779
+2026-09-11 02:02:23,165 - step: 1000, lr: 1.000e-04, loss: 2.63318e+01, overall_recovery: 0.6930, mutation_recovery_per_seq: 0.0565, mutation_recovery_union: 0.9260, mutation_targets: 23040
+2026-09-11 02:02:23,329 - step: 1000, eval_loss: 2.73846e+01, eval_overall_recovery_rate: 0.6679, eval_mutation_recovery_rate: 0.0653, eval_mutation_targets: 429
+2026-09-11 02:03:02,260 - step: 1050, lr: 1.050e-04, loss: 3.03686e+01, overall_recovery: 0.7180, mutation_recovery_per_seq: 0.0494, mutation_recovery_union: 0.9221, mutation_targets: 23756
+2026-09-11 02:03:41,159 - step: 1100, lr: 1.100e-04, loss: 2.94033e+01, overall_recovery: 0.7030, mutation_recovery_per_seq: 0.0506, mutation_recovery_union: 0.9203, mutation_targets: 23012
+2026-09-11 02:04:20,308 - step: 1150, lr: 1.150e-04, loss: 2.80744e+01, overall_recovery: 0.6968, mutation_recovery_per_seq: 0.0525, mutation_recovery_union: 0.9288, mutation_targets: 23136
+2026-09-11 02:04:59,432 - step: 1200, lr: 1.200e-04, loss: 2.59089e+01, overall_recovery: 0.6979, mutation_recovery_per_seq: 0.0497, mutation_recovery_union: 0.9168, mutation_targets: 23422
+2026-09-11 02:05:38,374 - step: 1250, lr: 1.250e-04, loss: 2.89266e+01, overall_recovery: 0.7022, mutation_recovery_per_seq: 0.0532, mutation_recovery_union: 0.9287, mutation_targets: 23125
+2026-09-11 02:06:17,419 - step: 1300, lr: 1.300e-04, loss: 2.31093e+01, overall_recovery: 0.7114, mutation_recovery_per_seq: 0.0508, mutation_recovery_union: 0.9171, mutation_targets: 23042
+2026-09-11 02:06:56,401 - step: 1350, lr: 1.350e-04, loss: 2.15172e+01, overall_recovery: 0.7056, mutation_recovery_per_seq: 0.0625, mutation_recovery_union: 0.9203, mutation_targets: 23220
+2026-09-11 02:07:35,656 - step: 1400, lr: 1.400e-04, loss: 2.64970e+01, overall_recovery: 0.7077, mutation_recovery_per_seq: 0.0560, mutation_recovery_union: 0.9202, mutation_targets: 23015
+2026-09-11 02:08:14,615 - step: 1450, lr: 1.450e-04, loss: 2.30881e+01, overall_recovery: 0.6946, mutation_recovery_per_seq: 0.0602, mutation_recovery_union: 0.9283, mutation_targets: 23011
+2026-09-11 02:08:53,734 - step: 1500, lr: 1.500e-04, loss: 3.15856e+01, overall_recovery: 0.7003, mutation_recovery_per_seq: 0.0586, mutation_recovery_union: 0.9213, mutation_targets: 23671
+2026-09-11 02:08:53,898 - step: 1500, eval_loss: 2.59767e+01, eval_overall_recovery_rate: 0.7300, eval_mutation_recovery_rate: 0.0530, eval_mutation_targets: 547
+2026-09-11 02:09:32,920 - step: 1550, lr: 1.550e-04, loss: 2.16707e+01, overall_recovery: 0.7095, mutation_recovery_per_seq: 0.0561, mutation_recovery_union: 0.9322, mutation_targets: 23138
+2026-09-11 02:10:11,772 - step: 1600, lr: 1.600e-04, loss: 2.91460e+01, overall_recovery: 0.7100, mutation_recovery_per_seq: 0.0540, mutation_recovery_union: 0.9209, mutation_targets: 23794
+2026-09-11 02:10:50,973 - step: 1650, lr: 1.650e-04, loss: 2.44473e+01, overall_recovery: 0.6911, mutation_recovery_per_seq: 0.0592, mutation_recovery_union: 0.9212, mutation_targets: 23038
+2026-09-11 02:11:29,801 - step: 1700, lr: 1.700e-04, loss: 3.12904e+01, overall_recovery: 0.7045, mutation_recovery_per_seq: 0.0585, mutation_recovery_union: 0.9353, mutation_targets: 23260
+2026-09-11 02:12:08,709 - step: 1750, lr: 1.750e-04, loss: 2.50550e+01, overall_recovery: 0.7013, mutation_recovery_per_seq: 0.0577, mutation_recovery_union: 0.9259, mutation_targets: 22910
+2026-09-11 02:12:47,675 - step: 1800, lr: 1.800e-04, loss: 2.44049e+01, overall_recovery: 0.7084, mutation_recovery_per_seq: 0.0647, mutation_recovery_union: 0.9221, mutation_targets: 22918
+2026-09-11 02:13:26,598 - step: 1850, lr: 1.850e-04, loss: 2.24618e+01, overall_recovery: 0.7030, mutation_recovery_per_seq: 0.0597, mutation_recovery_union: 0.9244, mutation_targets: 23190
+2026-09-11 02:14:05,511 - step: 1900, lr: 1.900e-04, loss: 2.33222e+01, overall_recovery: 0.7027, mutation_recovery_per_seq: 0.0576, mutation_recovery_union: 0.9250, mutation_targets: 23692
+2026-09-11 02:14:44,770 - step: 1950, lr: 1.950e-04, loss: 2.51275e+01, overall_recovery: 0.7059, mutation_recovery_per_seq: 0.0589, mutation_recovery_union: 0.9223, mutation_targets: 23306
+2026-09-11 02:15:23,736 - step: 2000, lr: 2.000e-04, loss: 2.83583e+01, overall_recovery: 0.7021, mutation_recovery_per_seq: 0.0629, mutation_recovery_union: 0.9236, mutation_targets: 23291
+2026-09-11 02:15:23,902 - step: 2000, eval_loss: 2.23612e+01, eval_overall_recovery_rate: 0.7132, eval_mutation_recovery_rate: 0.0355, eval_mutation_targets: 479
+2026-09-11 02:16:02,841 - step: 2050, lr: 2.050e-04, loss: 2.93932e+01, overall_recovery: 0.7005, mutation_recovery_per_seq: 0.0563, mutation_recovery_union: 0.9214, mutation_targets: 23490
+2026-09-11 02:16:41,819 - step: 2100, lr: 2.100e-04, loss: 2.54872e+01, overall_recovery: 0.7019, mutation_recovery_per_seq: 0.0572, mutation_recovery_union: 0.9168, mutation_targets: 23928
+2026-09-11 02:17:20,794 - step: 2150, lr: 2.150e-04, loss: 2.43400e+01, overall_recovery: 0.6965, mutation_recovery_per_seq: 0.0565, mutation_recovery_union: 0.9222, mutation_targets: 23367
+2026-09-11 02:17:59,930 - step: 2200, lr: 2.200e-04, loss: 2.68827e+01, overall_recovery: 0.6980, mutation_recovery_per_seq: 0.0554, mutation_recovery_union: 0.9183, mutation_targets: 22770
+2026-09-11 02:18:38,840 - step: 2250, lr: 2.250e-04, loss: 2.82307e+01, overall_recovery: 0.6969, mutation_recovery_per_seq: 0.0613, mutation_recovery_union: 0.9161, mutation_targets: 22616
+2026-09-11 02:19:17,850 - step: 2300, lr: 2.300e-04, loss: 2.59903e+01, overall_recovery: 0.6965, mutation_recovery_per_seq: 0.0584, mutation_recovery_union: 0.9210, mutation_targets: 23203
+2026-09-11 02:19:56,815 - step: 2350, lr: 2.350e-04, loss: 2.62248e+01, overall_recovery: 0.6989, mutation_recovery_per_seq: 0.0605, mutation_recovery_union: 0.9184, mutation_targets: 23416
+2026-09-11 02:20:35,732 - step: 2400, lr: 2.400e-04, loss: 2.76917e+01, overall_recovery: 0.7009, mutation_recovery_per_seq: 0.0623, mutation_recovery_union: 0.9245, mutation_targets: 23060
+2026-09-11 02:21:14,632 - step: 2450, lr: 2.450e-04, loss: 2.98767e+01, overall_recovery: 0.6914, mutation_recovery_per_seq: 0.0597, mutation_recovery_union: 0.9213, mutation_targets: 23070
+2026-09-11 02:21:53,784 - step: 2500, lr: 2.500e-04, loss: 2.51108e+01, overall_recovery: 0.6967, mutation_recovery_per_seq: 0.0606, mutation_recovery_union: 0.9223, mutation_targets: 23317
+2026-09-11 02:21:53,952 - step: 2500, eval_loss: 2.56177e+01, eval_overall_recovery_rate: 0.6560, eval_mutation_recovery_rate: 0.0710, eval_mutation_targets: 507
+2026-09-11 02:22:32,889 - step: 2550, lr: 2.550e-04, loss: 2.39907e+01, overall_recovery: 0.6998, mutation_recovery_per_seq: 0.0607, mutation_recovery_union: 0.9209, mutation_targets: 22966
+2026-09-11 02:23:11,849 - step: 2600, lr: 2.600e-04, loss: 3.11309e+01, overall_recovery: 0.6860, mutation_recovery_per_seq: 0.0601, mutation_recovery_union: 0.9216, mutation_targets: 23063
+2026-09-11 02:23:50,780 - step: 2650, lr: 2.650e-04, loss: 2.48047e+01, overall_recovery: 0.7011, mutation_recovery_per_seq: 0.0550, mutation_recovery_union: 0.9214, mutation_targets: 23375
+2026-09-11 02:24:29,862 - step: 2700, lr: 2.700e-04, loss: 2.67499e+01, overall_recovery: 0.7036, mutation_recovery_per_seq: 0.0552, mutation_recovery_union: 0.9144, mutation_targets: 23374
+2026-09-11 02:25:09,083 - step: 2750, lr: 2.750e-04, loss: 2.72998e+01, overall_recovery: 0.7036, mutation_recovery_per_seq: 0.0612, mutation_recovery_union: 0.9317, mutation_targets: 23292
+2026-09-11 02:25:48,127 - step: 2800, lr: 2.800e-04, loss: 2.46018e+01, overall_recovery: 0.7058, mutation_recovery_per_seq: 0.0619, mutation_recovery_union: 0.9200, mutation_targets: 23572
+2026-09-11 02:26:27,105 - step: 2850, lr: 2.850e-04, loss: 2.65206e+01, overall_recovery: 0.6920, mutation_recovery_per_seq: 0.0638, mutation_recovery_union: 0.9393, mutation_targets: 23105
+2026-09-11 02:27:06,108 - step: 2900, lr: 2.900e-04, loss: 2.27523e+01, overall_recovery: 0.6948, mutation_recovery_per_seq: 0.0627, mutation_recovery_union: 0.9165, mutation_targets: 22700
+2026-09-11 02:27:45,174 - step: 2950, lr: 2.950e-04, loss: 2.56559e+01, overall_recovery: 0.6956, mutation_recovery_per_seq: 0.0643, mutation_recovery_union: 0.9212, mutation_targets: 23345
+2026-09-11 02:28:24,272 - step: 3000, lr: 3.000e-04, loss: 2.40015e+01, overall_recovery: 0.6965, mutation_recovery_per_seq: 0.0658, mutation_recovery_union: 0.9345, mutation_targets: 23166
+2026-09-11 02:28:24,439 - step: 3000, eval_loss: 2.52841e+01, eval_overall_recovery_rate: 0.6840, eval_mutation_recovery_rate: 0.0523, eval_mutation_targets: 497
+2026-09-11 02:29:03,308 - step: 3050, lr: 3.050e-04, loss: 2.32731e+01, overall_recovery: 0.6909, mutation_recovery_per_seq: 0.0589, mutation_recovery_union: 0.9154, mutation_targets: 22943
+2026-09-11 02:29:42,391 - step: 3100, lr: 3.100e-04, loss: 3.69646e+01, overall_recovery: 0.7067, mutation_recovery_per_seq: 0.0578, mutation_recovery_union: 0.9209, mutation_targets: 23836
+2026-09-11 02:30:21,394 - step: 3150, lr: 3.150e-04, loss: 3.13939e+01, overall_recovery: 0.7075, mutation_recovery_per_seq: 0.0594, mutation_recovery_union: 0.9275, mutation_targets: 22797
+2026-09-11 02:31:00,282 - step: 3200, lr: 3.200e-04, loss: 2.46887e+01, overall_recovery: 0.6894, mutation_recovery_per_seq: 0.0609, mutation_recovery_union: 0.9239, mutation_targets: 23261
+2026-09-11 02:31:39,274 - step: 3250, lr: 3.250e-04, loss: 2.25734e+01, overall_recovery: 0.7082, mutation_recovery_per_seq: 0.0607, mutation_recovery_union: 0.9242, mutation_targets: 23646
+2026-09-11 02:32:18,009 - step: 3300, lr: 3.300e-04, loss: 2.43526e+01, overall_recovery: 0.6995, mutation_recovery_per_seq: 0.0691, mutation_recovery_union: 0.9244, mutation_targets: 23131
+2026-09-11 02:32:56,982 - step: 3350, lr: 3.350e-04, loss: 2.76075e+01, overall_recovery: 0.7066, mutation_recovery_per_seq: 0.0643, mutation_recovery_union: 0.9230, mutation_targets: 22768
+2026-09-11 02:33:36,072 - step: 3400, lr: 3.400e-04, loss: 2.64327e+01, overall_recovery: 0.7063, mutation_recovery_per_seq: 0.0599, mutation_recovery_union: 0.9245, mutation_targets: 23754
+2026-09-11 02:34:15,054 - step: 3450, lr: 3.450e-04, loss: 3.25636e+01, overall_recovery: 0.7017, mutation_recovery_per_seq: 0.0620, mutation_recovery_union: 0.9200, mutation_targets: 23120
+2026-09-11 02:34:54,009 - step: 3500, lr: 3.500e-04, loss: 2.71947e+01, overall_recovery: 0.7093, mutation_recovery_per_seq: 0.0621, mutation_recovery_union: 0.9210, mutation_targets: 23597
+2026-09-11 02:34:54,173 - step: 3500, eval_loss: 2.16233e+01, eval_overall_recovery_rate: 0.6709, eval_mutation_recovery_rate: 0.0847, eval_mutation_targets: 425
+2026-09-11 02:35:33,059 - step: 3550, lr: 3.550e-04, loss: 2.60675e+01, overall_recovery: 0.7102, mutation_recovery_per_seq: 0.0542, mutation_recovery_union: 0.9223, mutation_targets: 23669
+2026-09-11 02:36:12,052 - step: 3600, lr: 3.600e-04, loss: 2.74058e+01, overall_recovery: 0.7093, mutation_recovery_per_seq: 0.0588, mutation_recovery_union: 0.9187, mutation_targets: 23271
+2026-09-11 02:36:50,958 - step: 3650, lr: 3.650e-04, loss: 2.26725e+01, overall_recovery: 0.6917, mutation_recovery_per_seq: 0.0603, mutation_recovery_union: 0.9232, mutation_targets: 22815
+2026-09-11 02:37:29,915 - step: 3700, lr: 3.700e-04, loss: 2.78068e+01, overall_recovery: 0.6974, mutation_recovery_per_seq: 0.0585, mutation_recovery_union: 0.9292, mutation_targets: 22847
+2026-09-11 02:38:08,849 - step: 3750, lr: 3.750e-04, loss: 2.25106e+01, overall_recovery: 0.7069, mutation_recovery_per_seq: 0.0576, mutation_recovery_union: 0.9211, mutation_targets: 23109
+2026-09-11 02:38:48,205 - step: 3800, lr: 3.800e-04, loss: 2.96750e+01, overall_recovery: 0.7006, mutation_recovery_per_seq: 0.0579, mutation_recovery_union: 0.9207, mutation_targets: 23318
+2026-09-11 02:39:27,298 - step: 3850, lr: 3.850e-04, loss: 2.73127e+01, overall_recovery: 0.7042, mutation_recovery_per_seq: 0.0599, mutation_recovery_union: 0.9256, mutation_targets: 23208
+2026-09-11 02:40:06,144 - step: 3900, lr: 3.900e-04, loss: 2.63473e+01, overall_recovery: 0.7124, mutation_recovery_per_seq: 0.0568, mutation_recovery_union: 0.9163, mutation_targets: 22958
+2026-09-11 02:40:45,213 - step: 3950, lr: 3.950e-04, loss: 2.77674e+01, overall_recovery: 0.7012, mutation_recovery_per_seq: 0.0579, mutation_recovery_union: 0.9214, mutation_targets: 23267
+2026-09-11 02:41:24,126 - step: 4000, lr: 4.000e-04, loss: 2.51734e+01, overall_recovery: 0.7136, mutation_recovery_per_seq: 0.0550, mutation_recovery_union: 0.9200, mutation_targets: 23180
+2026-09-11 02:41:24,290 - step: 4000, eval_loss: 2.41652e+01, eval_overall_recovery_rate: 0.6987, eval_mutation_recovery_rate: 0.0890, eval_mutation_targets: 427
+2026-09-11 02:42:03,384 - step: 4050, lr: 4.050e-04, loss: 2.27077e+01, overall_recovery: 0.7065, mutation_recovery_per_seq: 0.0587, mutation_recovery_union: 0.9338, mutation_targets: 23164
+2026-09-11 02:42:42,435 - step: 4100, lr: 4.100e-04, loss: 2.83680e+01, overall_recovery: 0.7215, mutation_recovery_per_seq: 0.0532, mutation_recovery_union: 0.9212, mutation_targets: 23348
+2026-09-11 02:43:21,489 - step: 4150, lr: 4.150e-04, loss: 2.79220e+01, overall_recovery: 0.7057, mutation_recovery_per_seq: 0.0554, mutation_recovery_union: 0.9249, mutation_targets: 23275
+2026-09-11 02:44:00,559 - step: 4200, lr: 4.200e-04, loss: 3.00475e+01, overall_recovery: 0.7120, mutation_recovery_per_seq: 0.0550, mutation_recovery_union: 0.9299, mutation_targets: 23233
+2026-09-11 02:44:39,548 - step: 4250, lr: 4.250e-04, loss: 3.38269e+01, overall_recovery: 0.7142, mutation_recovery_per_seq: 0.0529, mutation_recovery_union: 0.9219, mutation_targets: 22848
+2026-09-11 02:45:18,681 - step: 4300, lr: 4.300e-04, loss: 3.24260e+01, overall_recovery: 0.7163, mutation_recovery_per_seq: 0.0532, mutation_recovery_union: 0.9215, mutation_targets: 23652
+2026-09-11 02:45:57,610 - step: 4350, lr: 4.350e-04, loss: 2.44811e+01, overall_recovery: 0.7193, mutation_recovery_per_seq: 0.0521, mutation_recovery_union: 0.9183, mutation_targets: 23466
+2026-09-11 02:46:36,697 - step: 4400, lr: 4.400e-04, loss: 3.23011e+01, overall_recovery: 0.7148, mutation_recovery_per_seq: 0.0551, mutation_recovery_union: 0.9222, mutation_targets: 22747
+2026-09-11 02:47:15,667 - step: 4450, lr: 4.450e-04, loss: 2.58653e+01, overall_recovery: 0.7121, mutation_recovery_per_seq: 0.0571, mutation_recovery_union: 0.9234, mutation_targets: 23069
+2026-09-11 02:47:54,607 - step: 4500, lr: 4.500e-04, loss: 2.94378e+01, overall_recovery: 0.7243, mutation_recovery_per_seq: 0.0477, mutation_recovery_union: 0.9222, mutation_targets: 23483
+2026-09-11 02:47:54,775 - step: 4500, eval_loss: 2.66946e+01, eval_overall_recovery_rate: 0.6827, eval_mutation_recovery_rate: 0.0317, eval_mutation_targets: 473
+2026-09-11 02:48:33,885 - step: 4550, lr: 4.550e-04, loss: 4.13628e+01, overall_recovery: 0.7226, mutation_recovery_per_seq: 0.0486, mutation_recovery_union: 0.9186, mutation_targets: 23742
+2026-09-11 02:49:12,886 - step: 4600, lr: 4.600e-04, loss: 3.11385e+01, overall_recovery: 0.7486, mutation_recovery_per_seq: 0.0333, mutation_recovery_union: 0.9137, mutation_targets: 22943
+2026-09-11 02:49:51,938 - step: 4650, lr: 4.650e-04, loss: 3.79577e+01, overall_recovery: 0.7356, mutation_recovery_per_seq: 0.0367, mutation_recovery_union: 0.9228, mutation_targets: 23017
+2026-09-11 02:50:30,779 - step: 4700, lr: 4.700e-04, loss: 2.70139e+01, overall_recovery: 0.7599, mutation_recovery_per_seq: 0.0298, mutation_recovery_union: 0.9172, mutation_targets: 23207
+2026-09-11 02:51:09,690 - step: 4750, lr: 4.750e-04, loss: 3.98834e+01, overall_recovery: 0.7624, mutation_recovery_per_seq: 0.0262, mutation_recovery_union: 0.9195, mutation_targets: 23814
+2026-09-11 02:51:48,836 - step: 4800, lr: 4.800e-04, loss: 3.84498e+01, overall_recovery: 0.7727, mutation_recovery_per_seq: 0.0240, mutation_recovery_union: 0.9080, mutation_targets: 23691
+2026-09-11 02:52:27,696 - step: 4850, lr: 4.850e-04, loss: 3.22600e+01, overall_recovery: 0.7764, mutation_recovery_per_seq: 0.0265, mutation_recovery_union: 0.9192, mutation_targets: 23491
+2026-09-11 02:53:06,700 - step: 4900, lr: 4.900e-04, loss: 3.76526e+01, overall_recovery: 0.7740, mutation_recovery_per_seq: 0.0190, mutation_recovery_union: 0.9099, mutation_targets: 23417
+2026-09-11 02:53:45,690 - step: 4950, lr: 4.950e-04, loss: 3.97707e+01, overall_recovery: 0.7822, mutation_recovery_per_seq: 0.0224, mutation_recovery_union: 0.9160, mutation_targets: 23525
+2026-09-11 02:54:24,671 - step: 5000, lr: 5.000e-04, loss: 3.90564e+01, overall_recovery: 0.7822, mutation_recovery_per_seq: 0.0207, mutation_recovery_union: 0.9248, mutation_targets: 23538
+2026-09-11 02:54:28,456 - step: 5000, eval_loss: 3.65591e+01, eval_overall_recovery_rate: 0.7536, eval_mutation_recovery_rate: 0.0163, eval_mutation_targets: 430
+2026-09-11 02:55:07,567 - step: 5050, lr: 5.000e-04, loss: 4.11026e+01, overall_recovery: 0.7805, mutation_recovery_per_seq: 0.0214, mutation_recovery_union: 0.9094, mutation_targets: 23365
+2026-09-11 02:55:46,393 - step: 5100, lr: 5.000e-04, loss: 3.59052e+01, overall_recovery: 0.7757, mutation_recovery_per_seq: 0.0181, mutation_recovery_union: 0.9138, mutation_targets: 23644
+2026-09-11 02:56:25,320 - step: 5150, lr: 5.000e-04, loss: 3.77788e+01, overall_recovery: 0.8092, mutation_recovery_per_seq: 0.0140, mutation_recovery_union: 0.9100, mutation_targets: 23529
+2026-09-11 02:57:04,314 - step: 5200, lr: 5.000e-04, loss: 4.44650e+01, overall_recovery: 0.7939, mutation_recovery_per_seq: 0.0165, mutation_recovery_union: 0.9097, mutation_targets: 23742
+2026-09-11 02:57:43,331 - step: 5250, lr: 5.000e-04, loss: 4.00008e+01, overall_recovery: 0.7985, mutation_recovery_per_seq: 0.0161, mutation_recovery_union: 0.9140, mutation_targets: 23639
+2026-09-11 02:58:22,285 - step: 5300, lr: 5.000e-04, loss: 4.90113e+01, overall_recovery: 0.7936, mutation_recovery_per_seq: 0.0179, mutation_recovery_union: 0.9139, mutation_targets: 23510
+2026-09-11 02:59:01,315 - step: 5350, lr: 5.000e-04, loss: 4.02438e+01, overall_recovery: 0.7672, mutation_recovery_per_seq: 0.0203, mutation_recovery_union: 0.9148, mutation_targets: 23110
+2026-09-11 02:59:40,256 - step: 5400, lr: 5.000e-04, loss: 4.48502e+01, overall_recovery: 0.8026, mutation_recovery_per_seq: 0.0159, mutation_recovery_union: 0.9105, mutation_targets: 23123
+2026-09-11 03:00:19,137 - step: 5450, lr: 5.000e-04, loss: 3.74391e+01, overall_recovery: 0.7985, mutation_recovery_per_seq: 0.0129, mutation_recovery_union: 0.9226, mutation_targets: 23636
+2026-09-11 03:00:58,016 - step: 5500, lr: 5.000e-04, loss: 3.84922e+01, overall_recovery: 0.7974, mutation_recovery_per_seq: 0.0169, mutation_recovery_union: 0.9178, mutation_targets: 23277
+2026-09-11 03:00:58,189 - step: 5500, eval_loss: 4.07841e+01, eval_overall_recovery_rate: 0.7690, eval_mutation_recovery_rate: 0.0221, eval_mutation_targets: 497
+2026-09-11 03:01:37,043 - step: 5550, lr: 5.000e-04, loss: 3.97555e+01, overall_recovery: 0.7858, mutation_recovery_per_seq: 0.0204, mutation_recovery_union: 0.9114, mutation_targets: 23508
+2026-09-11 03:02:16,106 - step: 5600, lr: 5.000e-04, loss: 4.33405e+01, overall_recovery: 0.7930, mutation_recovery_per_seq: 0.0170, mutation_recovery_union: 0.9110, mutation_targets: 22854
+2026-09-11 03:02:55,020 - step: 5650, lr: 5.000e-04, loss: 4.09210e+01, overall_recovery: 0.7897, mutation_recovery_per_seq: 0.0194, mutation_recovery_union: 0.9176, mutation_targets: 23278
+2026-09-11 03:03:33,931 - step: 5700, lr: 5.000e-04, loss: 4.16333e+01, overall_recovery: 0.7717, mutation_recovery_per_seq: 0.0176, mutation_recovery_union: 0.9123, mutation_targets: 23148
+2026-09-11 03:04:12,792 - step: 5750, lr: 5.000e-04, loss: 3.83871e+01, overall_recovery: 0.7743, mutation_recovery_per_seq: 0.0202, mutation_recovery_union: 0.9059, mutation_targets: 23329
+2026-09-11 03:04:51,767 - step: 5800, lr: 5.000e-04, loss: 3.84109e+01, overall_recovery: 0.8008, mutation_recovery_per_seq: 0.0202, mutation_recovery_union: 0.9185, mutation_targets: 23508
+2026-09-11 03:05:30,723 - step: 5850, lr: 5.000e-04, loss: 3.95671e+01, overall_recovery: 0.7811, mutation_recovery_per_seq: 0.0233, mutation_recovery_union: 0.9188, mutation_targets: 23151
+2026-09-11 03:06:09,559 - step: 5900, lr: 5.000e-04, loss: 4.02671e+01, overall_recovery: 0.7770, mutation_recovery_per_seq: 0.0225, mutation_recovery_union: 0.9165, mutation_targets: 23474
+2026-09-11 03:06:48,213 - step: 5950, lr: 5.000e-04, loss: 3.61855e+01, overall_recovery: 0.7904, mutation_recovery_per_seq: 0.0229, mutation_recovery_union: 0.9171, mutation_targets: 23315
+2026-09-11 03:07:27,046 - step: 6000, lr: 5.000e-04, loss: 3.43446e+01, overall_recovery: 0.7734, mutation_recovery_per_seq: 0.0253, mutation_recovery_union: 0.9206, mutation_targets: 23002
+2026-09-11 03:07:27,213 - step: 6000, eval_loss: 3.47749e+01, eval_overall_recovery_rate: 0.7892, eval_mutation_recovery_rate: 0.0204, eval_mutation_targets: 491
+2026-09-11 03:08:06,038 - step: 6050, lr: 5.000e-04, loss: 3.46384e+01, overall_recovery: 0.7883, mutation_recovery_per_seq: 0.0259, mutation_recovery_union: 0.9111, mutation_targets: 23166
+2026-09-11 03:08:45,003 - step: 6100, lr: 5.000e-04, loss: 4.10297e+01, overall_recovery: 0.7777, mutation_recovery_per_seq: 0.0279, mutation_recovery_union: 0.9147, mutation_targets: 22728
+2026-09-11 03:09:23,750 - step: 6150, lr: 5.000e-04, loss: 3.51445e+01, overall_recovery: 0.7772, mutation_recovery_per_seq: 0.0262, mutation_recovery_union: 0.9167, mutation_targets: 23702
+2026-09-11 03:10:02,639 - step: 6200, lr: 5.000e-04, loss: 3.60291e+01, overall_recovery: 0.7625, mutation_recovery_per_seq: 0.0292, mutation_recovery_union: 0.9171, mutation_targets: 23117
+2026-09-11 03:10:41,410 - step: 6250, lr: 5.000e-04, loss: 3.78713e+01, overall_recovery: 0.7629, mutation_recovery_per_seq: 0.0298, mutation_recovery_union: 0.9175, mutation_targets: 23054
+2026-09-11 03:11:20,160 - step: 6300, lr: 5.000e-04, loss: 3.65098e+01, overall_recovery: 0.7688, mutation_recovery_per_seq: 0.0250, mutation_recovery_union: 0.9174, mutation_targets: 23418
+2026-09-11 03:11:59,023 - step: 6350, lr: 5.000e-04, loss: 4.00960e+01, overall_recovery: 0.7593, mutation_recovery_per_seq: 0.0265, mutation_recovery_union: 0.9279, mutation_targets: 22981
+2026-09-11 03:12:37,798 - step: 6400, lr: 5.000e-04, loss: 3.89308e+01, overall_recovery: 0.7720, mutation_recovery_per_seq: 0.0264, mutation_recovery_union: 0.9216, mutation_targets: 23449
+2026-09-11 03:13:16,522 - step: 6450, lr: 5.000e-04, loss: 3.61376e+01, overall_recovery: 0.7639, mutation_recovery_per_seq: 0.0263, mutation_recovery_union: 0.9210, mutation_targets: 23075
+2026-09-11 03:13:55,303 - step: 6500, lr: 5.000e-04, loss: 3.77763e+01, overall_recovery: 0.7748, mutation_recovery_per_seq: 0.0272, mutation_recovery_union: 0.9187, mutation_targets: 23230
+2026-09-11 03:13:55,471 - step: 6500, eval_loss: 3.59218e+01, eval_overall_recovery_rate: 0.7479, eval_mutation_recovery_rate: 0.0246, eval_mutation_targets: 487
+2026-09-11 03:14:34,148 - step: 6550, lr: 5.000e-04, loss: 3.44392e+01, overall_recovery: 0.7717, mutation_recovery_per_seq: 0.0306, mutation_recovery_union: 0.9203, mutation_targets: 23107
+2026-09-11 03:15:12,842 - step: 6600, lr: 5.000e-04, loss: 4.25240e+01, overall_recovery: 0.7618, mutation_recovery_per_seq: 0.0320, mutation_recovery_union: 0.9142, mutation_targets: 23019
+2026-09-11 03:15:51,717 - step: 6650, lr: 5.000e-04, loss: 3.84966e+01, overall_recovery: 0.7558, mutation_recovery_per_seq: 0.0296, mutation_recovery_union: 0.9168, mutation_targets: 22716
+2026-09-11 03:16:30,432 - step: 6700, lr: 5.000e-04, loss: 3.85322e+01, overall_recovery: 0.7906, mutation_recovery_per_seq: 0.0277, mutation_recovery_union: 0.9154, mutation_targets: 23561
+2026-09-11 03:17:09,185 - step: 6750, lr: 5.000e-04, loss: 3.56559e+01, overall_recovery: 0.7663, mutation_recovery_per_seq: 0.0296, mutation_recovery_union: 0.9172, mutation_targets: 22874
+2026-09-11 03:17:47,860 - step: 6800, lr: 5.000e-04, loss: 3.21762e+01, overall_recovery: 0.7572, mutation_recovery_per_seq: 0.0253, mutation_recovery_union: 0.9139, mutation_targets: 23222
+2026-09-11 03:18:26,488 - step: 6850, lr: 5.000e-04, loss: 3.17832e+01, overall_recovery: 0.7819, mutation_recovery_per_seq: 0.0282, mutation_recovery_union: 0.9214, mutation_targets: 23301
+2026-09-11 03:19:05,230 - step: 6900, lr: 5.000e-04, loss: 3.87553e+01, overall_recovery: 0.7689, mutation_recovery_per_seq: 0.0275, mutation_recovery_union: 0.9128, mutation_targets: 23362
+2026-09-11 03:19:43,906 - step: 6950, lr: 5.000e-04, loss: 3.62058e+01, overall_recovery: 0.7649, mutation_recovery_per_seq: 0.0279, mutation_recovery_union: 0.9155, mutation_targets: 23184
+2026-09-11 03:20:22,674 - step: 7000, lr: 5.000e-04, loss: 3.48636e+01, overall_recovery: 0.7786, mutation_recovery_per_seq: 0.0277, mutation_recovery_union: 0.9175, mutation_targets: 23527
+2026-09-11 03:20:22,834 - step: 7000, eval_loss: 3.38356e+01, eval_overall_recovery_rate: 0.7115, eval_mutation_recovery_rate: 0.0506, eval_mutation_targets: 336
+2026-09-11 03:21:01,326 - step: 7050, lr: 5.000e-04, loss: 3.62999e+01, overall_recovery: 0.7730, mutation_recovery_per_seq: 0.0266, mutation_recovery_union: 0.9177, mutation_targets: 23239
+2026-09-11 03:21:40,071 - step: 7100, lr: 5.000e-04, loss: 4.11892e+01, overall_recovery: 0.7888, mutation_recovery_per_seq: 0.0252, mutation_recovery_union: 0.9166, mutation_targets: 23292
+2026-09-11 03:22:18,903 - step: 7150, lr: 5.000e-04, loss: 4.31762e+01, overall_recovery: 0.7828, mutation_recovery_per_seq: 0.0246, mutation_recovery_union: 0.9166, mutation_targets: 23634
+2026-09-11 03:22:57,677 - step: 7200, lr: 5.000e-04, loss: 3.46340e+01, overall_recovery: 0.7683, mutation_recovery_per_seq: 0.0279, mutation_recovery_union: 0.9224, mutation_targets: 23524
+2026-09-11 03:23:36,433 - step: 7250, lr: 5.000e-04, loss: 3.54870e+01, overall_recovery: 0.7710, mutation_recovery_per_seq: 0.0275, mutation_recovery_union: 0.9131, mutation_targets: 23398
+2026-09-11 03:24:15,048 - step: 7300, lr: 5.000e-04, loss: 3.50526e+01, overall_recovery: 0.7709, mutation_recovery_per_seq: 0.0271, mutation_recovery_union: 0.9101, mutation_targets: 23601
+2026-09-11 03:24:53,787 - step: 7350, lr: 5.000e-04, loss: 3.34102e+01, overall_recovery: 0.7680, mutation_recovery_per_seq: 0.0299, mutation_recovery_union: 0.9306, mutation_targets: 23370
+2026-09-11 03:25:32,545 - step: 7400, lr: 5.000e-04, loss: 3.37293e+01, overall_recovery: 0.7510, mutation_recovery_per_seq: 0.0304, mutation_recovery_union: 0.9176, mutation_targets: 23379
+2026-09-11 03:26:11,210 - step: 7450, lr: 5.000e-04, loss: 3.82728e+01, overall_recovery: 0.7683, mutation_recovery_per_seq: 0.0273, mutation_recovery_union: 0.9156, mutation_targets: 23335
+2026-09-11 03:26:49,898 - step: 7500, lr: 5.000e-04, loss: 5.60877e+01, overall_recovery: 0.7774, mutation_recovery_per_seq: 0.0317, mutation_recovery_union: 0.9328, mutation_targets: 23499
+2026-09-11 03:26:50,063 - step: 7500, eval_loss: 3.68845e+01, eval_overall_recovery_rate: 0.7293, eval_mutation_recovery_rate: 0.0361, eval_mutation_targets: 582
+2026-09-11 03:27:28,518 - step: 7550, lr: 5.000e-04, loss: 3.52055e+01, overall_recovery: 0.7675, mutation_recovery_per_seq: 0.0319, mutation_recovery_union: 0.9327, mutation_targets: 23651
+2026-09-11 03:28:07,093 - step: 7600, lr: 5.000e-04, loss: 3.14248e+01, overall_recovery: 0.7823, mutation_recovery_per_seq: 0.0305, mutation_recovery_union: 0.9199, mutation_targets: 23058
+2026-09-11 03:28:45,838 - step: 7650, lr: 5.000e-04, loss: 3.97280e+01, overall_recovery: 0.7660, mutation_recovery_per_seq: 0.0334, mutation_recovery_union: 0.9250, mutation_targets: 23121
+2026-09-11 03:29:24,416 - step: 7700, lr: 5.000e-04, loss: 4.03165e+01, overall_recovery: 0.7640, mutation_recovery_per_seq: 0.0332, mutation_recovery_union: 0.9287, mutation_targets: 23453
+2026-09-11 03:30:02,973 - step: 7750, lr: 5.000e-04, loss: 3.73027e+01, overall_recovery: 0.7490, mutation_recovery_per_seq: 0.0333, mutation_recovery_union: 0.9135, mutation_targets: 22775
+2026-09-11 03:30:41,676 - step: 7800, lr: 5.000e-04, loss: 3.84590e+01, overall_recovery: 0.7636, mutation_recovery_per_seq: 0.0351, mutation_recovery_union: 0.9180, mutation_targets: 23646
+2026-09-11 03:31:20,304 - step: 7850, lr: 5.000e-04, loss: 5.43764e+01, overall_recovery: 0.7416, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9204, mutation_targets: 22887
+2026-09-11 03:31:58,913 - step: 7900, lr: 5.000e-04, loss: 3.15016e+01, overall_recovery: 0.7438, mutation_recovery_per_seq: 0.0358, mutation_recovery_union: 0.9179, mutation_targets: 23527
+2026-09-11 03:32:37,695 - step: 7950, lr: 5.000e-04, loss: 3.52822e+01, overall_recovery: 0.7491, mutation_recovery_per_seq: 0.0393, mutation_recovery_union: 0.9140, mutation_targets: 22918
+2026-09-11 03:33:16,270 - step: 8000, lr: 5.000e-04, loss: 3.61266e+01, overall_recovery: 0.7754, mutation_recovery_per_seq: 0.0307, mutation_recovery_union: 0.9146, mutation_targets: 23127
+2026-09-11 03:33:16,436 - step: 8000, eval_loss: 2.78210e+01, eval_overall_recovery_rate: 0.7502, eval_mutation_recovery_rate: 0.0312, eval_mutation_targets: 449
+2026-09-11 03:33:55,124 - step: 8050, lr: 5.000e-04, loss: 3.86832e+01, overall_recovery: 0.7650, mutation_recovery_per_seq: 0.0291, mutation_recovery_union: 0.9167, mutation_targets: 23555
+2026-09-11 03:34:33,781 - step: 8100, lr: 5.000e-04, loss: 3.57025e+01, overall_recovery: 0.7590, mutation_recovery_per_seq: 0.0343, mutation_recovery_union: 0.9169, mutation_targets: 23030
+2026-09-11 03:35:12,425 - step: 8150, lr: 5.000e-04, loss: 3.26899e+01, overall_recovery: 0.7504, mutation_recovery_per_seq: 0.0324, mutation_recovery_union: 0.9144, mutation_targets: 23044
+2026-09-11 03:35:51,278 - step: 8200, lr: 5.000e-04, loss: 3.28130e+01, overall_recovery: 0.7604, mutation_recovery_per_seq: 0.0333, mutation_recovery_union: 0.9248, mutation_targets: 23279
+2026-09-11 03:36:30,015 - step: 8250, lr: 5.000e-04, loss: 3.71457e+01, overall_recovery: 0.7568, mutation_recovery_per_seq: 0.0296, mutation_recovery_union: 0.9134, mutation_targets: 23163
+2026-09-11 03:37:08,741 - step: 8300, lr: 5.000e-04, loss: 3.86582e+01, overall_recovery: 0.7616, mutation_recovery_per_seq: 0.0276, mutation_recovery_union: 0.9214, mutation_targets: 23266
+2026-09-11 03:37:47,290 - step: 8350, lr: 5.000e-04, loss: 3.66148e+01, overall_recovery: 0.7628, mutation_recovery_per_seq: 0.0275, mutation_recovery_union: 0.9182, mutation_targets: 22828
+2026-09-11 03:38:25,894 - step: 8400, lr: 5.000e-04, loss: 3.83866e+01, overall_recovery: 0.7612, mutation_recovery_per_seq: 0.0305, mutation_recovery_union: 0.9167, mutation_targets: 23227
+2026-09-11 03:39:04,740 - step: 8450, lr: 5.000e-04, loss: 4.01106e+01, overall_recovery: 0.7621, mutation_recovery_per_seq: 0.0319, mutation_recovery_union: 0.9137, mutation_targets: 22561
+2026-09-11 03:39:43,326 - step: 8500, lr: 5.000e-04, loss: 3.75407e+01, overall_recovery: 0.7723, mutation_recovery_per_seq: 0.0320, mutation_recovery_union: 0.9157, mutation_targets: 23515
+2026-09-11 03:39:43,491 - step: 8500, eval_loss: 3.47128e+01, eval_overall_recovery_rate: 0.7908, eval_mutation_recovery_rate: 0.0359, eval_mutation_targets: 474
+2026-09-11 03:40:22,167 - step: 8550, lr: 5.000e-04, loss: 3.16976e+01, overall_recovery: 0.7709, mutation_recovery_per_seq: 0.0328, mutation_recovery_union: 0.9193, mutation_targets: 23668
+2026-09-11 03:41:00,841 - step: 8600, lr: 5.000e-04, loss: 3.94266e+01, overall_recovery: 0.7518, mutation_recovery_per_seq: 0.0328, mutation_recovery_union: 0.9218, mutation_targets: 23511
+2026-09-11 03:41:39,527 - step: 8650, lr: 5.000e-04, loss: 3.31194e+01, overall_recovery: 0.7470, mutation_recovery_per_seq: 0.0370, mutation_recovery_union: 0.9196, mutation_targets: 22790
+2026-09-11 03:42:18,060 - step: 8700, lr: 5.000e-04, loss: 4.05957e+01, overall_recovery: 0.7624, mutation_recovery_per_seq: 0.0296, mutation_recovery_union: 0.9257, mutation_targets: 24118
+2026-09-11 03:42:56,805 - step: 8750, lr: 5.000e-04, loss: 3.83904e+01, overall_recovery: 0.7695, mutation_recovery_per_seq: 0.0265, mutation_recovery_union: 0.9319, mutation_targets: 23305
+2026-09-11 03:43:35,353 - step: 8800, lr: 5.000e-04, loss: 2.94943e+01, overall_recovery: 0.7672, mutation_recovery_per_seq: 0.0326, mutation_recovery_union: 0.9212, mutation_targets: 23136
+2026-09-11 03:44:13,990 - step: 8850, lr: 5.000e-04, loss: 3.62434e+01, overall_recovery: 0.7587, mutation_recovery_per_seq: 0.0307, mutation_recovery_union: 0.9171, mutation_targets: 23678
+2026-09-11 03:44:52,741 - step: 8900, lr: 5.000e-04, loss: 3.80775e+01, overall_recovery: 0.7680, mutation_recovery_per_seq: 0.0258, mutation_recovery_union: 0.9169, mutation_targets: 23031
+2026-09-11 03:45:31,455 - step: 8950, lr: 5.000e-04, loss: 3.37920e+01, overall_recovery: 0.7661, mutation_recovery_per_seq: 0.0298, mutation_recovery_union: 0.9281, mutation_targets: 23630
+2026-09-11 03:46:10,415 - step: 9000, lr: 5.000e-04, loss: 3.25815e+01, overall_recovery: 0.7512, mutation_recovery_per_seq: 0.0318, mutation_recovery_union: 0.9283, mutation_targets: 23015
+2026-09-11 03:46:10,578 - step: 9000, eval_loss: 3.68234e+01, eval_overall_recovery_rate: 0.7698, eval_mutation_recovery_rate: 0.0185, eval_mutation_targets: 432
+2026-09-11 03:46:49,378 - step: 9050, lr: 5.000e-04, loss: 3.54040e+01, overall_recovery: 0.7352, mutation_recovery_per_seq: 0.0356, mutation_recovery_union: 0.9228, mutation_targets: 23381
+2026-09-11 03:47:28,077 - step: 9100, lr: 5.000e-04, loss: 4.30382e+01, overall_recovery: 0.7481, mutation_recovery_per_seq: 0.0360, mutation_recovery_union: 0.9177, mutation_targets: 23234
+2026-09-11 03:48:06,818 - step: 9150, lr: 5.000e-04, loss: 3.95188e+01, overall_recovery: 0.7879, mutation_recovery_per_seq: 0.0139, mutation_recovery_union: 0.9020, mutation_targets: 23109
+2026-09-11 03:48:45,433 - step: 9200, lr: 5.000e-04, loss: 4.18177e+01, overall_recovery: 0.8028, mutation_recovery_per_seq: 0.0055, mutation_recovery_union: 0.9138, mutation_targets: 23386
+2026-09-11 03:49:24,091 - step: 9250, lr: 5.000e-04, loss: 3.93284e+01, overall_recovery: 0.7960, mutation_recovery_per_seq: 0.0097, mutation_recovery_union: 0.9058, mutation_targets: 23698
+2026-09-11 03:50:02,759 - step: 9300, lr: 5.000e-04, loss: 3.73227e+01, overall_recovery: 0.7997, mutation_recovery_per_seq: 0.0174, mutation_recovery_union: 0.9118, mutation_targets: 23310
+2026-09-11 03:50:41,471 - step: 9350, lr: 5.000e-04, loss: 3.67155e+01, overall_recovery: 0.7857, mutation_recovery_per_seq: 0.0226, mutation_recovery_union: 0.9212, mutation_targets: 23010
+2026-09-11 03:51:20,248 - step: 9400, lr: 5.000e-04, loss: 3.71034e+01, overall_recovery: 0.7857, mutation_recovery_per_seq: 0.0189, mutation_recovery_union: 0.9151, mutation_targets: 22986
+2026-09-11 03:51:58,928 - step: 9450, lr: 5.000e-04, loss: 4.00294e+01, overall_recovery: 0.7907, mutation_recovery_per_seq: 0.0225, mutation_recovery_union: 0.9166, mutation_targets: 23382
+2026-09-11 03:52:37,699 - step: 9500, lr: 5.000e-04, loss: 3.43852e+01, overall_recovery: 0.7834, mutation_recovery_per_seq: 0.0220, mutation_recovery_union: 0.9315, mutation_targets: 23727
+2026-09-11 03:52:37,862 - step: 9500, eval_loss: 3.31784e+01, eval_overall_recovery_rate: 0.7612, eval_mutation_recovery_rate: 0.0478, eval_mutation_targets: 481
+2026-09-11 03:53:16,532 - step: 9550, lr: 5.000e-04, loss: 3.69384e+01, overall_recovery: 0.7877, mutation_recovery_per_seq: 0.0240, mutation_recovery_union: 0.9278, mutation_targets: 23093
+2026-09-11 03:53:55,458 - step: 9600, lr: 5.000e-04, loss: 3.99589e+01, overall_recovery: 0.7791, mutation_recovery_per_seq: 0.0261, mutation_recovery_union: 0.9181, mutation_targets: 22973
+2026-09-11 03:54:34,109 - step: 9650, lr: 5.000e-04, loss: 3.60751e+01, overall_recovery: 0.7823, mutation_recovery_per_seq: 0.0259, mutation_recovery_union: 0.9155, mutation_targets: 23400
+2026-09-11 03:55:12,813 - step: 9700, lr: 5.000e-04, loss: 4.09186e+01, overall_recovery: 0.7634, mutation_recovery_per_seq: 0.0272, mutation_recovery_union: 0.9146, mutation_targets: 23473
+2026-09-11 03:55:51,441 - step: 9750, lr: 5.000e-04, loss: 3.97698e+01, overall_recovery: 0.7654, mutation_recovery_per_seq: 0.0277, mutation_recovery_union: 0.9265, mutation_targets: 23093
+2026-09-11 03:56:30,026 - step: 9800, lr: 5.000e-04, loss: 3.61467e+01, overall_recovery: 0.7713, mutation_recovery_per_seq: 0.0263, mutation_recovery_union: 0.9117, mutation_targets: 22805
+2026-09-11 03:57:08,866 - step: 9850, lr: 5.000e-04, loss: 3.96677e+01, overall_recovery: 0.7774, mutation_recovery_per_seq: 0.0236, mutation_recovery_union: 0.9101, mutation_targets: 23208
+2026-09-11 03:57:47,611 - step: 9900, lr: 5.000e-04, loss: 3.72106e+01, overall_recovery: 0.7794, mutation_recovery_per_seq: 0.0219, mutation_recovery_union: 0.9145, mutation_targets: 23061
+2026-09-11 03:58:26,240 - step: 9950, lr: 5.000e-04, loss: 3.63562e+01, overall_recovery: 0.7766, mutation_recovery_per_seq: 0.0202, mutation_recovery_union: 0.9059, mutation_targets: 23275
+2026-09-11 03:59:04,940 - step: 10000, lr: 5.000e-04, loss: 3.51236e+01, overall_recovery: 0.7884, mutation_recovery_per_seq: 0.0209, mutation_recovery_union: 0.9249, mutation_targets: 23371
+2026-09-11 03:59:06,742 - step: 10000, eval_loss: 4.67573e+01, eval_overall_recovery_rate: 0.7907, eval_mutation_recovery_rate: 0.0214, eval_mutation_targets: 514
+2026-09-11 03:59:09,993 - Generating VHH samples at step 10000
+2026-09-11 03:59:52,519 - step: 10050, lr: 5.000e-04, loss: 3.95886e+01, overall_recovery: 0.7720, mutation_recovery_per_seq: 0.0212, mutation_recovery_union: 0.9190, mutation_targets: 23129
+2026-09-11 04:00:31,479 - step: 10100, lr: 5.000e-04, loss: 4.00984e+01, overall_recovery: 0.7841, mutation_recovery_per_seq: 0.0259, mutation_recovery_union: 0.9170, mutation_targets: 23745
+2026-09-11 04:01:10,222 - step: 10150, lr: 5.000e-04, loss: 4.08966e+01, overall_recovery: 0.7818, mutation_recovery_per_seq: 0.0229, mutation_recovery_union: 0.9147, mutation_targets: 23273
+2026-09-11 04:01:48,976 - step: 10200, lr: 5.000e-04, loss: 3.51868e+01, overall_recovery: 0.7866, mutation_recovery_per_seq: 0.0245, mutation_recovery_union: 0.9171, mutation_targets: 23516
+2026-09-11 04:02:27,677 - step: 10250, lr: 5.000e-04, loss: 4.24866e+01, overall_recovery: 0.7766, mutation_recovery_per_seq: 0.0275, mutation_recovery_union: 0.9161, mutation_targets: 23235
+2026-09-11 04:03:06,285 - step: 10300, lr: 5.000e-04, loss: 3.79669e+01, overall_recovery: 0.7661, mutation_recovery_per_seq: 0.0259, mutation_recovery_union: 0.9152, mutation_targets: 23805
+2026-09-11 04:03:44,981 - step: 10350, lr: 5.000e-04, loss: 3.65673e+01, overall_recovery: 0.7854, mutation_recovery_per_seq: 0.0250, mutation_recovery_union: 0.9122, mutation_targets: 23316
+2026-09-11 04:04:23,787 - step: 10400, lr: 5.000e-04, loss: 3.53616e+01, overall_recovery: 0.7818, mutation_recovery_per_seq: 0.0268, mutation_recovery_union: 0.9204, mutation_targets: 23241
+2026-09-11 04:05:02,377 - step: 10450, lr: 5.000e-04, loss: 4.31382e+01, overall_recovery: 0.7769, mutation_recovery_per_seq: 0.0250, mutation_recovery_union: 0.9173, mutation_targets: 23298
+2026-09-11 04:05:41,026 - step: 10500, lr: 5.000e-04, loss: 4.53252e+01, overall_recovery: 0.7838, mutation_recovery_per_seq: 0.0214, mutation_recovery_union: 0.9181, mutation_targets: 23307
+2026-09-11 04:05:41,190 - step: 10500, eval_loss: 4.91625e+01, eval_overall_recovery_rate: 0.6560, eval_mutation_recovery_rate: 0.0229, eval_mutation_targets: 436
+2026-09-11 04:06:19,844 - step: 10550, lr: 5.000e-04, loss: 3.69923e+01, overall_recovery: 0.7892, mutation_recovery_per_seq: 0.0222, mutation_recovery_union: 0.9157, mutation_targets: 23227
+2026-09-11 04:06:58,461 - step: 10600, lr: 5.000e-04, loss: 3.88711e+01, overall_recovery: 0.7681, mutation_recovery_per_seq: 0.0231, mutation_recovery_union: 0.9154, mutation_targets: 23123
+2026-09-11 04:07:37,345 - step: 10650, lr: 5.000e-04, loss: 4.52353e+01, overall_recovery: 0.7767, mutation_recovery_per_seq: 0.0234, mutation_recovery_union: 0.9166, mutation_targets: 23276
+2026-09-11 04:08:15,992 - step: 10700, lr: 5.000e-04, loss: 3.84348e+01, overall_recovery: 0.7817, mutation_recovery_per_seq: 0.0232, mutation_recovery_union: 0.9225, mutation_targets: 23578
+2026-09-11 04:08:54,716 - step: 10750, lr: 5.000e-04, loss: 3.78507e+01, overall_recovery: 0.7755, mutation_recovery_per_seq: 0.0234, mutation_recovery_union: 0.9162, mutation_targets: 23117
+2026-09-11 04:09:33,345 - step: 10800, lr: 5.000e-04, loss: 3.20048e+01, overall_recovery: 0.7805, mutation_recovery_per_seq: 0.0229, mutation_recovery_union: 0.9252, mutation_targets: 22584
+2026-09-11 04:10:12,137 - step: 10850, lr: 5.000e-04, loss: 3.83217e+01, overall_recovery: 0.7861, mutation_recovery_per_seq: 0.0204, mutation_recovery_union: 0.9151, mutation_targets: 23198
+2026-09-11 04:10:50,816 - step: 10900, lr: 5.000e-04, loss: 3.68121e+01, overall_recovery: 0.7947, mutation_recovery_per_seq: 0.0183, mutation_recovery_union: 0.9090, mutation_targets: 23671
+2026-09-11 04:11:29,642 - step: 10950, lr: 5.000e-04, loss: 4.21461e+01, overall_recovery: 0.7860, mutation_recovery_per_seq: 0.0220, mutation_recovery_union: 0.9175, mutation_targets: 23655
+2026-09-11 04:12:08,333 - step: 11000, lr: 5.000e-04, loss: 3.72932e+01, overall_recovery: 0.7868, mutation_recovery_per_seq: 0.0225, mutation_recovery_union: 0.9150, mutation_targets: 23701
+2026-09-11 04:12:08,499 - step: 11000, eval_loss: 4.78726e+01, eval_overall_recovery_rate: 0.7386, eval_mutation_recovery_rate: 0.0293, eval_mutation_targets: 409
+2026-09-11 04:12:47,263 - step: 11050, lr: 5.000e-04, loss: 3.62432e+01, overall_recovery: 0.7839, mutation_recovery_per_seq: 0.0227, mutation_recovery_union: 0.9183, mutation_targets: 23076
+2026-09-11 04:13:26,090 - step: 11100, lr: 5.000e-04, loss: 4.60559e+01, overall_recovery: 0.7752, mutation_recovery_per_seq: 0.0249, mutation_recovery_union: 0.9185, mutation_targets: 22820
+2026-09-11 04:14:04,835 - step: 11150, lr: 5.000e-04, loss: 3.64684e+01, overall_recovery: 0.7864, mutation_recovery_per_seq: 0.0261, mutation_recovery_union: 0.9152, mutation_targets: 23546
+2026-09-11 04:14:43,769 - step: 11200, lr: 5.000e-04, loss: 3.56359e+01, overall_recovery: 0.7630, mutation_recovery_per_seq: 0.0284, mutation_recovery_union: 0.9193, mutation_targets: 23205
+2026-09-11 04:15:22,509 - step: 11250, lr: 5.000e-04, loss: 3.89869e+01, overall_recovery: 0.7680, mutation_recovery_per_seq: 0.0291, mutation_recovery_union: 0.9182, mutation_targets: 23527
+2026-09-11 04:16:01,197 - step: 11300, lr: 5.000e-04, loss: 3.12493e+01, overall_recovery: 0.7719, mutation_recovery_per_seq: 0.0286, mutation_recovery_union: 0.9153, mutation_targets: 22505
+2026-09-11 04:16:39,861 - step: 11350, lr: 5.000e-04, loss: 3.81882e+01, overall_recovery: 0.7836, mutation_recovery_per_seq: 0.0287, mutation_recovery_union: 0.9206, mutation_targets: 23199
+2026-09-11 04:17:18,556 - step: 11400, lr: 5.000e-04, loss: 3.90557e+01, overall_recovery: 0.7823, mutation_recovery_per_seq: 0.0290, mutation_recovery_union: 0.9312, mutation_targets: 23523
+2026-09-11 04:17:57,147 - step: 11450, lr: 5.000e-04, loss: 3.54869e+01, overall_recovery: 0.7619, mutation_recovery_per_seq: 0.0301, mutation_recovery_union: 0.9294, mutation_targets: 23294
+2026-09-11 04:18:35,975 - step: 11500, lr: 5.000e-04, loss: 3.53527e+01, overall_recovery: 0.7642, mutation_recovery_per_seq: 0.0267, mutation_recovery_union: 0.9202, mutation_targets: 23573
+2026-09-11 04:18:36,135 - step: 11500, eval_loss: 4.91751e+01, eval_overall_recovery_rate: 0.7609, eval_mutation_recovery_rate: 0.0602, eval_mutation_targets: 498
+2026-09-11 04:19:14,721 - step: 11550, lr: 5.000e-04, loss: 4.31147e+01, overall_recovery: 0.7715, mutation_recovery_per_seq: 0.0295, mutation_recovery_union: 0.9150, mutation_targets: 23390
+2026-09-11 04:19:53,454 - step: 11600, lr: 5.000e-04, loss: 3.60270e+01, overall_recovery: 0.7622, mutation_recovery_per_seq: 0.0300, mutation_recovery_union: 0.9158, mutation_targets: 22893
+2026-09-11 04:20:32,276 - step: 11650, lr: 5.000e-04, loss: 3.98713e+01, overall_recovery: 0.7596, mutation_recovery_per_seq: 0.0328, mutation_recovery_union: 0.9183, mutation_targets: 23362
+2026-09-11 04:21:10,836 - step: 11700, lr: 5.000e-04, loss: 3.41012e+01, overall_recovery: 0.7535, mutation_recovery_per_seq: 0.0314, mutation_recovery_union: 0.9216, mutation_targets: 22709
+2026-09-11 04:21:49,593 - step: 11750, lr: 5.000e-04, loss: 4.19310e+01, overall_recovery: 0.7602, mutation_recovery_per_seq: 0.0263, mutation_recovery_union: 0.9166, mutation_targets: 23721
+2026-09-11 04:22:28,346 - step: 11800, lr: 5.000e-04, loss: 3.70378e+01, overall_recovery: 0.7694, mutation_recovery_per_seq: 0.0317, mutation_recovery_union: 0.9116, mutation_targets: 23885
+2026-09-11 04:23:07,083 - step: 11850, lr: 5.000e-04, loss: 3.35492e+01, overall_recovery: 0.7633, mutation_recovery_per_seq: 0.0348, mutation_recovery_union: 0.9228, mutation_targets: 23253
+2026-09-11 04:23:45,922 - step: 11900, lr: 5.000e-04, loss: 3.75338e+01, overall_recovery: 0.7725, mutation_recovery_per_seq: 0.0298, mutation_recovery_union: 0.9205, mutation_targets: 23644
+2026-09-11 04:24:24,696 - step: 11950, lr: 5.000e-04, loss: 3.52528e+01, overall_recovery: 0.7577, mutation_recovery_per_seq: 0.0324, mutation_recovery_union: 0.9315, mutation_targets: 22997
+2026-09-11 04:25:03,618 - step: 12000, lr: 5.000e-04, loss: 3.31952e+01, overall_recovery: 0.7703, mutation_recovery_per_seq: 0.0279, mutation_recovery_union: 0.9333, mutation_targets: 23663
+2026-09-11 04:25:03,794 - step: 12000, eval_loss: 4.03642e+01, eval_overall_recovery_rate: 0.7458, eval_mutation_recovery_rate: 0.0482, eval_mutation_targets: 477
+2026-09-11 04:25:42,493 - step: 12050, lr: 5.000e-04, loss: 3.69327e+01, overall_recovery: 0.7667, mutation_recovery_per_seq: 0.0298, mutation_recovery_union: 0.9206, mutation_targets: 23465
+2026-09-11 04:26:21,290 - step: 12100, lr: 5.000e-04, loss: 2.85985e+01, overall_recovery: 0.7512, mutation_recovery_per_seq: 0.0337, mutation_recovery_union: 0.9204, mutation_targets: 23059
+2026-09-11 04:27:00,065 - step: 12150, lr: 5.000e-04, loss: 3.97176e+01, overall_recovery: 0.7641, mutation_recovery_per_seq: 0.0301, mutation_recovery_union: 0.9207, mutation_targets: 23783
+2026-09-11 04:27:38,676 - step: 12200, lr: 5.000e-04, loss: 3.18001e+01, overall_recovery: 0.7674, mutation_recovery_per_seq: 0.0301, mutation_recovery_union: 0.9219, mutation_targets: 23282
+2026-09-11 04:28:17,266 - step: 12250, lr: 5.000e-04, loss: 3.56266e+01, overall_recovery: 0.7533, mutation_recovery_per_seq: 0.0306, mutation_recovery_union: 0.9188, mutation_targets: 23575
+2026-09-11 04:28:56,008 - step: 12300, lr: 5.000e-04, loss: 3.62463e+01, overall_recovery: 0.7702, mutation_recovery_per_seq: 0.0268, mutation_recovery_union: 0.9122, mutation_targets: 23486
+2026-09-11 04:29:34,726 - step: 12350, lr: 5.000e-04, loss: 3.36786e+01, overall_recovery: 0.7457, mutation_recovery_per_seq: 0.0319, mutation_recovery_union: 0.9181, mutation_targets: 23176
+2026-09-11 04:30:13,200 - step: 12400, lr: 5.000e-04, loss: 3.01563e+01, overall_recovery: 0.7583, mutation_recovery_per_seq: 0.0319, mutation_recovery_union: 0.9137, mutation_targets: 22402
+2026-09-11 04:30:51,779 - step: 12450, lr: 5.000e-04, loss: 3.47484e+01, overall_recovery: 0.7692, mutation_recovery_per_seq: 0.0316, mutation_recovery_union: 0.9221, mutation_targets: 23122
+2026-09-11 04:31:30,577 - step: 12500, lr: 5.000e-04, loss: 2.91451e+01, overall_recovery: 0.7625, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9198, mutation_targets: 23325
+2026-09-11 04:31:30,736 - step: 12500, eval_loss: 3.73491e+01, eval_overall_recovery_rate: 0.7522, eval_mutation_recovery_rate: 0.0622, eval_mutation_targets: 482
+2026-09-11 04:32:09,265 - step: 12550, lr: 5.000e-04, loss: 3.77120e+01, overall_recovery: 0.7448, mutation_recovery_per_seq: 0.0363, mutation_recovery_union: 0.9188, mutation_targets: 23379
+2026-09-11 04:32:47,889 - step: 12600, lr: 5.000e-04, loss: 3.67236e+01, overall_recovery: 0.7685, mutation_recovery_per_seq: 0.0315, mutation_recovery_union: 0.9209, mutation_targets: 23330
+2026-09-11 04:33:26,609 - step: 12650, lr: 5.000e-04, loss: 3.71405e+01, overall_recovery: 0.7585, mutation_recovery_per_seq: 0.0317, mutation_recovery_union: 0.9201, mutation_targets: 23299
+2026-09-11 04:34:05,244 - step: 12700, lr: 5.000e-04, loss: 3.01363e+01, overall_recovery: 0.7607, mutation_recovery_per_seq: 0.0315, mutation_recovery_union: 0.9198, mutation_targets: 23466
+2026-09-11 04:34:44,021 - step: 12750, lr: 5.000e-04, loss: 2.97129e+01, overall_recovery: 0.7530, mutation_recovery_per_seq: 0.0348, mutation_recovery_union: 0.9163, mutation_targets: 23288
+2026-09-11 04:35:22,907 - step: 12800, lr: 5.000e-04, loss: 3.25559e+01, overall_recovery: 0.7556, mutation_recovery_per_seq: 0.0326, mutation_recovery_union: 0.9205, mutation_targets: 23271
+2026-09-11 04:36:01,709 - step: 12850, lr: 5.000e-04, loss: 3.54210e+01, overall_recovery: 0.7665, mutation_recovery_per_seq: 0.0339, mutation_recovery_union: 0.9225, mutation_targets: 23159
+2026-09-11 04:36:40,506 - step: 12900, lr: 5.000e-04, loss: 2.85189e+01, overall_recovery: 0.7419, mutation_recovery_per_seq: 0.0370, mutation_recovery_union: 0.9178, mutation_targets: 23257
+2026-09-11 04:37:19,091 - step: 12950, lr: 5.000e-04, loss: 3.25800e+01, overall_recovery: 0.7544, mutation_recovery_per_seq: 0.0324, mutation_recovery_union: 0.9133, mutation_targets: 23292
+2026-09-11 04:37:57,683 - step: 13000, lr: 5.000e-04, loss: 3.25648e+01, overall_recovery: 0.7625, mutation_recovery_per_seq: 0.0340, mutation_recovery_union: 0.9189, mutation_targets: 23704
+2026-09-11 04:37:57,845 - step: 13000, eval_loss: 3.98474e+01, eval_overall_recovery_rate: 0.7327, eval_mutation_recovery_rate: 0.0412, eval_mutation_targets: 486
+2026-09-11 04:38:36,870 - step: 13050, lr: 5.000e-04, loss: 3.69158e+01, overall_recovery: 0.7647, mutation_recovery_per_seq: 0.0317, mutation_recovery_union: 0.9193, mutation_targets: 23480
+2026-09-11 04:39:15,651 - step: 13100, lr: 5.000e-04, loss: 3.60501e+01, overall_recovery: 0.7675, mutation_recovery_per_seq: 0.0314, mutation_recovery_union: 0.9165, mutation_targets: 23590
+2026-09-11 04:39:54,387 - step: 13150, lr: 5.000e-04, loss: 3.44766e+01, overall_recovery: 0.7623, mutation_recovery_per_seq: 0.0300, mutation_recovery_union: 0.9120, mutation_targets: 23474
+2026-09-11 04:40:33,079 - step: 13200, lr: 5.000e-04, loss: 3.78820e+01, overall_recovery: 0.7531, mutation_recovery_per_seq: 0.0319, mutation_recovery_union: 0.9284, mutation_targets: 22882
+2026-09-11 04:41:11,774 - step: 13250, lr: 5.000e-04, loss: 3.14209e+01, overall_recovery: 0.7519, mutation_recovery_per_seq: 0.0322, mutation_recovery_union: 0.9170, mutation_targets: 23023
+2026-09-11 04:41:50,439 - step: 13300, lr: 5.000e-04, loss: 3.23202e+01, overall_recovery: 0.7452, mutation_recovery_per_seq: 0.0341, mutation_recovery_union: 0.9149, mutation_targets: 23405
+2026-09-11 04:42:29,257 - step: 13350, lr: 5.000e-04, loss: 3.69279e+01, overall_recovery: 0.7558, mutation_recovery_per_seq: 0.0343, mutation_recovery_union: 0.9131, mutation_targets: 23572
+2026-09-11 04:43:07,927 - step: 13400, lr: 5.000e-04, loss: 2.99066e+01, overall_recovery: 0.7485, mutation_recovery_per_seq: 0.0411, mutation_recovery_union: 0.9226, mutation_targets: 22813
+2026-09-11 04:43:46,641 - step: 13450, lr: 5.000e-04, loss: 3.95279e+01, overall_recovery: 0.7542, mutation_recovery_per_seq: 0.0328, mutation_recovery_union: 0.9205, mutation_targets: 23486
+2026-09-11 04:44:25,524 - step: 13500, lr: 5.000e-04, loss: 2.76425e+01, overall_recovery: 0.7660, mutation_recovery_per_seq: 0.0310, mutation_recovery_union: 0.9190, mutation_targets: 23679
+2026-09-11 04:44:25,685 - step: 13500, eval_loss: 3.33884e+01, eval_overall_recovery_rate: 0.7310, eval_mutation_recovery_rate: 0.0274, eval_mutation_targets: 511
+2026-09-11 04:45:04,335 - step: 13550, lr: 5.000e-04, loss: 5.18173e+01, overall_recovery: 0.7458, mutation_recovery_per_seq: 0.0359, mutation_recovery_union: 0.9220, mutation_targets: 23293
+2026-09-11 04:45:43,201 - step: 13600, lr: 5.000e-04, loss: 3.71097e+01, overall_recovery: 0.7565, mutation_recovery_per_seq: 0.0333, mutation_recovery_union: 0.9224, mutation_targets: 23184
+2026-09-11 04:46:21,963 - step: 13650, lr: 5.000e-04, loss: 3.17392e+01, overall_recovery: 0.7491, mutation_recovery_per_seq: 0.0396, mutation_recovery_union: 0.9169, mutation_targets: 22772
+2026-09-11 04:47:00,719 - step: 13700, lr: 5.000e-04, loss: 4.13255e+01, overall_recovery: 0.7525, mutation_recovery_per_seq: 0.0357, mutation_recovery_union: 0.9101, mutation_targets: 22957
+2026-09-11 04:47:39,488 - step: 13750, lr: 5.000e-04, loss: 3.02082e+01, overall_recovery: 0.7606, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9196, mutation_targets: 23256
+2026-09-11 04:48:18,135 - step: 13800, lr: 5.000e-04, loss: 3.62108e+01, overall_recovery: 0.7522, mutation_recovery_per_seq: 0.0318, mutation_recovery_union: 0.9176, mutation_targets: 23494
+2026-09-11 04:48:57,070 - step: 13850, lr: 5.000e-04, loss: 3.92538e+01, overall_recovery: 0.7611, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9271, mutation_targets: 23452
+2026-09-11 04:49:35,993 - step: 13900, lr: 5.000e-04, loss: 3.24810e+01, overall_recovery: 0.7505, mutation_recovery_per_seq: 0.0356, mutation_recovery_union: 0.9180, mutation_targets: 23417
+2026-09-11 04:50:14,621 - step: 13950, lr: 5.000e-04, loss: 3.67077e+01, overall_recovery: 0.7570, mutation_recovery_per_seq: 0.0336, mutation_recovery_union: 0.9148, mutation_targets: 23432
+2026-09-11 04:50:53,339 - step: 14000, lr: 5.000e-04, loss: 3.72273e+01, overall_recovery: 0.7535, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9133, mutation_targets: 23286
+2026-09-11 04:50:53,507 - step: 14000, eval_loss: 3.52289e+01, eval_overall_recovery_rate: 0.7314, eval_mutation_recovery_rate: 0.0668, eval_mutation_targets: 494
+2026-09-11 04:51:32,189 - step: 14050, lr: 5.000e-04, loss: 3.85515e+01, overall_recovery: 0.7551, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9162, mutation_targets: 23914
+2026-09-11 04:52:10,900 - step: 14100, lr: 5.000e-04, loss: 3.57896e+01, overall_recovery: 0.7616, mutation_recovery_per_seq: 0.0326, mutation_recovery_union: 0.9131, mutation_targets: 23316
+2026-09-11 04:52:49,762 - step: 14150, lr: 5.000e-04, loss: 4.21892e+01, overall_recovery: 0.7587, mutation_recovery_per_seq: 0.0289, mutation_recovery_union: 0.9306, mutation_targets: 23015
+2026-09-11 04:53:28,443 - step: 14200, lr: 5.000e-04, loss: 4.80027e+01, overall_recovery: 0.7571, mutation_recovery_per_seq: 0.0313, mutation_recovery_union: 0.9152, mutation_targets: 22582
+2026-09-11 04:54:07,154 - step: 14250, lr: 5.000e-04, loss: 3.16860e+01, overall_recovery: 0.7560, mutation_recovery_per_seq: 0.0306, mutation_recovery_union: 0.9202, mutation_targets: 23058
+2026-09-11 04:54:45,862 - step: 14300, lr: 5.000e-04, loss: 2.93243e+01, overall_recovery: 0.7493, mutation_recovery_per_seq: 0.0360, mutation_recovery_union: 0.9249, mutation_targets: 23259
+2026-09-11 04:55:24,590 - step: 14350, lr: 5.000e-04, loss: 3.29473e+01, overall_recovery: 0.7690, mutation_recovery_per_seq: 0.0304, mutation_recovery_union: 0.9192, mutation_targets: 23580
+2026-09-11 04:56:03,224 - step: 14400, lr: 5.000e-04, loss: 3.76379e+01, overall_recovery: 0.7576, mutation_recovery_per_seq: 0.0336, mutation_recovery_union: 0.9208, mutation_targets: 23132
+2026-09-11 04:56:41,926 - step: 14450, lr: 5.000e-04, loss: 3.05583e+01, overall_recovery: 0.7634, mutation_recovery_per_seq: 0.0338, mutation_recovery_union: 0.9217, mutation_targets: 23160
+2026-09-11 04:57:20,583 - step: 14500, lr: 5.000e-04, loss: 3.80921e+01, overall_recovery: 0.7520, mutation_recovery_per_seq: 0.0375, mutation_recovery_union: 0.9313, mutation_targets: 23831
+2026-09-11 04:57:20,759 - step: 14500, eval_loss: 3.53465e+01, eval_overall_recovery_rate: 0.7258, eval_mutation_recovery_rate: 0.0553, eval_mutation_targets: 524
+2026-09-11 04:57:59,588 - step: 14550, lr: 5.000e-04, loss: 3.46527e+01, overall_recovery: 0.7573, mutation_recovery_per_seq: 0.0342, mutation_recovery_union: 0.9212, mutation_targets: 23579
+2026-09-11 04:58:38,357 - step: 14600, lr: 5.000e-04, loss: 3.95580e+01, overall_recovery: 0.7501, mutation_recovery_per_seq: 0.0392, mutation_recovery_union: 0.9200, mutation_targets: 22457
+2026-09-11 04:59:17,222 - step: 14650, lr: 5.000e-04, loss: 4.39146e+01, overall_recovery: 0.7499, mutation_recovery_per_seq: 0.0366, mutation_recovery_union: 0.9123, mutation_targets: 23358
+2026-09-11 04:59:56,252 - step: 14700, lr: 5.000e-04, loss: 3.75993e+01, overall_recovery: 0.7536, mutation_recovery_per_seq: 0.0367, mutation_recovery_union: 0.9219, mutation_targets: 23445
+2026-09-11 05:00:34,968 - step: 14750, lr: 5.000e-04, loss: 3.97664e+01, overall_recovery: 0.7494, mutation_recovery_per_seq: 0.0361, mutation_recovery_union: 0.9203, mutation_targets: 23086
+2026-09-11 05:01:13,632 - step: 14800, lr: 5.000e-04, loss: 2.76857e+01, overall_recovery: 0.7438, mutation_recovery_per_seq: 0.0376, mutation_recovery_union: 0.9303, mutation_targets: 23348
+2026-09-11 05:01:52,359 - step: 14850, lr: 5.000e-04, loss: 3.49085e+01, overall_recovery: 0.7526, mutation_recovery_per_seq: 0.0361, mutation_recovery_union: 0.9229, mutation_targets: 23166
+2026-09-11 05:02:31,328 - step: 14900, lr: 5.000e-04, loss: 3.18864e+01, overall_recovery: 0.7493, mutation_recovery_per_seq: 0.0335, mutation_recovery_union: 0.9206, mutation_targets: 23983
+2026-09-11 05:03:10,034 - step: 14950, lr: 5.000e-04, loss: 3.42043e+01, overall_recovery: 0.7414, mutation_recovery_per_seq: 0.0370, mutation_recovery_union: 0.9180, mutation_targets: 23441
+2026-09-11 05:03:48,794 - step: 15000, lr: 5.000e-04, loss: 3.09430e+01, overall_recovery: 0.7557, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9183, mutation_targets: 23354
+2026-09-11 05:03:50,574 - step: 15000, eval_loss: 2.85215e+01, eval_overall_recovery_rate: 0.7352, eval_mutation_recovery_rate: 0.0441, eval_mutation_targets: 408
+2026-09-11 05:04:29,257 - step: 15050, lr: 5.000e-04, loss: 3.07499e+01, overall_recovery: 0.7595, mutation_recovery_per_seq: 0.0360, mutation_recovery_union: 0.9168, mutation_targets: 23148
+2026-09-11 05:05:07,896 - step: 15100, lr: 5.000e-04, loss: 3.58724e+01, overall_recovery: 0.7444, mutation_recovery_per_seq: 0.0346, mutation_recovery_union: 0.9181, mutation_targets: 22976
+2026-09-11 05:05:46,671 - step: 15150, lr: 5.000e-04, loss: 3.44407e+01, overall_recovery: 0.7629, mutation_recovery_per_seq: 0.0316, mutation_recovery_union: 0.9160, mutation_targets: 24079
+2026-09-11 05:06:25,327 - step: 15200, lr: 5.000e-04, loss: 4.10395e+01, overall_recovery: 0.7392, mutation_recovery_per_seq: 0.0395, mutation_recovery_union: 0.9225, mutation_targets: 22939
+2026-09-11 05:07:04,076 - step: 15250, lr: 5.000e-04, loss: 3.29078e+01, overall_recovery: 0.7455, mutation_recovery_per_seq: 0.0363, mutation_recovery_union: 0.9234, mutation_targets: 23849
+2026-09-11 05:07:42,715 - step: 15300, lr: 5.000e-04, loss: 3.34178e+01, overall_recovery: 0.7543, mutation_recovery_per_seq: 0.0355, mutation_recovery_union: 0.9191, mutation_targets: 23653
+2026-09-11 05:08:21,395 - step: 15350, lr: 5.000e-04, loss: 3.49454e+01, overall_recovery: 0.7392, mutation_recovery_per_seq: 0.0376, mutation_recovery_union: 0.9162, mutation_targets: 22940
+2026-09-11 05:09:00,172 - step: 15400, lr: 5.000e-04, loss: 3.37777e+01, overall_recovery: 0.7474, mutation_recovery_per_seq: 0.0390, mutation_recovery_union: 0.9204, mutation_targets: 22958
+2026-09-11 05:09:38,828 - step: 15450, lr: 5.000e-04, loss: 2.84856e+01, overall_recovery: 0.7491, mutation_recovery_per_seq: 0.0377, mutation_recovery_union: 0.9142, mutation_targets: 23246
+2026-09-11 05:10:17,538 - step: 15500, lr: 5.000e-04, loss: 3.85238e+01, overall_recovery: 0.7343, mutation_recovery_per_seq: 0.0405, mutation_recovery_union: 0.9188, mutation_targets: 23361
+2026-09-11 05:10:17,702 - step: 15500, eval_loss: 3.18571e+01, eval_overall_recovery_rate: 0.6760, eval_mutation_recovery_rate: 0.0479, eval_mutation_targets: 376
+2026-09-11 05:10:56,417 - step: 15550, lr: 5.000e-04, loss: 3.21315e+01, overall_recovery: 0.7535, mutation_recovery_per_seq: 0.0380, mutation_recovery_union: 0.9212, mutation_targets: 23654
+2026-09-11 05:11:35,232 - step: 15600, lr: 5.000e-04, loss: 3.83908e+01, overall_recovery: 0.7567, mutation_recovery_per_seq: 0.0356, mutation_recovery_union: 0.9152, mutation_targets: 23328
+2026-09-11 05:12:13,979 - step: 15650, lr: 5.000e-04, loss: 3.85049e+01, overall_recovery: 0.7555, mutation_recovery_per_seq: 0.0359, mutation_recovery_union: 0.9164, mutation_targets: 22732
+2026-09-11 05:12:52,887 - step: 15700, lr: 5.000e-04, loss: 3.18478e+01, overall_recovery: 0.7482, mutation_recovery_per_seq: 0.0326, mutation_recovery_union: 0.9195, mutation_targets: 23034
+2026-09-11 05:13:31,653 - step: 15750, lr: 5.000e-04, loss: 3.71272e+01, overall_recovery: 0.7444, mutation_recovery_per_seq: 0.0335, mutation_recovery_union: 0.9171, mutation_targets: 23173
+2026-09-11 05:14:10,322 - step: 15800, lr: 5.000e-04, loss: 2.91897e+01, overall_recovery: 0.7385, mutation_recovery_per_seq: 0.0377, mutation_recovery_union: 0.9178, mutation_targets: 23139
+2026-09-11 05:14:49,119 - step: 15850, lr: 5.000e-04, loss: 3.25391e+01, overall_recovery: 0.7576, mutation_recovery_per_seq: 0.0296, mutation_recovery_union: 0.9161, mutation_targets: 23277
+2026-09-11 05:15:27,701 - step: 15900, lr: 5.000e-04, loss: 2.96026e+01, overall_recovery: 0.7454, mutation_recovery_per_seq: 0.0391, mutation_recovery_union: 0.9207, mutation_targets: 23321
+2026-09-11 05:16:06,614 - step: 15950, lr: 5.000e-04, loss: 3.66665e+01, overall_recovery: 0.7584, mutation_recovery_per_seq: 0.0344, mutation_recovery_union: 0.9199, mutation_targets: 23461
+2026-09-11 05:16:45,476 - step: 16000, lr: 5.000e-04, loss: 3.06032e+01, overall_recovery: 0.7316, mutation_recovery_per_seq: 0.0391, mutation_recovery_union: 0.9255, mutation_targets: 23122
+2026-09-11 05:16:45,639 - step: 16000, eval_loss: 3.19452e+01, eval_overall_recovery_rate: 0.6755, eval_mutation_recovery_rate: 0.0489, eval_mutation_targets: 470
+2026-09-11 05:17:24,428 - step: 16050, lr: 5.000e-04, loss: 2.93145e+01, overall_recovery: 0.7386, mutation_recovery_per_seq: 0.0380, mutation_recovery_union: 0.9214, mutation_targets: 23319
+2026-09-11 05:18:03,211 - step: 16100, lr: 5.000e-04, loss: 2.90419e+01, overall_recovery: 0.7358, mutation_recovery_per_seq: 0.0350, mutation_recovery_union: 0.9249, mutation_targets: 23169
+2026-09-11 05:18:41,978 - step: 16150, lr: 5.000e-04, loss: 3.15219e+01, overall_recovery: 0.7331, mutation_recovery_per_seq: 0.0415, mutation_recovery_union: 0.9179, mutation_targets: 23491
+2026-09-11 05:19:20,897 - step: 16200, lr: 5.000e-04, loss: 3.53463e+01, overall_recovery: 0.7336, mutation_recovery_per_seq: 0.0373, mutation_recovery_union: 0.9163, mutation_targets: 23608
+2026-09-11 05:19:59,833 - step: 16250, lr: 5.000e-04, loss: 2.76768e+01, overall_recovery: 0.7624, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9198, mutation_targets: 23649
+2026-09-11 05:20:38,626 - step: 16300, lr: 5.000e-04, loss: 3.11410e+01, overall_recovery: 0.7566, mutation_recovery_per_seq: 0.0343, mutation_recovery_union: 0.9216, mutation_targets: 23060
+2026-09-11 05:21:17,432 - step: 16350, lr: 5.000e-04, loss: 3.37770e+01, overall_recovery: 0.7554, mutation_recovery_per_seq: 0.0322, mutation_recovery_union: 0.9200, mutation_targets: 22791
+2026-09-11 05:21:56,039 - step: 16400, lr: 5.000e-04, loss: 3.98897e+01, overall_recovery: 0.7235, mutation_recovery_per_seq: 0.0398, mutation_recovery_union: 0.9210, mutation_targets: 23088
+2026-09-11 05:22:34,804 - step: 16450, lr: 5.000e-04, loss: 3.27786e+01, overall_recovery: 0.7453, mutation_recovery_per_seq: 0.0369, mutation_recovery_union: 0.9180, mutation_targets: 23980
+2026-09-11 05:23:13,574 - step: 16500, lr: 5.000e-04, loss: 2.93882e+01, overall_recovery: 0.7355, mutation_recovery_per_seq: 0.0387, mutation_recovery_union: 0.9355, mutation_targets: 23278
+2026-09-11 05:23:13,738 - step: 16500, eval_loss: 2.75832e+01, eval_overall_recovery_rate: 0.7704, eval_mutation_recovery_rate: 0.0541, eval_mutation_targets: 499
+2026-09-11 05:23:52,396 - step: 16550, lr: 5.000e-04, loss: 2.78766e+01, overall_recovery: 0.7398, mutation_recovery_per_seq: 0.0416, mutation_recovery_union: 0.9158, mutation_targets: 22753
+2026-09-11 05:24:31,018 - step: 16600, lr: 5.000e-04, loss: 2.90455e+01, overall_recovery: 0.7466, mutation_recovery_per_seq: 0.0363, mutation_recovery_union: 0.9202, mutation_targets: 23481
+2026-09-11 05:25:09,764 - step: 16650, lr: 5.000e-04, loss: 4.19700e+01, overall_recovery: 0.7572, mutation_recovery_per_seq: 0.0337, mutation_recovery_union: 0.9128, mutation_targets: 22988
+2026-09-11 05:25:48,516 - step: 16700, lr: 5.000e-04, loss: 3.53493e+01, overall_recovery: 0.7442, mutation_recovery_per_seq: 0.0364, mutation_recovery_union: 0.9148, mutation_targets: 23628
+2026-09-11 05:26:27,453 - step: 16750, lr: 5.000e-04, loss: 3.85724e+01, overall_recovery: 0.7344, mutation_recovery_per_seq: 0.0382, mutation_recovery_union: 0.9341, mutation_targets: 23351
+2026-09-11 05:27:06,266 - step: 16800, lr: 5.000e-04, loss: 3.41050e+01, overall_recovery: 0.7512, mutation_recovery_per_seq: 0.0372, mutation_recovery_union: 0.9231, mutation_targets: 23916
+2026-09-11 05:27:44,925 - step: 16850, lr: 5.000e-04, loss: 3.71283e+01, overall_recovery: 0.7326, mutation_recovery_per_seq: 0.0431, mutation_recovery_union: 0.9232, mutation_targets: 23034
+2026-09-11 05:28:23,674 - step: 16900, lr: 5.000e-04, loss: 2.59179e+01, overall_recovery: 0.7371, mutation_recovery_per_seq: 0.0393, mutation_recovery_union: 0.9317, mutation_targets: 23329
+2026-09-11 05:29:02,310 - step: 16950, lr: 5.000e-04, loss: 2.99077e+01, overall_recovery: 0.7267, mutation_recovery_per_seq: 0.0376, mutation_recovery_union: 0.9102, mutation_targets: 23150
+2026-09-11 05:29:41,189 - step: 17000, lr: 5.000e-04, loss: 3.20084e+01, overall_recovery: 0.7516, mutation_recovery_per_seq: 0.0355, mutation_recovery_union: 0.9212, mutation_targets: 23444
+2026-09-11 05:29:41,358 - step: 17000, eval_loss: 2.94670e+01, eval_overall_recovery_rate: 0.7095, eval_mutation_recovery_rate: 0.0173, eval_mutation_targets: 463
+2026-09-11 05:30:20,066 - step: 17050, lr: 5.000e-04, loss: 3.50063e+01, overall_recovery: 0.7405, mutation_recovery_per_seq: 0.0378, mutation_recovery_union: 0.9283, mutation_targets: 23508
+2026-09-11 05:30:58,897 - step: 17100, lr: 5.000e-04, loss: 3.08947e+01, overall_recovery: 0.7354, mutation_recovery_per_seq: 0.0384, mutation_recovery_union: 0.9178, mutation_targets: 23160
+2026-09-11 05:31:37,661 - step: 17150, lr: 5.000e-04, loss: 3.79466e+01, overall_recovery: 0.7386, mutation_recovery_per_seq: 0.0389, mutation_recovery_union: 0.9159, mutation_targets: 23322
+2026-09-11 05:32:16,351 - step: 17200, lr: 5.000e-04, loss: 3.40498e+01, overall_recovery: 0.7487, mutation_recovery_per_seq: 0.0377, mutation_recovery_union: 0.9194, mutation_targets: 23288
+2026-09-11 05:32:55,070 - step: 17250, lr: 5.000e-04, loss: 3.28370e+01, overall_recovery: 0.7393, mutation_recovery_per_seq: 0.0373, mutation_recovery_union: 0.9178, mutation_targets: 22906
+2026-09-11 05:33:33,955 - step: 17300, lr: 5.000e-04, loss: 3.19466e+01, overall_recovery: 0.7488, mutation_recovery_per_seq: 0.0416, mutation_recovery_union: 0.9207, mutation_targets: 22947
+2026-09-11 05:34:12,709 - step: 17350, lr: 5.000e-04, loss: 3.07317e+01, overall_recovery: 0.7298, mutation_recovery_per_seq: 0.0376, mutation_recovery_union: 0.9196, mutation_targets: 23407
+2026-09-11 05:34:51,546 - step: 17400, lr: 5.000e-04, loss: 3.38483e+01, overall_recovery: 0.7388, mutation_recovery_per_seq: 0.0378, mutation_recovery_union: 0.9200, mutation_targets: 23237
+2026-09-11 05:35:30,240 - step: 17450, lr: 5.000e-04, loss: 3.37696e+01, overall_recovery: 0.7399, mutation_recovery_per_seq: 0.0401, mutation_recovery_union: 0.9211, mutation_targets: 23112
+2026-09-11 05:36:08,941 - step: 17500, lr: 5.000e-04, loss: 3.22177e+01, overall_recovery: 0.7377, mutation_recovery_per_seq: 0.0383, mutation_recovery_union: 0.9216, mutation_targets: 23528
+2026-09-11 05:36:09,107 - step: 17500, eval_loss: 2.56499e+01, eval_overall_recovery_rate: 0.7206, eval_mutation_recovery_rate: 0.0332, eval_mutation_targets: 392
+2026-09-11 05:36:47,979 - step: 17550, lr: 5.000e-04, loss: 3.35830e+01, overall_recovery: 0.7457, mutation_recovery_per_seq: 0.0396, mutation_recovery_union: 0.9176, mutation_targets: 23008
+2026-09-11 05:37:26,774 - step: 17600, lr: 5.000e-04, loss: 3.47837e+01, overall_recovery: 0.7240, mutation_recovery_per_seq: 0.0398, mutation_recovery_union: 0.9173, mutation_targets: 23170
+2026-09-11 05:38:05,611 - step: 17650, lr: 5.000e-04, loss: 2.90278e+01, overall_recovery: 0.7498, mutation_recovery_per_seq: 0.0381, mutation_recovery_union: 0.9160, mutation_targets: 23311
+2026-09-11 05:38:44,394 - step: 17700, lr: 5.000e-04, loss: 3.00692e+01, overall_recovery: 0.7397, mutation_recovery_per_seq: 0.0440, mutation_recovery_union: 0.9333, mutation_targets: 23148
+2026-09-11 05:39:23,062 - step: 17750, lr: 5.000e-04, loss: 3.20674e+01, overall_recovery: 0.7447, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9439, mutation_targets: 23260
+2026-09-11 05:40:02,014 - step: 17800, lr: 5.000e-04, loss: 3.05720e+01, overall_recovery: 0.7542, mutation_recovery_per_seq: 0.0340, mutation_recovery_union: 0.9154, mutation_targets: 23339
+2026-09-11 05:40:40,778 - step: 17850, lr: 5.000e-04, loss: 3.56762e+01, overall_recovery: 0.7475, mutation_recovery_per_seq: 0.0356, mutation_recovery_union: 0.9210, mutation_targets: 23080
+2026-09-11 05:41:19,491 - step: 17900, lr: 5.000e-04, loss: 3.44637e+01, overall_recovery: 0.7485, mutation_recovery_per_seq: 0.0359, mutation_recovery_union: 0.9178, mutation_targets: 22851
+2026-09-11 05:41:58,221 - step: 17950, lr: 5.000e-04, loss: 3.35943e+01, overall_recovery: 0.7432, mutation_recovery_per_seq: 0.0375, mutation_recovery_union: 0.9180, mutation_targets: 23425
+2026-09-11 05:42:36,938 - step: 18000, lr: 5.000e-04, loss: 3.27478e+01, overall_recovery: 0.7432, mutation_recovery_per_seq: 0.0350, mutation_recovery_union: 0.9176, mutation_targets: 23208
+2026-09-11 05:42:37,103 - step: 18000, eval_loss: 3.15078e+01, eval_overall_recovery_rate: 0.7511, eval_mutation_recovery_rate: 0.0417, eval_mutation_targets: 456
+2026-09-11 05:43:15,959 - step: 18050, lr: 5.000e-04, loss: 3.00911e+01, overall_recovery: 0.7514, mutation_recovery_per_seq: 0.0324, mutation_recovery_union: 0.9229, mutation_targets: 23436
+2026-09-11 05:43:54,833 - step: 18100, lr: 5.000e-04, loss: 3.05627e+01, overall_recovery: 0.7477, mutation_recovery_per_seq: 0.0345, mutation_recovery_union: 0.9362, mutation_targets: 23533
+2026-09-11 05:44:33,650 - step: 18150, lr: 5.000e-04, loss: 3.70296e+01, overall_recovery: 0.7539, mutation_recovery_per_seq: 0.0343, mutation_recovery_union: 0.9173, mutation_targets: 23213
+2026-09-11 05:45:12,447 - step: 18200, lr: 5.000e-04, loss: 3.06732e+01, overall_recovery: 0.7420, mutation_recovery_per_seq: 0.0348, mutation_recovery_union: 0.9268, mutation_targets: 23414
+2026-09-11 05:45:51,258 - step: 18250, lr: 5.000e-04, loss: 3.01074e+01, overall_recovery: 0.7418, mutation_recovery_per_seq: 0.0389, mutation_recovery_union: 0.9189, mutation_targets: 22895
+2026-09-11 05:46:30,000 - step: 18300, lr: 5.000e-04, loss: 2.78170e+01, overall_recovery: 0.7444, mutation_recovery_per_seq: 0.0385, mutation_recovery_union: 0.9272, mutation_targets: 22996
+2026-09-11 05:47:08,722 - step: 18350, lr: 5.000e-04, loss: 3.16441e+01, overall_recovery: 0.7449, mutation_recovery_per_seq: 0.0351, mutation_recovery_union: 0.9167, mutation_targets: 23104
+2026-09-11 05:47:47,517 - step: 18400, lr: 5.000e-04, loss: 3.08849e+01, overall_recovery: 0.7398, mutation_recovery_per_seq: 0.0395, mutation_recovery_union: 0.9183, mutation_targets: 22899
+2026-09-11 05:48:26,253 - step: 18450, lr: 5.000e-04, loss: 3.32053e+01, overall_recovery: 0.7479, mutation_recovery_per_seq: 0.0370, mutation_recovery_union: 0.9167, mutation_targets: 23277
+2026-09-11 05:49:04,969 - step: 18500, lr: 5.000e-04, loss: 3.38508e+01, overall_recovery: 0.7259, mutation_recovery_per_seq: 0.0402, mutation_recovery_union: 0.9272, mutation_targets: 23452
+2026-09-11 05:49:05,143 - step: 18500, eval_loss: 2.69685e+01, eval_overall_recovery_rate: 0.6893, eval_mutation_recovery_rate: 0.0502, eval_mutation_targets: 418
+2026-09-11 05:49:44,056 - step: 18550, lr: 5.000e-04, loss: 3.54688e+01, overall_recovery: 0.7243, mutation_recovery_per_seq: 0.0421, mutation_recovery_union: 0.9270, mutation_targets: 22296
+2026-09-11 05:50:22,780 - step: 18600, lr: 5.000e-04, loss: 4.07228e+01, overall_recovery: 0.7433, mutation_recovery_per_seq: 0.0349, mutation_recovery_union: 0.9159, mutation_targets: 23574
+2026-09-11 05:51:01,486 - step: 18650, lr: 5.000e-04, loss: 3.00742e+01, overall_recovery: 0.7291, mutation_recovery_per_seq: 0.0380, mutation_recovery_union: 0.9290, mutation_targets: 23243
+2026-09-11 05:51:40,231 - step: 18700, lr: 5.000e-04, loss: 3.33019e+01, overall_recovery: 0.7356, mutation_recovery_per_seq: 0.0395, mutation_recovery_union: 0.9166, mutation_targets: 23085
+2026-09-11 05:52:18,921 - step: 18750, lr: 5.000e-04, loss: 3.02957e+01, overall_recovery: 0.7263, mutation_recovery_per_seq: 0.0377, mutation_recovery_union: 0.9120, mutation_targets: 23187
+2026-09-11 05:52:57,446 - step: 18800, lr: 5.000e-04, loss: 3.43416e+01, overall_recovery: 0.7359, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9184, mutation_targets: 22965
+2026-09-11 05:53:36,302 - step: 18850, lr: 5.000e-04, loss: 2.82354e+01, overall_recovery: 0.7351, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9301, mutation_targets: 22706
+2026-09-11 05:54:14,979 - step: 18900, lr: 5.000e-04, loss: 3.34251e+01, overall_recovery: 0.7280, mutation_recovery_per_seq: 0.0428, mutation_recovery_union: 0.9240, mutation_targets: 23195
+2026-09-11 05:54:53,697 - step: 18950, lr: 5.000e-04, loss: 3.28713e+01, overall_recovery: 0.7480, mutation_recovery_per_seq: 0.0366, mutation_recovery_union: 0.9169, mutation_targets: 23150
+2026-09-11 05:55:32,367 - step: 19000, lr: 5.000e-04, loss: 2.59309e+01, overall_recovery: 0.7510, mutation_recovery_per_seq: 0.0352, mutation_recovery_union: 0.9121, mutation_targets: 22763
+2026-09-11 05:55:32,526 - step: 19000, eval_loss: 2.63649e+01, eval_overall_recovery_rate: 0.7365, eval_mutation_recovery_rate: 0.0659, eval_mutation_targets: 410
+2026-09-11 05:56:11,281 - step: 19050, lr: 5.000e-04, loss: 3.38005e+01, overall_recovery: 0.7602, mutation_recovery_per_seq: 0.0376, mutation_recovery_union: 0.9219, mutation_targets: 22789
+2026-09-11 05:56:50,208 - step: 19100, lr: 5.000e-04, loss: 3.01474e+01, overall_recovery: 0.7488, mutation_recovery_per_seq: 0.0344, mutation_recovery_union: 0.9232, mutation_targets: 23752
+2026-09-11 05:57:28,909 - step: 19150, lr: 5.000e-04, loss: 3.33298e+01, overall_recovery: 0.7445, mutation_recovery_per_seq: 0.0381, mutation_recovery_union: 0.9330, mutation_targets: 23752
+2026-09-11 05:58:07,420 - step: 19200, lr: 5.000e-04, loss: 3.13957e+01, overall_recovery: 0.7427, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9187, mutation_targets: 23290
+2026-09-11 05:58:46,133 - step: 19250, lr: 5.000e-04, loss: 2.83398e+01, overall_recovery: 0.7484, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9142, mutation_targets: 22388
+2026-09-11 05:59:24,860 - step: 19300, lr: 5.000e-04, loss: 3.15206e+01, overall_recovery: 0.7603, mutation_recovery_per_seq: 0.0315, mutation_recovery_union: 0.9222, mutation_targets: 23648
+2026-09-11 06:00:03,504 - step: 19350, lr: 5.000e-04, loss: 3.56336e+01, overall_recovery: 0.7412, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9187, mutation_targets: 23953
+2026-09-11 06:00:42,460 - step: 19400, lr: 5.000e-04, loss: 2.84389e+01, overall_recovery: 0.7525, mutation_recovery_per_seq: 0.0370, mutation_recovery_union: 0.9173, mutation_targets: 23323
+2026-09-11 06:01:21,387 - step: 19450, lr: 5.000e-04, loss: 3.84973e+01, overall_recovery: 0.7503, mutation_recovery_per_seq: 0.0360, mutation_recovery_union: 0.9280, mutation_targets: 23337
+2026-09-11 06:02:00,196 - step: 19500, lr: 5.000e-04, loss: 2.85736e+01, overall_recovery: 0.7403, mutation_recovery_per_seq: 0.0350, mutation_recovery_union: 0.9175, mutation_targets: 23533
+2026-09-11 06:02:00,365 - step: 19500, eval_loss: 2.76654e+01, eval_overall_recovery_rate: 0.7051, eval_mutation_recovery_rate: 0.0510, eval_mutation_targets: 451
+2026-09-11 06:02:39,090 - step: 19550, lr: 5.000e-04, loss: 3.71956e+01, overall_recovery: 0.7483, mutation_recovery_per_seq: 0.0331, mutation_recovery_union: 0.9168, mutation_targets: 23595
+2026-09-11 06:03:17,722 - step: 19600, lr: 5.000e-04, loss: 3.69634e+01, overall_recovery: 0.7346, mutation_recovery_per_seq: 0.0365, mutation_recovery_union: 0.9122, mutation_targets: 23309
+2026-09-11 06:03:56,560 - step: 19650, lr: 5.000e-04, loss: 2.96256e+01, overall_recovery: 0.7676, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9298, mutation_targets: 23384
+2026-09-11 06:04:35,349 - step: 19700, lr: 5.000e-04, loss: 3.67808e+01, overall_recovery: 0.7548, mutation_recovery_per_seq: 0.0357, mutation_recovery_union: 0.9183, mutation_targets: 23415
+2026-09-11 06:05:13,994 - step: 19750, lr: 5.000e-04, loss: 3.19510e+01, overall_recovery: 0.7559, mutation_recovery_per_seq: 0.0303, mutation_recovery_union: 0.9197, mutation_targets: 23585
+2026-09-11 06:05:52,807 - step: 19800, lr: 5.000e-04, loss: 3.11321e+01, overall_recovery: 0.7485, mutation_recovery_per_seq: 0.0354, mutation_recovery_union: 0.9221, mutation_targets: 23437
+2026-09-11 06:06:31,638 - step: 19850, lr: 5.000e-04, loss: 3.85780e+01, overall_recovery: 0.7491, mutation_recovery_per_seq: 0.0341, mutation_recovery_union: 0.9211, mutation_targets: 23320
+2026-09-11 06:07:10,611 - step: 19900, lr: 5.000e-04, loss: 3.46593e+01, overall_recovery: 0.7323, mutation_recovery_per_seq: 0.0395, mutation_recovery_union: 0.9289, mutation_targets: 23000
+2026-09-11 06:07:49,318 - step: 19950, lr: 5.000e-04, loss: 3.13219e+01, overall_recovery: 0.7557, mutation_recovery_per_seq: 0.0366, mutation_recovery_union: 0.9167, mutation_targets: 23133
+2026-09-11 06:08:28,105 - step: 20000, lr: 5.000e-04, loss: 3.45701e+01, overall_recovery: 0.7403, mutation_recovery_per_seq: 0.0353, mutation_recovery_union: 0.9141, mutation_targets: 23514
+2026-09-11 06:08:30,053 - step: 20000, eval_loss: 3.49547e+01, eval_overall_recovery_rate: 0.7279, eval_mutation_recovery_rate: 0.0556, eval_mutation_targets: 450
+2026-09-11 06:08:33,717 - Generating VHH samples at step 20000
+2026-09-11 06:09:15,267 - step: 20050, lr: 5.000e-04, loss: 3.27832e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0402, mutation_recovery_union: 0.9164, mutation_targets: 23523
+2026-09-11 06:09:53,931 - step: 20100, lr: 5.000e-04, loss: 2.83030e+01, overall_recovery: 0.7432, mutation_recovery_per_seq: 0.0338, mutation_recovery_union: 0.9189, mutation_targets: 23862
+2026-09-11 06:10:32,678 - step: 20150, lr: 5.000e-04, loss: 2.97159e+01, overall_recovery: 0.7353, mutation_recovery_per_seq: 0.0399, mutation_recovery_union: 0.9162, mutation_targets: 22798
+2026-09-11 06:11:11,653 - step: 20200, lr: 5.000e-04, loss: 3.35032e+01, overall_recovery: 0.7180, mutation_recovery_per_seq: 0.0416, mutation_recovery_union: 0.9256, mutation_targets: 23291
+2026-09-11 06:11:50,417 - step: 20250, lr: 5.000e-04, loss: 3.76953e+01, overall_recovery: 0.7367, mutation_recovery_per_seq: 0.0359, mutation_recovery_union: 0.9205, mutation_targets: 23497
+2026-09-11 06:12:29,142 - step: 20300, lr: 5.000e-04, loss: 3.28020e+01, overall_recovery: 0.7329, mutation_recovery_per_seq: 0.0411, mutation_recovery_union: 0.9239, mutation_targets: 22601
+2026-09-11 06:13:07,862 - step: 20350, lr: 5.000e-04, loss: 3.15252e+01, overall_recovery: 0.7466, mutation_recovery_per_seq: 0.0382, mutation_recovery_union: 0.9271, mutation_targets: 23229
+2026-09-11 06:13:46,646 - step: 20400, lr: 5.000e-04, loss: 3.47879e+01, overall_recovery: 0.7342, mutation_recovery_per_seq: 0.0355, mutation_recovery_union: 0.9185, mutation_targets: 23267
+2026-09-11 06:14:25,432 - step: 20450, lr: 5.000e-04, loss: 3.77286e+01, overall_recovery: 0.7322, mutation_recovery_per_seq: 0.0372, mutation_recovery_union: 0.9177, mutation_targets: 23195
+2026-09-11 06:15:04,107 - step: 20500, lr: 5.000e-04, loss: 2.99729e+01, overall_recovery: 0.7258, mutation_recovery_per_seq: 0.0371, mutation_recovery_union: 0.9164, mutation_targets: 23040
+2026-09-11 06:15:04,269 - step: 20500, eval_loss: 3.02677e+01, eval_overall_recovery_rate: 0.7202, eval_mutation_recovery_rate: 0.0447, eval_mutation_targets: 470
+2026-09-11 06:15:42,871 - step: 20550, lr: 5.000e-04, loss: 3.51974e+01, overall_recovery: 0.7240, mutation_recovery_per_seq: 0.0386, mutation_recovery_union: 0.9211, mutation_targets: 22624
+2026-09-11 06:16:21,589 - step: 20600, lr: 5.000e-04, loss: 2.52480e+01, overall_recovery: 0.7339, mutation_recovery_per_seq: 0.0393, mutation_recovery_union: 0.9167, mutation_targets: 22974
+2026-09-11 06:17:00,459 - step: 20650, lr: 5.000e-04, loss: 3.42790e+01, overall_recovery: 0.7316, mutation_recovery_per_seq: 0.0378, mutation_recovery_union: 0.9181, mutation_targets: 22951
+2026-09-11 06:17:39,205 - step: 20700, lr: 5.000e-04, loss: 3.32510e+01, overall_recovery: 0.7338, mutation_recovery_per_seq: 0.0400, mutation_recovery_union: 0.9225, mutation_targets: 23576
+2026-09-11 06:18:18,204 - step: 20750, lr: 5.000e-04, loss: 3.58840e+01, overall_recovery: 0.7305, mutation_recovery_per_seq: 0.0397, mutation_recovery_union: 0.9219, mutation_targets: 22952
+2026-09-11 06:18:56,876 - step: 20800, lr: 5.000e-04, loss: 3.49767e+01, overall_recovery: 0.7225, mutation_recovery_per_seq: 0.0394, mutation_recovery_union: 0.9198, mutation_targets: 23001
+2026-09-11 06:19:35,613 - step: 20850, lr: 5.000e-04, loss: 3.14481e+01, overall_recovery: 0.7357, mutation_recovery_per_seq: 0.0349, mutation_recovery_union: 0.9217, mutation_targets: 23069
+2026-09-11 06:20:14,337 - step: 20900, lr: 5.000e-04, loss: 3.42788e+01, overall_recovery: 0.7324, mutation_recovery_per_seq: 0.0334, mutation_recovery_union: 0.9125, mutation_targets: 23646
+2026-09-11 06:20:53,116 - step: 20950, lr: 5.000e-04, loss: 3.02137e+01, overall_recovery: 0.7340, mutation_recovery_per_seq: 0.0331, mutation_recovery_union: 0.9144, mutation_targets: 23266
+2026-09-11 06:21:32,082 - step: 21000, lr: 5.000e-04, loss: 3.37841e+01, overall_recovery: 0.7344, mutation_recovery_per_seq: 0.0382, mutation_recovery_union: 0.9213, mutation_targets: 23143
+2026-09-11 06:21:32,242 - step: 21000, eval_loss: 3.55978e+01, eval_overall_recovery_rate: 0.6845, eval_mutation_recovery_rate: 0.0553, eval_mutation_targets: 470
+2026-09-11 06:22:11,070 - step: 21050, lr: 5.000e-04, loss: 2.83058e+01, overall_recovery: 0.7298, mutation_recovery_per_seq: 0.0417, mutation_recovery_union: 0.9218, mutation_targets: 23189
+2026-09-11 06:22:49,855 - step: 21100, lr: 5.000e-04, loss: 3.30429e+01, overall_recovery: 0.7303, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9157, mutation_targets: 23036
+2026-09-11 06:23:28,779 - step: 21150, lr: 5.000e-04, loss: 2.85505e+01, overall_recovery: 0.7302, mutation_recovery_per_seq: 0.0389, mutation_recovery_union: 0.9279, mutation_targets: 23345
+2026-09-11 06:24:07,613 - step: 21200, lr: 5.000e-04, loss: 3.47484e+01, overall_recovery: 0.7336, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9187, mutation_targets: 22551
+2026-09-11 06:24:46,569 - step: 21250, lr: 5.000e-04, loss: 3.22904e+01, overall_recovery: 0.7416, mutation_recovery_per_seq: 0.0375, mutation_recovery_union: 0.9148, mutation_targets: 23732
+2026-09-11 06:25:25,582 - step: 21300, lr: 5.000e-04, loss: 3.12326e+01, overall_recovery: 0.7326, mutation_recovery_per_seq: 0.0356, mutation_recovery_union: 0.9117, mutation_targets: 23669
+2026-09-11 06:26:04,622 - step: 21350, lr: 5.000e-04, loss: 2.81271e+01, overall_recovery: 0.7320, mutation_recovery_per_seq: 0.0397, mutation_recovery_union: 0.9191, mutation_targets: 23255
+2026-09-11 06:26:43,334 - step: 21400, lr: 5.000e-04, loss: 3.25365e+01, overall_recovery: 0.7377, mutation_recovery_per_seq: 0.0392, mutation_recovery_union: 0.9197, mutation_targets: 23598
+2026-09-11 06:27:22,074 - step: 21450, lr: 5.000e-04, loss: 3.42009e+01, overall_recovery: 0.7273, mutation_recovery_per_seq: 0.0426, mutation_recovery_union: 0.9221, mutation_targets: 23510
+2026-09-11 06:28:00,940 - step: 21500, lr: 5.000e-04, loss: 3.39658e+01, overall_recovery: 0.7350, mutation_recovery_per_seq: 0.0379, mutation_recovery_union: 0.9212, mutation_targets: 23060
+2026-09-11 06:28:01,105 - step: 21500, eval_loss: 3.09219e+01, eval_overall_recovery_rate: 0.6822, eval_mutation_recovery_rate: 0.0599, eval_mutation_targets: 434
+2026-09-11 06:28:40,001 - step: 21550, lr: 5.000e-04, loss: 3.46317e+01, overall_recovery: 0.7311, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9145, mutation_targets: 23075
+2026-09-11 06:29:18,840 - step: 21600, lr: 5.000e-04, loss: 2.91190e+01, overall_recovery: 0.7352, mutation_recovery_per_seq: 0.0403, mutation_recovery_union: 0.9203, mutation_targets: 23003
+2026-09-11 06:29:57,920 - step: 21650, lr: 5.000e-04, loss: 3.00035e+01, overall_recovery: 0.7286, mutation_recovery_per_seq: 0.0395, mutation_recovery_union: 0.9158, mutation_targets: 22788
+2026-09-11 06:30:36,824 - step: 21700, lr: 5.000e-04, loss: 3.54759e+01, overall_recovery: 0.7276, mutation_recovery_per_seq: 0.0419, mutation_recovery_union: 0.9190, mutation_targets: 23578
+2026-09-11 06:31:15,692 - step: 21750, lr: 5.000e-04, loss: 3.45636e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0428, mutation_recovery_union: 0.9217, mutation_targets: 23480
+2026-09-11 06:31:54,895 - step: 21800, lr: 5.000e-04, loss: 2.78197e+01, overall_recovery: 0.7324, mutation_recovery_per_seq: 0.0404, mutation_recovery_union: 0.9189, mutation_targets: 23239
+2026-09-11 06:32:33,594 - step: 21850, lr: 5.000e-04, loss: 3.44822e+01, overall_recovery: 0.7326, mutation_recovery_per_seq: 0.0405, mutation_recovery_union: 0.9245, mutation_targets: 23350
+2026-09-11 06:33:12,809 - step: 21900, lr: 5.000e-04, loss: 2.67779e+01, overall_recovery: 0.7349, mutation_recovery_per_seq: 0.0406, mutation_recovery_union: 0.9193, mutation_targets: 23281
+2026-09-11 06:33:51,726 - step: 21950, lr: 5.000e-04, loss: 2.80087e+01, overall_recovery: 0.7280, mutation_recovery_per_seq: 0.0412, mutation_recovery_union: 0.9202, mutation_targets: 23350
+2026-09-11 06:34:30,528 - step: 22000, lr: 5.000e-04, loss: 3.57048e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9186, mutation_targets: 23967
+2026-09-11 06:34:30,721 - step: 22000, eval_loss: 3.60471e+01, eval_overall_recovery_rate: 0.6497, eval_mutation_recovery_rate: 0.0768, eval_mutation_targets: 469
+2026-09-11 06:35:09,588 - step: 22050, lr: 5.000e-04, loss: 2.77807e+01, overall_recovery: 0.7187, mutation_recovery_per_seq: 0.0430, mutation_recovery_union: 0.9191, mutation_targets: 23147
+2026-09-11 06:35:48,257 - step: 22100, lr: 5.000e-04, loss: 3.92351e+01, overall_recovery: 0.7338, mutation_recovery_per_seq: 0.0401, mutation_recovery_union: 0.9128, mutation_targets: 23189
+2026-09-11 06:36:26,924 - step: 22150, lr: 5.000e-04, loss: 3.08088e+01, overall_recovery: 0.7381, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9198, mutation_targets: 23019
+2026-09-11 06:37:05,636 - step: 22200, lr: 5.000e-04, loss: 3.84631e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0402, mutation_recovery_union: 0.9219, mutation_targets: 23835
+2026-09-11 06:37:44,339 - step: 22250, lr: 5.000e-04, loss: 3.09065e+01, overall_recovery: 0.7157, mutation_recovery_per_seq: 0.0447, mutation_recovery_union: 0.9232, mutation_targets: 22887
+2026-09-11 06:38:23,057 - step: 22300, lr: 5.000e-04, loss: 2.64477e+01, overall_recovery: 0.7355, mutation_recovery_per_seq: 0.0403, mutation_recovery_union: 0.9310, mutation_targets: 23638
+2026-09-11 06:39:02,034 - step: 22350, lr: 5.000e-04, loss: 2.85394e+01, overall_recovery: 0.7275, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9182, mutation_targets: 23709
+2026-09-11 06:39:40,803 - step: 22400, lr: 5.000e-04, loss: 3.52574e+01, overall_recovery: 0.7314, mutation_recovery_per_seq: 0.0397, mutation_recovery_union: 0.9186, mutation_targets: 23419
+2026-09-11 06:40:19,492 - step: 22450, lr: 5.000e-04, loss: 3.37752e+01, overall_recovery: 0.7303, mutation_recovery_per_seq: 0.0407, mutation_recovery_union: 0.9310, mutation_targets: 23177
+2026-09-11 06:40:58,256 - step: 22500, lr: 5.000e-04, loss: 3.15827e+01, overall_recovery: 0.7241, mutation_recovery_per_seq: 0.0425, mutation_recovery_union: 0.9134, mutation_targets: 23203
+2026-09-11 06:40:58,429 - step: 22500, eval_loss: 3.06189e+01, eval_overall_recovery_rate: 0.7191, eval_mutation_recovery_rate: 0.0495, eval_mutation_targets: 485
+2026-09-11 06:41:37,010 - step: 22550, lr: 5.000e-04, loss: 3.64994e+01, overall_recovery: 0.7340, mutation_recovery_per_seq: 0.0404, mutation_recovery_union: 0.9207, mutation_targets: 23158
+2026-09-11 06:42:15,817 - step: 22600, lr: 5.000e-04, loss: 3.60980e+01, overall_recovery: 0.7174, mutation_recovery_per_seq: 0.0433, mutation_recovery_union: 0.9223, mutation_targets: 22859
+2026-09-11 06:42:54,574 - step: 22650, lr: 5.000e-04, loss: 2.35281e+01, overall_recovery: 0.7158, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9153, mutation_targets: 23411
+2026-09-11 06:43:33,359 - step: 22700, lr: 5.000e-04, loss: 3.36421e+01, overall_recovery: 0.7228, mutation_recovery_per_seq: 0.0441, mutation_recovery_union: 0.9254, mutation_targets: 22997
+2026-09-11 06:44:12,295 - step: 22750, lr: 5.000e-04, loss: 3.24309e+01, overall_recovery: 0.7215, mutation_recovery_per_seq: 0.0415, mutation_recovery_union: 0.9163, mutation_targets: 23274
+2026-09-11 06:44:51,047 - step: 22800, lr: 5.000e-04, loss: 2.90006e+01, overall_recovery: 0.7148, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9327, mutation_targets: 22594
+2026-09-11 06:45:29,729 - step: 22850, lr: 5.000e-04, loss: 3.25941e+01, overall_recovery: 0.7318, mutation_recovery_per_seq: 0.0402, mutation_recovery_union: 0.9146, mutation_targets: 23906
+2026-09-11 06:46:08,596 - step: 22900, lr: 5.000e-04, loss: 2.76779e+01, overall_recovery: 0.7241, mutation_recovery_per_seq: 0.0417, mutation_recovery_union: 0.9314, mutation_targets: 23766
+2026-09-11 06:46:47,287 - step: 22950, lr: 5.000e-04, loss: 4.06698e+01, overall_recovery: 0.7141, mutation_recovery_per_seq: 0.0413, mutation_recovery_union: 0.9318, mutation_targets: 22981
+2026-09-11 06:47:26,011 - step: 23000, lr: 5.000e-04, loss: 2.80780e+01, overall_recovery: 0.7272, mutation_recovery_per_seq: 0.0404, mutation_recovery_union: 0.9195, mutation_targets: 23450
+2026-09-11 06:47:26,178 - step: 23000, eval_loss: 2.87469e+01, eval_overall_recovery_rate: 0.7094, eval_mutation_recovery_rate: 0.0622, eval_mutation_targets: 450
+2026-09-11 06:48:04,918 - step: 23050, lr: 5.000e-04, loss: 3.18811e+01, overall_recovery: 0.7223, mutation_recovery_per_seq: 0.0401, mutation_recovery_union: 0.9181, mutation_targets: 23383
+2026-09-11 06:48:43,809 - step: 23100, lr: 5.000e-04, loss: 3.22187e+01, overall_recovery: 0.7201, mutation_recovery_per_seq: 0.0413, mutation_recovery_union: 0.9217, mutation_targets: 23231
+2026-09-11 06:49:22,418 - step: 23150, lr: 5.000e-04, loss: 2.56727e+01, overall_recovery: 0.7381, mutation_recovery_per_seq: 0.0384, mutation_recovery_union: 0.9185, mutation_targets: 23492
+2026-09-11 06:50:01,113 - step: 23200, lr: 5.000e-04, loss: 2.91388e+01, overall_recovery: 0.7320, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9197, mutation_targets: 23337
+2026-09-11 06:50:39,924 - step: 23250, lr: 5.000e-04, loss: 2.97841e+01, overall_recovery: 0.7254, mutation_recovery_per_seq: 0.0463, mutation_recovery_union: 0.9249, mutation_targets: 23317
+2026-09-11 06:51:18,604 - step: 23300, lr: 5.000e-04, loss: 3.42970e+01, overall_recovery: 0.7185, mutation_recovery_per_seq: 0.0444, mutation_recovery_union: 0.9150, mutation_targets: 23213
+2026-09-11 06:51:57,375 - step: 23350, lr: 5.000e-04, loss: 3.43353e+01, overall_recovery: 0.7326, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9210, mutation_targets: 23448
+2026-09-11 06:52:36,117 - step: 23400, lr: 5.000e-04, loss: 2.53641e+01, overall_recovery: 0.7154, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9201, mutation_targets: 22753
+2026-09-11 06:53:15,540 - step: 23450, lr: 5.000e-04, loss: 2.89783e+01, overall_recovery: 0.7131, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9228, mutation_targets: 23632
+2026-09-11 06:53:54,418 - step: 23500, lr: 5.000e-04, loss: 2.94317e+01, overall_recovery: 0.7267, mutation_recovery_per_seq: 0.0431, mutation_recovery_union: 0.9201, mutation_targets: 23693
+2026-09-11 06:53:54,585 - step: 23500, eval_loss: 3.14426e+01, eval_overall_recovery_rate: 0.6388, eval_mutation_recovery_rate: 0.0586, eval_mutation_targets: 461
+2026-09-11 06:54:33,441 - step: 23550, lr: 5.000e-04, loss: 2.87300e+01, overall_recovery: 0.7146, mutation_recovery_per_seq: 0.0446, mutation_recovery_union: 0.9214, mutation_targets: 22626
+2026-09-11 06:55:12,320 - step: 23600, lr: 5.000e-04, loss: 3.38812e+01, overall_recovery: 0.7201, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9223, mutation_targets: 22813
+2026-09-11 06:55:51,402 - step: 23650, lr: 5.000e-04, loss: 2.79281e+01, overall_recovery: 0.7116, mutation_recovery_per_seq: 0.0447, mutation_recovery_union: 0.9188, mutation_targets: 23392
+2026-09-11 06:56:30,316 - step: 23700, lr: 5.000e-04, loss: 3.10459e+01, overall_recovery: 0.7256, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9156, mutation_targets: 23341
+2026-09-11 06:57:09,163 - step: 23750, lr: 5.000e-04, loss: 3.47677e+01, overall_recovery: 0.7204, mutation_recovery_per_seq: 0.0431, mutation_recovery_union: 0.9154, mutation_targets: 23623
+2026-09-11 06:57:48,007 - step: 23800, lr: 5.000e-04, loss: 3.15201e+01, overall_recovery: 0.7408, mutation_recovery_per_seq: 0.0398, mutation_recovery_union: 0.9204, mutation_targets: 23399
+2026-09-11 06:58:27,064 - step: 23850, lr: 5.000e-04, loss: 3.00161e+01, overall_recovery: 0.7410, mutation_recovery_per_seq: 0.0401, mutation_recovery_union: 0.9164, mutation_targets: 23654
+2026-09-11 06:59:06,367 - step: 23900, lr: 5.000e-04, loss: 3.37407e+01, overall_recovery: 0.7432, mutation_recovery_per_seq: 0.0382, mutation_recovery_union: 0.9176, mutation_targets: 23676
+2026-09-11 06:59:45,818 - step: 23950, lr: 5.000e-04, loss: 3.43913e+01, overall_recovery: 0.7321, mutation_recovery_per_seq: 0.0363, mutation_recovery_union: 0.9174, mutation_targets: 23389
+2026-09-11 07:00:25,051 - step: 24000, lr: 5.000e-04, loss: 3.02426e+01, overall_recovery: 0.7287, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9189, mutation_targets: 23531
+2026-09-11 07:00:25,219 - step: 24000, eval_loss: 3.03357e+01, eval_overall_recovery_rate: 0.6955, eval_mutation_recovery_rate: 0.0515, eval_mutation_targets: 447
+2026-09-11 07:01:04,198 - step: 24050, lr: 5.000e-04, loss: 3.44399e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0447, mutation_recovery_union: 0.9236, mutation_targets: 22994
+2026-09-11 07:01:43,047 - step: 24100, lr: 5.000e-04, loss: 3.49334e+01, overall_recovery: 0.7191, mutation_recovery_per_seq: 0.0459, mutation_recovery_union: 0.9199, mutation_targets: 23091
+2026-09-11 07:02:21,954 - step: 24150, lr: 5.000e-04, loss: 3.25873e+01, overall_recovery: 0.7287, mutation_recovery_per_seq: 0.0419, mutation_recovery_union: 0.9208, mutation_targets: 22808
+2026-09-11 07:03:01,091 - step: 24200, lr: 5.000e-04, loss: 3.56862e+01, overall_recovery: 0.7582, mutation_recovery_per_seq: 0.0329, mutation_recovery_union: 0.9181, mutation_targets: 23434
+2026-09-11 07:03:40,027 - step: 24250, lr: 5.000e-04, loss: 3.28214e+01, overall_recovery: 0.7440, mutation_recovery_per_seq: 0.0315, mutation_recovery_union: 0.9150, mutation_targets: 22962
+2026-09-11 07:04:18,934 - step: 24300, lr: 5.000e-04, loss: 2.93902e+01, overall_recovery: 0.7407, mutation_recovery_per_seq: 0.0359, mutation_recovery_union: 0.9107, mutation_targets: 23232
+2026-09-11 07:04:57,725 - step: 24350, lr: 5.000e-04, loss: 3.55194e+01, overall_recovery: 0.7342, mutation_recovery_per_seq: 0.0383, mutation_recovery_union: 0.9199, mutation_targets: 23106
+2026-09-11 07:05:36,647 - step: 24400, lr: 5.000e-04, loss: 3.08075e+01, overall_recovery: 0.7306, mutation_recovery_per_seq: 0.0411, mutation_recovery_union: 0.9170, mutation_targets: 23613
+2026-09-11 07:06:15,466 - step: 24450, lr: 5.000e-04, loss: 3.49752e+01, overall_recovery: 0.7255, mutation_recovery_per_seq: 0.0425, mutation_recovery_union: 0.9175, mutation_targets: 23293
+2026-09-11 07:06:54,446 - step: 24500, lr: 5.000e-04, loss: 2.95797e+01, overall_recovery: 0.7301, mutation_recovery_per_seq: 0.0433, mutation_recovery_union: 0.9168, mutation_targets: 23484
+2026-09-11 07:06:54,615 - step: 24500, eval_loss: 2.72254e+01, eval_overall_recovery_rate: 0.6302, eval_mutation_recovery_rate: 0.0620, eval_mutation_targets: 403
+2026-09-11 07:07:33,536 - step: 24550, lr: 5.000e-04, loss: 3.63281e+01, overall_recovery: 0.7326, mutation_recovery_per_seq: 0.0428, mutation_recovery_union: 0.9186, mutation_targets: 23476
+2026-09-11 07:08:12,384 - step: 24600, lr: 5.000e-04, loss: 3.18403e+01, overall_recovery: 0.7195, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9148, mutation_targets: 23373
+2026-09-11 07:08:51,667 - step: 24650, lr: 5.000e-04, loss: 3.13756e+01, overall_recovery: 0.7347, mutation_recovery_per_seq: 0.0447, mutation_recovery_union: 0.9191, mutation_targets: 23333
+2026-09-11 07:09:30,791 - step: 24700, lr: 5.000e-04, loss: 3.63280e+01, overall_recovery: 0.7264, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9199, mutation_targets: 23546
+2026-09-11 07:10:09,669 - step: 24750, lr: 5.000e-04, loss: 3.03239e+01, overall_recovery: 0.7190, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9162, mutation_targets: 23527
+2026-09-11 07:10:48,667 - step: 24800, lr: 5.000e-04, loss: 3.40334e+01, overall_recovery: 0.7108, mutation_recovery_per_seq: 0.0435, mutation_recovery_union: 0.9175, mutation_targets: 22653
+2026-09-11 07:11:27,608 - step: 24850, lr: 5.000e-04, loss: 3.52562e+01, overall_recovery: 0.7364, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9220, mutation_targets: 23046
+2026-09-11 07:12:06,468 - step: 24900, lr: 5.000e-04, loss: 3.50592e+01, overall_recovery: 0.7300, mutation_recovery_per_seq: 0.0401, mutation_recovery_union: 0.9168, mutation_targets: 23377
+2026-09-11 07:12:45,247 - step: 24950, lr: 5.000e-04, loss: 3.09632e+01, overall_recovery: 0.7480, mutation_recovery_per_seq: 0.0342, mutation_recovery_union: 0.9205, mutation_targets: 23276
+2026-09-11 07:13:24,087 - step: 25000, lr: 5.000e-04, loss: 3.15760e+01, overall_recovery: 0.7373, mutation_recovery_per_seq: 0.0391, mutation_recovery_union: 0.9239, mutation_targets: 23433
+2026-09-11 07:13:25,937 - step: 25000, eval_loss: 3.23428e+01, eval_overall_recovery_rate: 0.7628, eval_mutation_recovery_rate: 0.0426, eval_mutation_targets: 469
+2026-09-11 07:14:05,010 - step: 25050, lr: 5.000e-04, loss: 3.10516e+01, overall_recovery: 0.7397, mutation_recovery_per_seq: 0.0383, mutation_recovery_union: 0.9306, mutation_targets: 22914
+2026-09-11 07:14:43,942 - step: 25100, lr: 5.000e-04, loss: 3.54083e+01, overall_recovery: 0.7179, mutation_recovery_per_seq: 0.0416, mutation_recovery_union: 0.9212, mutation_targets: 23277
+2026-09-11 07:15:22,811 - step: 25150, lr: 5.000e-04, loss: 3.06547e+01, overall_recovery: 0.7320, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9159, mutation_targets: 23337
+2026-09-11 07:16:01,856 - step: 25200, lr: 5.000e-04, loss: 2.78899e+01, overall_recovery: 0.7426, mutation_recovery_per_seq: 0.0385, mutation_recovery_union: 0.9191, mutation_targets: 23151
+2026-09-11 07:16:40,806 - step: 25250, lr: 5.000e-04, loss: 3.33467e+01, overall_recovery: 0.7355, mutation_recovery_per_seq: 0.0406, mutation_recovery_union: 0.9124, mutation_targets: 23061
+2026-09-11 07:17:19,766 - step: 25300, lr: 5.000e-04, loss: 2.83958e+01, overall_recovery: 0.7264, mutation_recovery_per_seq: 0.0384, mutation_recovery_union: 0.9165, mutation_targets: 23870
+2026-09-11 07:17:58,815 - step: 25350, lr: 5.000e-04, loss: 3.07124e+01, overall_recovery: 0.7441, mutation_recovery_per_seq: 0.0400, mutation_recovery_union: 0.9309, mutation_targets: 23563
+2026-09-11 07:18:37,719 - step: 25400, lr: 5.000e-04, loss: 3.09404e+01, overall_recovery: 0.7277, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9198, mutation_targets: 22971
+2026-09-11 07:19:16,924 - step: 25450, lr: 5.000e-04, loss: 3.08714e+01, overall_recovery: 0.7268, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9225, mutation_targets: 23008
+2026-09-11 07:19:55,874 - step: 25500, lr: 5.000e-04, loss: 3.14570e+01, overall_recovery: 0.7278, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9293, mutation_targets: 23473
+2026-09-11 07:19:56,038 - step: 25500, eval_loss: 2.99708e+01, eval_overall_recovery_rate: 0.6623, eval_mutation_recovery_rate: 0.0544, eval_mutation_targets: 423
+2026-09-11 07:20:34,680 - step: 25550, lr: 5.000e-04, loss: 3.33331e+01, overall_recovery: 0.7217, mutation_recovery_per_seq: 0.0448, mutation_recovery_union: 0.9213, mutation_targets: 22966
+2026-09-11 07:21:13,579 - step: 25600, lr: 5.000e-04, loss: 3.03597e+01, overall_recovery: 0.7262, mutation_recovery_per_seq: 0.0448, mutation_recovery_union: 0.9208, mutation_targets: 22726
+2026-09-11 07:21:52,399 - step: 25650, lr: 5.000e-04, loss: 3.32323e+01, overall_recovery: 0.7254, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9327, mutation_targets: 23671
+2026-09-11 07:22:31,548 - step: 25700, lr: 5.000e-04, loss: 2.84909e+01, overall_recovery: 0.7177, mutation_recovery_per_seq: 0.0465, mutation_recovery_union: 0.9178, mutation_targets: 23280
+2026-09-11 07:23:10,405 - step: 25750, lr: 5.000e-04, loss: 3.02418e+01, overall_recovery: 0.7228, mutation_recovery_per_seq: 0.0476, mutation_recovery_union: 0.9236, mutation_targets: 22828
+2026-09-11 07:23:49,329 - step: 25800, lr: 5.000e-04, loss: 3.02793e+01, overall_recovery: 0.7268, mutation_recovery_per_seq: 0.0440, mutation_recovery_union: 0.9201, mutation_targets: 23117
+2026-09-11 07:24:28,241 - step: 25850, lr: 5.000e-04, loss: 3.00261e+01, overall_recovery: 0.7237, mutation_recovery_per_seq: 0.0445, mutation_recovery_union: 0.9180, mutation_targets: 22903
+2026-09-11 07:25:06,919 - step: 25900, lr: 5.000e-04, loss: 2.94762e+01, overall_recovery: 0.7285, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9180, mutation_targets: 23396
+2026-09-11 07:25:45,826 - step: 25950, lr: 5.000e-04, loss: 3.45436e+01, overall_recovery: 0.7284, mutation_recovery_per_seq: 0.0416, mutation_recovery_union: 0.9210, mutation_targets: 23318
+2026-09-11 07:26:24,811 - step: 26000, lr: 5.000e-04, loss: 3.01613e+01, overall_recovery: 0.7271, mutation_recovery_per_seq: 0.0456, mutation_recovery_union: 0.9255, mutation_targets: 23244
+2026-09-11 07:26:24,974 - step: 26000, eval_loss: 3.22414e+01, eval_overall_recovery_rate: 0.7444, eval_mutation_recovery_rate: 0.0393, eval_mutation_targets: 560
+2026-09-11 07:27:03,719 - step: 26050, lr: 5.000e-04, loss: 2.85503e+01, overall_recovery: 0.7184, mutation_recovery_per_seq: 0.0428, mutation_recovery_union: 0.9241, mutation_targets: 23009
+2026-09-11 07:27:42,565 - step: 26100, lr: 5.000e-04, loss: 3.02188e+01, overall_recovery: 0.7318, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9177, mutation_targets: 23575
+2026-09-11 07:28:21,438 - step: 26150, lr: 5.000e-04, loss: 2.95239e+01, overall_recovery: 0.7247, mutation_recovery_per_seq: 0.0406, mutation_recovery_union: 0.9187, mutation_targets: 22953
+2026-09-11 07:29:00,302 - step: 26200, lr: 5.000e-04, loss: 3.34855e+01, overall_recovery: 0.7164, mutation_recovery_per_seq: 0.0479, mutation_recovery_union: 0.9196, mutation_targets: 23047
+2026-09-11 07:29:39,121 - step: 26250, lr: 5.000e-04, loss: 2.86633e+01, overall_recovery: 0.7263, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9193, mutation_targets: 23170
+2026-09-11 07:30:18,253 - step: 26300, lr: 5.000e-04, loss: 3.46983e+01, overall_recovery: 0.7343, mutation_recovery_per_seq: 0.0403, mutation_recovery_union: 0.9222, mutation_targets: 23119
+2026-09-11 07:30:57,084 - step: 26350, lr: 5.000e-04, loss: 2.84515e+01, overall_recovery: 0.7265, mutation_recovery_per_seq: 0.0443, mutation_recovery_union: 0.9171, mutation_targets: 22837
+2026-09-11 07:31:35,808 - step: 26400, lr: 5.000e-04, loss: 3.36757e+01, overall_recovery: 0.7171, mutation_recovery_per_seq: 0.0422, mutation_recovery_union: 0.9299, mutation_targets: 23252
+2026-09-11 07:32:14,664 - step: 26450, lr: 5.000e-04, loss: 2.68625e+01, overall_recovery: 0.7237, mutation_recovery_per_seq: 0.0457, mutation_recovery_union: 0.9299, mutation_targets: 23236
+2026-09-11 07:32:53,586 - step: 26500, lr: 5.000e-04, loss: 3.02534e+01, overall_recovery: 0.7283, mutation_recovery_per_seq: 0.0413, mutation_recovery_union: 0.9169, mutation_targets: 23731
+2026-09-11 07:32:53,754 - step: 26500, eval_loss: 3.04662e+01, eval_overall_recovery_rate: 0.6545, eval_mutation_recovery_rate: 0.1116, eval_mutation_targets: 421
+2026-09-11 07:33:32,860 - step: 26550, lr: 5.000e-04, loss: 2.99468e+01, overall_recovery: 0.7171, mutation_recovery_per_seq: 0.0459, mutation_recovery_union: 0.9299, mutation_targets: 22808
+2026-09-11 07:34:11,667 - step: 26600, lr: 5.000e-04, loss: 3.36102e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0463, mutation_recovery_union: 0.9148, mutation_targets: 23178
+2026-09-11 07:34:50,481 - step: 26650, lr: 5.000e-04, loss: 3.29016e+01, overall_recovery: 0.7384, mutation_recovery_per_seq: 0.0429, mutation_recovery_union: 0.9235, mutation_targets: 23401
+2026-09-11 07:35:29,343 - step: 26700, lr: 5.000e-04, loss: 3.01881e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0412, mutation_recovery_union: 0.9235, mutation_targets: 23519
+2026-09-11 07:36:08,346 - step: 26750, lr: 5.000e-04, loss: 3.22164e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9208, mutation_targets: 23823
+2026-09-11 07:36:47,340 - step: 26800, lr: 5.000e-04, loss: 3.06740e+01, overall_recovery: 0.7407, mutation_recovery_per_seq: 0.0392, mutation_recovery_union: 0.9219, mutation_targets: 23455
+2026-09-11 07:37:26,312 - step: 26850, lr: 5.000e-04, loss: 2.98820e+01, overall_recovery: 0.7216, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9215, mutation_targets: 22981
+2026-09-11 07:38:05,110 - step: 26900, lr: 5.000e-04, loss: 3.53476e+01, overall_recovery: 0.7220, mutation_recovery_per_seq: 0.0456, mutation_recovery_union: 0.9230, mutation_targets: 23297
+2026-09-11 07:38:44,009 - step: 26950, lr: 5.000e-04, loss: 3.03872e+01, overall_recovery: 0.7505, mutation_recovery_per_seq: 0.0367, mutation_recovery_union: 0.9289, mutation_targets: 23453
+2026-09-11 07:39:22,834 - step: 27000, lr: 5.000e-04, loss: 3.30954e+01, overall_recovery: 0.7184, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9171, mutation_targets: 23004
+2026-09-11 07:39:23,011 - step: 27000, eval_loss: 3.61033e+01, eval_overall_recovery_rate: 0.6902, eval_mutation_recovery_rate: 0.0378, eval_mutation_targets: 450
+2026-09-11 07:40:02,092 - step: 27050, lr: 5.000e-04, loss: 3.05246e+01, overall_recovery: 0.7199, mutation_recovery_per_seq: 0.0475, mutation_recovery_union: 0.9249, mutation_targets: 22546
+2026-09-11 07:40:41,517 - step: 27100, lr: 5.000e-04, loss: 3.52456e+01, overall_recovery: 0.7303, mutation_recovery_per_seq: 0.0485, mutation_recovery_union: 0.9274, mutation_targets: 23279
+2026-09-11 07:41:20,445 - step: 27150, lr: 5.000e-04, loss: 3.01882e+01, overall_recovery: 0.7301, mutation_recovery_per_seq: 0.0455, mutation_recovery_union: 0.9213, mutation_targets: 22984
+2026-09-11 07:41:59,385 - step: 27200, lr: 5.000e-04, loss: 2.87513e+01, overall_recovery: 0.7197, mutation_recovery_per_seq: 0.0426, mutation_recovery_union: 0.9184, mutation_targets: 23003
+2026-09-11 07:42:38,540 - step: 27250, lr: 5.000e-04, loss: 3.48980e+01, overall_recovery: 0.7496, mutation_recovery_per_seq: 0.0364, mutation_recovery_union: 0.9209, mutation_targets: 23529
+2026-09-11 07:43:17,659 - step: 27300, lr: 5.000e-04, loss: 3.05445e+01, overall_recovery: 0.7398, mutation_recovery_per_seq: 0.0443, mutation_recovery_union: 0.9231, mutation_targets: 23091
+2026-09-11 07:43:56,839 - step: 27350, lr: 5.000e-04, loss: 3.16758e+01, overall_recovery: 0.7221, mutation_recovery_per_seq: 0.0429, mutation_recovery_union: 0.9205, mutation_targets: 23383
+2026-09-11 07:44:35,657 - step: 27400, lr: 5.000e-04, loss: 3.05004e+01, overall_recovery: 0.7257, mutation_recovery_per_seq: 0.0468, mutation_recovery_union: 0.9165, mutation_targets: 23035
+2026-09-11 07:45:14,696 - step: 27450, lr: 5.000e-04, loss: 3.40701e+01, overall_recovery: 0.7317, mutation_recovery_per_seq: 0.0464, mutation_recovery_union: 0.9234, mutation_targets: 23413
+2026-09-11 07:45:53,589 - step: 27500, lr: 5.000e-04, loss: 2.86985e+01, overall_recovery: 0.7813, mutation_recovery_per_seq: 0.0283, mutation_recovery_union: 0.9091, mutation_targets: 23430
+2026-09-11 07:45:53,757 - step: 27500, eval_loss: 3.29502e+01, eval_overall_recovery_rate: 0.7181, eval_mutation_recovery_rate: 0.0285, eval_mutation_targets: 456
+2026-09-11 07:46:32,703 - step: 27550, lr: 5.000e-04, loss: 3.31758e+01, overall_recovery: 0.7701, mutation_recovery_per_seq: 0.0293, mutation_recovery_union: 0.9147, mutation_targets: 23235
+2026-09-11 07:47:11,778 - step: 27600, lr: 5.000e-04, loss: 2.98980e+01, overall_recovery: 0.7275, mutation_recovery_per_seq: 0.0418, mutation_recovery_union: 0.9206, mutation_targets: 23087
+2026-09-11 07:47:50,603 - step: 27650, lr: 5.000e-04, loss: 3.44411e+01, overall_recovery: 0.7454, mutation_recovery_per_seq: 0.0311, mutation_recovery_union: 0.9133, mutation_targets: 23442
+2026-09-11 07:48:29,554 - step: 27700, lr: 5.000e-04, loss: 3.12266e+01, overall_recovery: 0.7922, mutation_recovery_per_seq: 0.0244, mutation_recovery_union: 0.9251, mutation_targets: 23269
+2026-09-11 07:49:08,506 - step: 27750, lr: 5.000e-04, loss: 3.41373e+01, overall_recovery: 0.7508, mutation_recovery_per_seq: 0.0281, mutation_recovery_union: 0.9139, mutation_targets: 22978
+2026-09-11 07:49:47,599 - step: 27800, lr: 5.000e-04, loss: 2.70770e+01, overall_recovery: 0.7521, mutation_recovery_per_seq: 0.0311, mutation_recovery_union: 0.9198, mutation_targets: 23182
+2026-09-11 07:50:26,512 - step: 27850, lr: 5.000e-04, loss: 2.94909e+01, overall_recovery: 0.7405, mutation_recovery_per_seq: 0.0387, mutation_recovery_union: 0.9212, mutation_targets: 23775
+2026-09-11 07:51:05,741 - step: 27900, lr: 5.000e-04, loss: 3.47086e+01, overall_recovery: 0.7492, mutation_recovery_per_seq: 0.0326, mutation_recovery_union: 0.9121, mutation_targets: 23619
+2026-09-11 07:51:45,120 - step: 27950, lr: 5.000e-04, loss: 3.02845e+01, overall_recovery: 0.7265, mutation_recovery_per_seq: 0.0361, mutation_recovery_union: 0.9178, mutation_targets: 23415
+2026-09-11 07:52:24,094 - step: 28000, lr: 5.000e-04, loss: 3.01516e+01, overall_recovery: 0.7407, mutation_recovery_per_seq: 0.0382, mutation_recovery_union: 0.9254, mutation_targets: 22935
+2026-09-11 07:52:24,264 - step: 28000, eval_loss: 2.85165e+01, eval_overall_recovery_rate: 0.7196, eval_mutation_recovery_rate: 0.0637, eval_mutation_targets: 471
+2026-09-11 07:53:03,361 - step: 28050, lr: 5.000e-04, loss: 3.17833e+01, overall_recovery: 0.7349, mutation_recovery_per_seq: 0.0357, mutation_recovery_union: 0.9138, mutation_targets: 23227
+2026-09-11 07:53:42,691 - step: 28100, lr: 5.000e-04, loss: 2.82293e+01, overall_recovery: 0.7470, mutation_recovery_per_seq: 0.0344, mutation_recovery_union: 0.9186, mutation_targets: 23527
+2026-09-11 07:54:22,024 - step: 28150, lr: 5.000e-04, loss: 3.23322e+01, overall_recovery: 0.7299, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9144, mutation_targets: 23089
+2026-09-11 07:55:00,908 - step: 28200, lr: 5.000e-04, loss: 3.29438e+01, overall_recovery: 0.7373, mutation_recovery_per_seq: 0.0396, mutation_recovery_union: 0.9168, mutation_targets: 23005
+2026-09-11 07:55:39,661 - step: 28250, lr: 5.000e-04, loss: 2.85551e+01, overall_recovery: 0.7269, mutation_recovery_per_seq: 0.0393, mutation_recovery_union: 0.9129, mutation_targets: 22831
+2026-09-11 07:56:18,577 - step: 28300, lr: 5.000e-04, loss: 3.02163e+01, overall_recovery: 0.7427, mutation_recovery_per_seq: 0.0386, mutation_recovery_union: 0.9187, mutation_targets: 23449
+2026-09-11 07:56:57,426 - step: 28350, lr: 5.000e-04, loss: 3.11201e+01, overall_recovery: 0.7251, mutation_recovery_per_seq: 0.0398, mutation_recovery_union: 0.9199, mutation_targets: 23162
+2026-09-11 07:57:36,316 - step: 28400, lr: 5.000e-04, loss: 3.24954e+01, overall_recovery: 0.7234, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9177, mutation_targets: 23328
+2026-09-11 07:58:15,377 - step: 28450, lr: 5.000e-04, loss: 3.30090e+01, overall_recovery: 0.7181, mutation_recovery_per_seq: 0.0458, mutation_recovery_union: 0.9176, mutation_targets: 22932
+2026-09-11 07:58:54,248 - step: 28500, lr: 5.000e-04, loss: 3.26645e+01, overall_recovery: 0.7183, mutation_recovery_per_seq: 0.0418, mutation_recovery_union: 0.9195, mutation_targets: 22943
+2026-09-11 07:58:54,415 - step: 28500, eval_loss: 2.90650e+01, eval_overall_recovery_rate: 0.6768, eval_mutation_recovery_rate: 0.0665, eval_mutation_targets: 391
+2026-09-11 07:59:33,259 - step: 28550, lr: 5.000e-04, loss: 3.37289e+01, overall_recovery: 0.7403, mutation_recovery_per_seq: 0.0362, mutation_recovery_union: 0.9137, mutation_targets: 23062
+2026-09-11 08:00:12,236 - step: 28600, lr: 5.000e-04, loss: 2.69675e+01, overall_recovery: 0.7290, mutation_recovery_per_seq: 0.0380, mutation_recovery_union: 0.9181, mutation_targets: 23343
+2026-09-11 08:00:51,466 - step: 28650, lr: 5.000e-04, loss: 2.98362e+01, overall_recovery: 0.7198, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9181, mutation_targets: 22716
+2026-09-11 08:01:30,786 - step: 28700, lr: 5.000e-04, loss: 2.94768e+01, overall_recovery: 0.7139, mutation_recovery_per_seq: 0.0415, mutation_recovery_union: 0.9218, mutation_targets: 23451
+2026-09-11 08:02:09,625 - step: 28750, lr: 5.000e-04, loss: 2.57207e+01, overall_recovery: 0.7372, mutation_recovery_per_seq: 0.0418, mutation_recovery_union: 0.9206, mutation_targets: 23443
+2026-09-11 08:02:48,690 - step: 28800, lr: 5.000e-04, loss: 2.97594e+01, overall_recovery: 0.7327, mutation_recovery_per_seq: 0.0466, mutation_recovery_union: 0.9298, mutation_targets: 23287
+2026-09-11 08:03:27,649 - step: 28850, lr: 5.000e-04, loss: 2.79037e+01, overall_recovery: 0.7240, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9165, mutation_targets: 23450
+2026-09-11 08:04:06,463 - step: 28900, lr: 5.000e-04, loss: 2.98633e+01, overall_recovery: 0.7423, mutation_recovery_per_seq: 0.0403, mutation_recovery_union: 0.9271, mutation_targets: 23645
+2026-09-11 08:04:45,639 - step: 28950, lr: 5.000e-04, loss: 3.01585e+01, overall_recovery: 0.7391, mutation_recovery_per_seq: 0.0390, mutation_recovery_union: 0.9135, mutation_targets: 23385
+2026-09-11 08:05:24,557 - step: 29000, lr: 5.000e-04, loss: 2.85541e+01, overall_recovery: 0.7299, mutation_recovery_per_seq: 0.0406, mutation_recovery_union: 0.9276, mutation_targets: 23156
+2026-09-11 08:05:24,726 - step: 29000, eval_loss: 3.28378e+01, eval_overall_recovery_rate: 0.6869, eval_mutation_recovery_rate: 0.0641, eval_mutation_targets: 468
+2026-09-11 08:06:03,657 - step: 29050, lr: 5.000e-04, loss: 2.62427e+01, overall_recovery: 0.7313, mutation_recovery_per_seq: 0.0400, mutation_recovery_union: 0.9347, mutation_targets: 23019
+2026-09-11 08:06:42,700 - step: 29100, lr: 5.000e-04, loss: 3.56971e+01, overall_recovery: 0.7339, mutation_recovery_per_seq: 0.0429, mutation_recovery_union: 0.9342, mutation_targets: 23398
+2026-09-11 08:07:21,518 - step: 29150, lr: 5.000e-04, loss: 2.83254e+01, overall_recovery: 0.7261, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9250, mutation_targets: 23165
+2026-09-11 08:08:01,065 - step: 29200, lr: 5.000e-04, loss: 3.42143e+01, overall_recovery: 0.7228, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9131, mutation_targets: 23061
+2026-09-11 08:08:40,778 - step: 29250, lr: 5.000e-04, loss: 3.44235e+01, overall_recovery: 0.7381, mutation_recovery_per_seq: 0.0404, mutation_recovery_union: 0.9207, mutation_targets: 23165
+2026-09-11 08:09:20,225 - step: 29300, lr: 5.000e-04, loss: 3.01619e+01, overall_recovery: 0.7254, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9232, mutation_targets: 23343
+2026-09-11 08:09:59,223 - step: 29350, lr: 5.000e-04, loss: 3.57812e+01, overall_recovery: 0.7310, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9172, mutation_targets: 23187
+2026-09-11 08:10:38,266 - step: 29400, lr: 5.000e-04, loss: 3.11442e+01, overall_recovery: 0.7326, mutation_recovery_per_seq: 0.0412, mutation_recovery_union: 0.9217, mutation_targets: 24039
+2026-09-11 08:11:17,352 - step: 29450, lr: 5.000e-04, loss: 2.73806e+01, overall_recovery: 0.7191, mutation_recovery_per_seq: 0.0446, mutation_recovery_union: 0.9189, mutation_targets: 22872
+2026-09-11 08:11:56,565 - step: 29500, lr: 5.000e-04, loss: 3.56768e+01, overall_recovery: 0.7279, mutation_recovery_per_seq: 0.0436, mutation_recovery_union: 0.9216, mutation_targets: 23279
+2026-09-11 08:11:56,735 - step: 29500, eval_loss: 3.48634e+01, eval_overall_recovery_rate: 0.7217, eval_mutation_recovery_rate: 0.0247, eval_mutation_targets: 486
+2026-09-11 08:12:35,700 - step: 29550, lr: 5.000e-04, loss: 3.52034e+01, overall_recovery: 0.7152, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9268, mutation_targets: 22912
+2026-09-11 08:13:14,641 - step: 29600, lr: 5.000e-04, loss: 3.64956e+01, overall_recovery: 0.7174, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9213, mutation_targets: 23230
+2026-09-11 08:13:53,659 - step: 29650, lr: 5.000e-04, loss: 2.53978e+01, overall_recovery: 0.7276, mutation_recovery_per_seq: 0.0421, mutation_recovery_union: 0.9227, mutation_targets: 23072
+2026-09-11 08:14:32,535 - step: 29700, lr: 5.000e-04, loss: 2.76234e+01, overall_recovery: 0.7198, mutation_recovery_per_seq: 0.0426, mutation_recovery_union: 0.9180, mutation_targets: 23449
+2026-09-11 08:15:11,579 - step: 29750, lr: 5.000e-04, loss: 3.39083e+01, overall_recovery: 0.7197, mutation_recovery_per_seq: 0.0436, mutation_recovery_union: 0.9227, mutation_targets: 23033
+2026-09-11 08:15:50,352 - step: 29800, lr: 5.000e-04, loss: 2.99128e+01, overall_recovery: 0.7179, mutation_recovery_per_seq: 0.0434, mutation_recovery_union: 0.9192, mutation_targets: 23410
+2026-09-11 08:16:29,307 - step: 29850, lr: 5.000e-04, loss: 2.99319e+01, overall_recovery: 0.7218, mutation_recovery_per_seq: 0.0444, mutation_recovery_union: 0.9203, mutation_targets: 23485
+2026-09-11 08:17:08,214 - step: 29900, lr: 5.000e-04, loss: 2.99473e+01, overall_recovery: 0.7250, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9324, mutation_targets: 23290
+2026-09-11 08:17:47,216 - step: 29950, lr: 5.000e-04, loss: 2.79631e+01, overall_recovery: 0.7261, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9330, mutation_targets: 23479
+2026-09-11 08:18:26,140 - step: 30000, lr: 5.000e-04, loss: 3.21793e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0379, mutation_recovery_union: 0.9184, mutation_targets: 23584
+2026-09-11 08:18:27,967 - step: 30000, eval_loss: 3.28892e+01, eval_overall_recovery_rate: 0.6689, eval_mutation_recovery_rate: 0.0597, eval_mutation_targets: 486
+2026-09-11 08:18:31,301 - Generating VHH samples at step 30000
+2026-09-11 08:19:13,327 - step: 30050, lr: 5.000e-04, loss: 3.10721e+01, overall_recovery: 0.7218, mutation_recovery_per_seq: 0.0417, mutation_recovery_union: 0.9198, mutation_targets: 23378
+2026-09-11 08:19:52,160 - step: 30100, lr: 5.000e-04, loss: 3.03979e+01, overall_recovery: 0.7374, mutation_recovery_per_seq: 0.0441, mutation_recovery_union: 0.9228, mutation_targets: 23218
+2026-09-11 08:20:31,022 - step: 30150, lr: 5.000e-04, loss: 3.25170e+01, overall_recovery: 0.7229, mutation_recovery_per_seq: 0.0463, mutation_recovery_union: 0.9193, mutation_targets: 23269
+2026-09-11 08:21:09,875 - step: 30200, lr: 5.000e-04, loss: 2.82745e+01, overall_recovery: 0.7165, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9142, mutation_targets: 23333
+2026-09-11 08:21:48,920 - step: 30250, lr: 5.000e-04, loss: 2.91371e+01, overall_recovery: 0.7298, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9196, mutation_targets: 23956
+2026-09-11 08:22:27,995 - step: 30300, lr: 5.000e-04, loss: 2.86070e+01, overall_recovery: 0.7109, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9217, mutation_targets: 22631
+2026-09-11 08:23:06,839 - step: 30350, lr: 5.000e-04, loss: 2.97202e+01, overall_recovery: 0.7082, mutation_recovery_per_seq: 0.0465, mutation_recovery_union: 0.9211, mutation_targets: 23433
+2026-09-11 08:23:45,872 - step: 30400, lr: 5.000e-04, loss: 2.95564e+01, overall_recovery: 0.7312, mutation_recovery_per_seq: 0.0402, mutation_recovery_union: 0.9237, mutation_targets: 23710
+2026-09-11 08:24:25,182 - step: 30450, lr: 5.000e-04, loss: 2.68029e+01, overall_recovery: 0.7295, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9193, mutation_targets: 22855
+2026-09-11 08:25:04,143 - step: 30500, lr: 5.000e-04, loss: 3.89228e+01, overall_recovery: 0.7255, mutation_recovery_per_seq: 0.0445, mutation_recovery_union: 0.9174, mutation_targets: 23352
+2026-09-11 08:25:04,321 - step: 30500, eval_loss: 2.73563e+01, eval_overall_recovery_rate: 0.6759, eval_mutation_recovery_rate: 0.0781, eval_mutation_targets: 461
+2026-09-11 08:25:43,358 - step: 30550, lr: 5.000e-04, loss: 3.32861e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0451, mutation_recovery_union: 0.9220, mutation_targets: 23091
+2026-09-11 08:26:22,393 - step: 30600, lr: 5.000e-04, loss: 3.54382e+01, overall_recovery: 0.7146, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9197, mutation_targets: 23124
+2026-09-11 08:27:01,443 - step: 30650, lr: 5.000e-04, loss: 3.04054e+01, overall_recovery: 0.7237, mutation_recovery_per_seq: 0.0465, mutation_recovery_union: 0.9207, mutation_targets: 22785
+2026-09-11 08:27:40,433 - step: 30700, lr: 5.000e-04, loss: 3.08118e+01, overall_recovery: 0.7192, mutation_recovery_per_seq: 0.0435, mutation_recovery_union: 0.9257, mutation_targets: 23650
+2026-09-11 08:28:19,280 - step: 30750, lr: 5.000e-04, loss: 3.30458e+01, overall_recovery: 0.7082, mutation_recovery_per_seq: 0.0471, mutation_recovery_union: 0.9178, mutation_targets: 22483
+2026-09-11 08:28:58,271 - step: 30800, lr: 5.000e-04, loss: 3.76271e+01, overall_recovery: 0.7230, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9213, mutation_targets: 23438
+2026-09-11 08:29:37,439 - step: 30850, lr: 5.000e-04, loss: 3.36774e+01, overall_recovery: 0.7200, mutation_recovery_per_seq: 0.0459, mutation_recovery_union: 0.9211, mutation_targets: 22590
+2026-09-11 08:30:16,647 - step: 30900, lr: 5.000e-04, loss: 6.38357e+01, overall_recovery: 0.6880, mutation_recovery_per_seq: 0.0400, mutation_recovery_union: 0.9083, mutation_targets: 23251
+2026-09-11 08:30:55,526 - step: 30950, lr: 5.000e-04, loss: 3.47690e+01, overall_recovery: 0.8092, mutation_recovery_per_seq: 0.0041, mutation_recovery_union: 0.8925, mutation_targets: 23252
+2026-09-11 08:31:34,628 - step: 31000, lr: 5.000e-04, loss: 4.24175e+01, overall_recovery: 0.7505, mutation_recovery_per_seq: 0.0314, mutation_recovery_union: 0.9167, mutation_targets: 23313
+2026-09-11 08:31:34,803 - step: 31000, eval_loss: 3.50830e+01, eval_overall_recovery_rate: 0.7467, eval_mutation_recovery_rate: 0.0233, eval_mutation_targets: 472
+2026-09-11 08:32:13,824 - step: 31050, lr: 5.000e-04, loss: 3.29550e+01, overall_recovery: 0.7902, mutation_recovery_per_seq: 0.0124, mutation_recovery_union: 0.9080, mutation_targets: 23390
+2026-09-11 08:32:52,967 - step: 31100, lr: 5.000e-04, loss: 2.75460e+01, overall_recovery: 0.7553, mutation_recovery_per_seq: 0.0308, mutation_recovery_union: 0.9114, mutation_targets: 23107
+2026-09-11 08:33:31,942 - step: 31150, lr: 5.000e-04, loss: 2.94204e+01, overall_recovery: 0.7411, mutation_recovery_per_seq: 0.0397, mutation_recovery_union: 0.9164, mutation_targets: 23431
+2026-09-11 08:34:10,871 - step: 31200, lr: 5.000e-04, loss: 2.34216e+01, overall_recovery: 0.7197, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9306, mutation_targets: 23376
+2026-09-11 08:34:49,772 - step: 31250, lr: 5.000e-04, loss: 2.66687e+01, overall_recovery: 0.7294, mutation_recovery_per_seq: 0.0438, mutation_recovery_union: 0.9218, mutation_targets: 23519
+2026-09-11 08:35:28,855 - step: 31300, lr: 5.000e-04, loss: 2.97199e+01, overall_recovery: 0.7359, mutation_recovery_per_seq: 0.0409, mutation_recovery_union: 0.9218, mutation_targets: 23685
+2026-09-11 08:36:08,178 - step: 31350, lr: 5.000e-04, loss: 2.66479e+01, overall_recovery: 0.7315, mutation_recovery_per_seq: 0.0430, mutation_recovery_union: 0.9193, mutation_targets: 23500
+2026-09-11 08:36:47,412 - step: 31400, lr: 5.000e-04, loss: 3.01889e+01, overall_recovery: 0.7125, mutation_recovery_per_seq: 0.0450, mutation_recovery_union: 0.9183, mutation_targets: 23091
+2026-09-11 08:37:26,428 - step: 31450, lr: 5.000e-04, loss: 3.03324e+01, overall_recovery: 0.7172, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9166, mutation_targets: 22979
+2026-09-11 08:38:05,374 - step: 31500, lr: 5.000e-04, loss: 3.17361e+01, overall_recovery: 0.7180, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9193, mutation_targets: 23620
+2026-09-11 08:38:05,548 - step: 31500, eval_loss: 2.72512e+01, eval_overall_recovery_rate: 0.6755, eval_mutation_recovery_rate: 0.0302, eval_mutation_targets: 463
+2026-09-11 08:38:44,404 - step: 31550, lr: 5.000e-04, loss: 2.78675e+01, overall_recovery: 0.7264, mutation_recovery_per_seq: 0.0429, mutation_recovery_union: 0.9295, mutation_targets: 23487
+2026-09-11 08:39:23,186 - step: 31600, lr: 5.000e-04, loss: 3.47493e+01, overall_recovery: 0.7287, mutation_recovery_per_seq: 0.0431, mutation_recovery_union: 0.9234, mutation_targets: 23145
+2026-09-11 08:40:02,204 - step: 31650, lr: 5.000e-04, loss: 3.19094e+01, overall_recovery: 0.7163, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9214, mutation_targets: 22795
+2026-09-11 08:40:41,017 - step: 31700, lr: 5.000e-04, loss: 2.35083e+01, overall_recovery: 0.7192, mutation_recovery_per_seq: 0.0434, mutation_recovery_union: 0.9166, mutation_targets: 22954
+2026-09-11 08:41:20,258 - step: 31750, lr: 5.000e-04, loss: 3.50458e+01, overall_recovery: 0.7153, mutation_recovery_per_seq: 0.0445, mutation_recovery_union: 0.9211, mutation_targets: 23336
+2026-09-11 08:41:59,168 - step: 31800, lr: 5.000e-04, loss: 3.51150e+01, overall_recovery: 0.7131, mutation_recovery_per_seq: 0.0446, mutation_recovery_union: 0.9178, mutation_targets: 23268
+2026-09-11 08:42:37,929 - step: 31850, lr: 5.000e-04, loss: 2.90915e+01, overall_recovery: 0.7206, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9216, mutation_targets: 23649
+2026-09-11 08:43:16,860 - step: 31900, lr: 5.000e-04, loss: 3.18140e+01, overall_recovery: 0.7042, mutation_recovery_per_seq: 0.0448, mutation_recovery_union: 0.9245, mutation_targets: 22841
+2026-09-11 08:43:55,624 - step: 31950, lr: 5.000e-04, loss: 3.37566e+01, overall_recovery: 0.7178, mutation_recovery_per_seq: 0.0435, mutation_recovery_union: 0.9251, mutation_targets: 23649
+2026-09-11 08:44:34,601 - step: 32000, lr: 5.000e-04, loss: 2.80258e+01, overall_recovery: 0.7233, mutation_recovery_per_seq: 0.0444, mutation_recovery_union: 0.9241, mutation_targets: 23429
+2026-09-11 08:44:34,786 - step: 32000, eval_loss: 2.78212e+01, eval_overall_recovery_rate: 0.5431, eval_mutation_recovery_rate: 0.1091, eval_mutation_targets: 330
+2026-09-11 08:45:13,771 - step: 32050, lr: 5.000e-04, loss: 3.29366e+01, overall_recovery: 0.7283, mutation_recovery_per_seq: 0.0452, mutation_recovery_union: 0.9188, mutation_targets: 23262
+2026-09-11 08:45:52,793 - step: 32100, lr: 5.000e-04, loss: 2.96467e+01, overall_recovery: 0.7256, mutation_recovery_per_seq: 0.0436, mutation_recovery_union: 0.9153, mutation_targets: 23332
+2026-09-11 08:46:31,718 - step: 32150, lr: 5.000e-04, loss: 2.99905e+01, overall_recovery: 0.7262, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9302, mutation_targets: 23723
+2026-09-11 08:47:10,761 - step: 32200, lr: 5.000e-04, loss: 3.03337e+01, overall_recovery: 0.7254, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9237, mutation_targets: 23589
+2026-09-11 08:47:49,557 - step: 32250, lr: 5.000e-04, loss: 3.14862e+01, overall_recovery: 0.7077, mutation_recovery_per_seq: 0.0460, mutation_recovery_union: 0.9222, mutation_targets: 22970
+2026-09-11 08:48:28,614 - step: 32300, lr: 5.000e-04, loss: 3.20306e+01, overall_recovery: 0.7114, mutation_recovery_per_seq: 0.0472, mutation_recovery_union: 0.9270, mutation_targets: 22884
+2026-09-11 08:49:07,532 - step: 32350, lr: 5.000e-04, loss: 2.68618e+01, overall_recovery: 0.7197, mutation_recovery_per_seq: 0.0500, mutation_recovery_union: 0.9207, mutation_targets: 23222
+2026-09-11 08:49:46,537 - step: 32400, lr: 5.000e-04, loss: 2.82520e+01, overall_recovery: 0.7181, mutation_recovery_per_seq: 0.0467, mutation_recovery_union: 0.9222, mutation_targets: 23072
+2026-09-11 08:50:25,853 - step: 32450, lr: 5.000e-04, loss: 2.32235e+01, overall_recovery: 0.7202, mutation_recovery_per_seq: 0.0469, mutation_recovery_union: 0.9219, mutation_targets: 23298
+2026-09-11 08:51:04,879 - step: 32500, lr: 5.000e-04, loss: 3.67765e+01, overall_recovery: 0.7312, mutation_recovery_per_seq: 0.0426, mutation_recovery_union: 0.9296, mutation_targets: 23481
+2026-09-11 08:51:05,053 - step: 32500, eval_loss: 2.90084e+01, eval_overall_recovery_rate: 0.7351, eval_mutation_recovery_rate: 0.0677, eval_mutation_targets: 473
+2026-09-11 08:51:44,186 - step: 32550, lr: 5.000e-04, loss: 3.29958e+01, overall_recovery: 0.7079, mutation_recovery_per_seq: 0.0464, mutation_recovery_union: 0.9187, mutation_targets: 22929
+2026-09-11 08:52:23,214 - step: 32600, lr: 5.000e-04, loss: 2.95363e+01, overall_recovery: 0.7166, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9241, mutation_targets: 23400
+2026-09-11 08:53:02,520 - step: 32650, lr: 5.000e-04, loss: 3.12803e+01, overall_recovery: 0.7236, mutation_recovery_per_seq: 0.0454, mutation_recovery_union: 0.9219, mutation_targets: 23730
+2026-09-11 08:53:41,526 - step: 32700, lr: 5.000e-04, loss: 2.55451e+01, overall_recovery: 0.7195, mutation_recovery_per_seq: 0.0444, mutation_recovery_union: 0.9369, mutation_targets: 22971
+2026-09-11 08:54:20,631 - step: 32750, lr: 5.000e-04, loss: 3.45664e+01, overall_recovery: 0.7070, mutation_recovery_per_seq: 0.0444, mutation_recovery_union: 0.9154, mutation_targets: 23343
+2026-09-11 08:54:59,536 - step: 32800, lr: 5.000e-04, loss: 3.19189e+01, overall_recovery: 0.7048, mutation_recovery_per_seq: 0.0462, mutation_recovery_union: 0.9231, mutation_targets: 23966
+2026-09-11 08:55:38,417 - step: 32850, lr: 5.000e-04, loss: 2.80627e+01, overall_recovery: 0.7064, mutation_recovery_per_seq: 0.0452, mutation_recovery_union: 0.9236, mutation_targets: 23189
+2026-09-11 08:56:17,180 - step: 32900, lr: 5.000e-04, loss: 2.99752e+01, overall_recovery: 0.7132, mutation_recovery_per_seq: 0.0461, mutation_recovery_union: 0.9172, mutation_targets: 23202
+2026-09-11 08:56:56,410 - step: 32950, lr: 5.000e-04, loss: 3.57586e+01, overall_recovery: 0.7151, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9237, mutation_targets: 23648
+2026-09-11 08:57:35,319 - step: 33000, lr: 5.000e-04, loss: 2.86666e+01, overall_recovery: 0.7144, mutation_recovery_per_seq: 0.0465, mutation_recovery_union: 0.9206, mutation_targets: 23149
+2026-09-11 08:57:35,489 - step: 33000, eval_loss: 2.99561e+01, eval_overall_recovery_rate: 0.6572, eval_mutation_recovery_rate: 0.0755, eval_mutation_targets: 437
+2026-09-11 08:58:14,378 - step: 33050, lr: 5.000e-04, loss: 2.95869e+01, overall_recovery: 0.7183, mutation_recovery_per_seq: 0.0489, mutation_recovery_union: 0.9249, mutation_targets: 23354
+2026-09-11 08:58:53,233 - step: 33100, lr: 5.000e-04, loss: 3.13281e+01, overall_recovery: 0.7110, mutation_recovery_per_seq: 0.0447, mutation_recovery_union: 0.9214, mutation_targets: 23313
+2026-09-11 08:59:32,051 - step: 33150, lr: 5.000e-04, loss: 2.82905e+01, overall_recovery: 0.7191, mutation_recovery_per_seq: 0.0445, mutation_recovery_union: 0.9176, mutation_targets: 23904
+2026-09-11 09:00:10,855 - step: 33200, lr: 5.000e-04, loss: 3.32644e+01, overall_recovery: 0.7181, mutation_recovery_per_seq: 0.0411, mutation_recovery_union: 0.9334, mutation_targets: 23349
+2026-09-11 09:00:49,939 - step: 33250, lr: 5.000e-04, loss: 3.30143e+01, overall_recovery: 0.7380, mutation_recovery_per_seq: 0.0411, mutation_recovery_union: 0.9208, mutation_targets: 22634
+2026-09-11 09:01:28,900 - step: 33300, lr: 5.000e-04, loss: 2.99690e+01, overall_recovery: 0.7012, mutation_recovery_per_seq: 0.0472, mutation_recovery_union: 0.9360, mutation_targets: 23557
+2026-09-11 09:02:07,932 - step: 33350, lr: 5.000e-04, loss: 2.95228e+01, overall_recovery: 0.7036, mutation_recovery_per_seq: 0.0474, mutation_recovery_union: 0.9245, mutation_targets: 23463
+2026-09-11 09:02:47,009 - step: 33400, lr: 5.000e-04, loss: 2.95842e+01, overall_recovery: 0.7059, mutation_recovery_per_seq: 0.0487, mutation_recovery_union: 0.9184, mutation_targets: 22946
+2026-09-11 09:03:25,943 - step: 33450, lr: 5.000e-04, loss: 2.58384e+01, overall_recovery: 0.7152, mutation_recovery_per_seq: 0.0489, mutation_recovery_union: 0.9181, mutation_targets: 23247
+2026-09-11 09:04:05,040 - step: 33500, lr: 5.000e-04, loss: 2.64689e+01, overall_recovery: 0.7076, mutation_recovery_per_seq: 0.0462, mutation_recovery_union: 0.9331, mutation_targets: 23120
+2026-09-11 09:04:05,208 - step: 33500, eval_loss: 3.24136e+01, eval_overall_recovery_rate: 0.6735, eval_mutation_recovery_rate: 0.0621, eval_mutation_targets: 419
+2026-09-11 09:04:44,040 - step: 33550, lr: 5.000e-04, loss: 2.87036e+01, overall_recovery: 0.7110, mutation_recovery_per_seq: 0.0471, mutation_recovery_union: 0.9266, mutation_targets: 24015
+2026-09-11 09:05:22,958 - step: 33600, lr: 5.000e-04, loss: 2.61413e+01, overall_recovery: 0.7093, mutation_recovery_per_seq: 0.0484, mutation_recovery_union: 0.9218, mutation_targets: 23863
+2026-09-11 09:06:01,759 - step: 33650, lr: 5.000e-04, loss: 3.01641e+01, overall_recovery: 0.7242, mutation_recovery_per_seq: 0.0444, mutation_recovery_union: 0.9213, mutation_targets: 23345
+2026-09-11 09:06:40,699 - step: 33700, lr: 5.000e-04, loss: 2.95511e+01, overall_recovery: 0.7174, mutation_recovery_per_seq: 0.0459, mutation_recovery_union: 0.9183, mutation_targets: 23293
+2026-09-11 09:07:19,741 - step: 33750, lr: 5.000e-04, loss: 2.95808e+01, overall_recovery: 0.7206, mutation_recovery_per_seq: 0.0470, mutation_recovery_union: 0.9189, mutation_targets: 23337
+2026-09-11 09:07:58,563 - step: 33800, lr: 5.000e-04, loss: 3.18933e+01, overall_recovery: 0.7364, mutation_recovery_per_seq: 0.0419, mutation_recovery_union: 0.9171, mutation_targets: 23864
+2026-09-11 09:08:37,407 - step: 33850, lr: 5.000e-04, loss: 3.03424e+01, overall_recovery: 0.7283, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9200, mutation_targets: 23480
+2026-09-11 09:09:16,601 - step: 33900, lr: 5.000e-04, loss: 2.64873e+01, overall_recovery: 0.7265, mutation_recovery_per_seq: 0.0409, mutation_recovery_union: 0.9188, mutation_targets: 23511
+2026-09-11 09:09:55,548 - step: 33950, lr: 5.000e-04, loss: 3.03491e+01, overall_recovery: 0.7289, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9222, mutation_targets: 23035
+2026-09-11 09:10:34,503 - step: 34000, lr: 5.000e-04, loss: 3.03169e+01, overall_recovery: 0.7273, mutation_recovery_per_seq: 0.0435, mutation_recovery_union: 0.9190, mutation_targets: 23958
+2026-09-11 09:10:34,672 - step: 34000, eval_loss: 2.53886e+01, eval_overall_recovery_rate: 0.7462, eval_mutation_recovery_rate: 0.0859, eval_mutation_targets: 454
+2026-09-11 09:11:13,900 - step: 34050, lr: 5.000e-04, loss: 2.96627e+01, overall_recovery: 0.7347, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9225, mutation_targets: 23527
+2026-09-11 09:11:52,947 - step: 34100, lr: 5.000e-04, loss: 3.08937e+01, overall_recovery: 0.7270, mutation_recovery_per_seq: 0.0443, mutation_recovery_union: 0.9193, mutation_targets: 23176
+2026-09-11 09:12:31,920 - step: 34150, lr: 5.000e-04, loss: 2.78570e+01, overall_recovery: 0.7215, mutation_recovery_per_seq: 0.0417, mutation_recovery_union: 0.9172, mutation_targets: 23216
+2026-09-11 09:13:10,913 - step: 34200, lr: 5.000e-04, loss: 2.84723e+01, overall_recovery: 0.7224, mutation_recovery_per_seq: 0.0432, mutation_recovery_union: 0.9216, mutation_targets: 22936
+2026-09-11 09:13:50,148 - step: 34250, lr: 5.000e-04, loss: 2.87212e+01, overall_recovery: 0.7131, mutation_recovery_per_seq: 0.0465, mutation_recovery_union: 0.9194, mutation_targets: 22929
+2026-09-11 09:14:29,289 - step: 34300, lr: 5.000e-04, loss: 3.25236e+01, overall_recovery: 0.7292, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9311, mutation_targets: 23829
+2026-09-11 09:15:08,174 - step: 34350, lr: 5.000e-04, loss: 3.32736e+01, overall_recovery: 0.7228, mutation_recovery_per_seq: 0.0438, mutation_recovery_union: 0.9221, mutation_targets: 23231
+2026-09-11 09:15:47,103 - step: 34400, lr: 5.000e-04, loss: 3.01729e+01, overall_recovery: 0.7000, mutation_recovery_per_seq: 0.0497, mutation_recovery_union: 0.9247, mutation_targets: 22744
+2026-09-11 09:16:26,152 - step: 34450, lr: 5.000e-04, loss: 2.72157e+01, overall_recovery: 0.7447, mutation_recovery_per_seq: 0.0427, mutation_recovery_union: 0.9244, mutation_targets: 24637
+2026-09-11 09:17:05,480 - step: 34500, lr: 5.000e-04, loss: 3.08707e+01, overall_recovery: 0.7299, mutation_recovery_per_seq: 0.0449, mutation_recovery_union: 0.9296, mutation_targets: 23633
+2026-09-11 09:17:05,651 - step: 34500, eval_loss: 2.78234e+01, eval_overall_recovery_rate: 0.7100, eval_mutation_recovery_rate: 0.0714, eval_mutation_targets: 434
+2026-09-11 09:17:44,512 - step: 34550, lr: 5.000e-04, loss: 3.41864e+01, overall_recovery: 0.7391, mutation_recovery_per_seq: 0.0431, mutation_recovery_union: 0.9206, mutation_targets: 23405
+2026-09-11 09:18:23,475 - step: 34600, lr: 5.000e-04, loss: 3.46535e+01, overall_recovery: 0.7180, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9188, mutation_targets: 22973
+2026-09-11 09:19:02,733 - step: 34650, lr: 5.000e-04, loss: 2.55697e+01, overall_recovery: 0.7237, mutation_recovery_per_seq: 0.0448, mutation_recovery_union: 0.9179, mutation_targets: 22875
+2026-09-11 09:19:41,701 - step: 34700, lr: 5.000e-04, loss: 2.61392e+01, overall_recovery: 0.7177, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9309, mutation_targets: 22777
+2026-09-11 09:20:20,631 - step: 34750, lr: 5.000e-04, loss: 3.61556e+01, overall_recovery: 0.7219, mutation_recovery_per_seq: 0.0474, mutation_recovery_union: 0.9200, mutation_targets: 22774
+2026-09-11 09:20:59,898 - step: 34800, lr: 5.000e-04, loss: 2.27764e+01, overall_recovery: 0.7279, mutation_recovery_per_seq: 0.0454, mutation_recovery_union: 0.9370, mutation_targets: 23138
+2026-09-11 09:21:38,649 - step: 34850, lr: 5.000e-04, loss: 2.76518e+01, overall_recovery: 0.7277, mutation_recovery_per_seq: 0.0447, mutation_recovery_union: 0.9266, mutation_targets: 23021
+2026-09-11 09:22:17,821 - step: 34900, lr: 5.000e-04, loss: 2.71689e+01, overall_recovery: 0.7234, mutation_recovery_per_seq: 0.0433, mutation_recovery_union: 0.9155, mutation_targets: 23408
+2026-09-11 09:22:56,829 - step: 34950, lr: 5.000e-04, loss: 2.87427e+01, overall_recovery: 0.7172, mutation_recovery_per_seq: 0.0439, mutation_recovery_union: 0.9186, mutation_targets: 23135
+2026-09-11 09:23:35,908 - step: 35000, lr: 5.000e-04, loss: 4.64847e+01, overall_recovery: 0.7277, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9223, mutation_targets: 23255
+2026-09-11 09:23:37,735 - step: 35000, eval_loss: 3.44989e+01, eval_overall_recovery_rate: 0.7498, eval_mutation_recovery_rate: 0.0478, eval_mutation_targets: 586
+2026-09-11 09:24:16,896 - step: 35050, lr: 5.000e-04, loss: 4.70544e+01, overall_recovery: 0.7126, mutation_recovery_per_seq: 0.0452, mutation_recovery_union: 0.9235, mutation_targets: 23277
+2026-09-11 09:24:56,004 - step: 35100, lr: 5.000e-04, loss: 3.32564e+01, overall_recovery: 0.7121, mutation_recovery_per_seq: 0.0422, mutation_recovery_union: 0.9196, mutation_targets: 23180
+2026-09-11 09:25:34,970 - step: 35150, lr: 5.000e-04, loss: 3.10662e+01, overall_recovery: 0.7182, mutation_recovery_per_seq: 0.0412, mutation_recovery_union: 0.9202, mutation_targets: 22744
+2026-09-11 09:26:13,827 - step: 35200, lr: 5.000e-04, loss: 3.33710e+01, overall_recovery: 0.7239, mutation_recovery_per_seq: 0.0417, mutation_recovery_union: 0.9207, mutation_targets: 23221
+2026-09-11 09:26:52,678 - step: 35250, lr: 5.000e-04, loss: 3.04790e+01, overall_recovery: 0.7107, mutation_recovery_per_seq: 0.0423, mutation_recovery_union: 0.9276, mutation_targets: 23278
+2026-09-11 09:27:31,715 - step: 35300, lr: 5.000e-04, loss: 3.20485e+01, overall_recovery: 0.7241, mutation_recovery_per_seq: 0.0462, mutation_recovery_union: 0.9188, mutation_targets: 23093
+2026-09-11 09:28:10,662 - step: 35350, lr: 5.000e-04, loss: 3.90355e+01, overall_recovery: 0.7218, mutation_recovery_per_seq: 0.0436, mutation_recovery_union: 0.9290, mutation_targets: 23472
+2026-09-11 09:28:49,698 - step: 35400, lr: 5.000e-04, loss: 3.06463e+01, overall_recovery: 0.7255, mutation_recovery_per_seq: 0.0414, mutation_recovery_union: 0.9130, mutation_targets: 23283
+2026-09-11 09:29:29,014 - step: 35450, lr: 5.000e-04, loss: 2.77786e+01, overall_recovery: 0.7157, mutation_recovery_per_seq: 0.0440, mutation_recovery_union: 0.9291, mutation_targets: 23049
+2026-09-11 09:30:07,884 - step: 35500, lr: 5.000e-04, loss: 3.12905e+01, overall_recovery: 0.7056, mutation_recovery_per_seq: 0.0426, mutation_recovery_union: 0.9205, mutation_targets: 23446
+2026-09-11 09:30:08,053 - step: 35500, eval_loss: 2.66730e+01, eval_overall_recovery_rate: 0.7388, eval_mutation_recovery_rate: 0.0533, eval_mutation_targets: 525
+2026-09-11 09:30:46,810 - step: 35550, lr: 5.000e-04, loss: 3.58865e+01, overall_recovery: 0.7226, mutation_recovery_per_seq: 0.0410, mutation_recovery_union: 0.9226, mutation_targets: 23709
+2026-09-11 09:31:25,925 - step: 35600, lr: 5.000e-04, loss: 2.86946e+01, overall_recovery: 0.7205, mutation_recovery_per_seq: 0.0396, mutation_recovery_union: 0.9219, mutation_targets: 23669
+2026-09-11 09:32:04,952 - step: 35650, lr: 5.000e-04, loss: 2.88113e+01, overall_recovery: 0.7224, mutation_recovery_per_seq: 0.0413, mutation_recovery_union: 0.9299, mutation_targets: 23249
+2026-09-11 09:32:43,851 - step: 35700, lr: 5.000e-04, loss: 3.42187e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0428, mutation_recovery_union: 0.9198, mutation_targets: 23194
+2026-09-11 09:33:22,583 - step: 35750, lr: 5.000e-04, loss: 2.94863e+01, overall_recovery: 0.7160, mutation_recovery_per_seq: 0.0462, mutation_recovery_union: 0.9226, mutation_targets: 22999
+2026-09-11 09:34:01,375 - step: 35800, lr: 5.000e-04, loss: 3.19629e+01, overall_recovery: 0.7200, mutation_recovery_per_seq: 0.0468, mutation_recovery_union: 0.9212, mutation_targets: 23120
+2026-09-11 09:34:40,348 - step: 35850, lr: 5.000e-04, loss: 3.07882e+01, overall_recovery: 0.7282, mutation_recovery_per_seq: 0.0446, mutation_recovery_union: 0.9205, mutation_targets: 23584
+2026-09-11 09:35:19,477 - step: 35900, lr: 5.000e-04, loss: 3.22938e+01, overall_recovery: 0.7197, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9313, mutation_targets: 23573
+2026-09-11 09:35:58,372 - step: 35950, lr: 5.000e-04, loss: 3.04329e+01, overall_recovery: 0.7091, mutation_recovery_per_seq: 0.0429, mutation_recovery_union: 0.9219, mutation_targets: 23004
+2026-09-11 09:36:37,236 - step: 36000, lr: 5.000e-04, loss: 3.15320e+01, overall_recovery: 0.7197, mutation_recovery_per_seq: 0.0425, mutation_recovery_union: 0.9241, mutation_targets: 23187
+2026-09-11 09:36:37,404 - step: 36000, eval_loss: 2.57959e+01, eval_overall_recovery_rate: 0.6450, eval_mutation_recovery_rate: 0.0537, eval_mutation_targets: 484
+2026-09-11 09:37:16,345 - step: 36050, lr: 5.000e-04, loss: 3.19773e+01, overall_recovery: 0.7286, mutation_recovery_per_seq: 0.0421, mutation_recovery_union: 0.9325, mutation_targets: 23256
+2026-09-11 09:37:54,993 - step: 36100, lr: 5.000e-04, loss: 2.92284e+01, overall_recovery: 0.7453, mutation_recovery_per_seq: 0.0448, mutation_recovery_union: 0.9222, mutation_targets: 22613
+2026-09-11 09:38:34,279 - step: 36150, lr: 5.000e-04, loss: 3.23391e+01, overall_recovery: 0.7216, mutation_recovery_per_seq: 0.0443, mutation_recovery_union: 0.9198, mutation_targets: 22821
+2026-09-11 09:39:13,266 - step: 36200, lr: 5.000e-04, loss: 2.75745e+01, overall_recovery: 0.7324, mutation_recovery_per_seq: 0.0418, mutation_recovery_union: 0.9194, mutation_targets: 22920
+2026-09-11 09:39:52,308 - step: 36250, lr: 5.000e-04, loss: 2.92483e+01, overall_recovery: 0.7260, mutation_recovery_per_seq: 0.0388, mutation_recovery_union: 0.9206, mutation_targets: 23360
+2026-09-11 09:40:31,674 - step: 36300, lr: 5.000e-04, loss: 3.09712e+01, overall_recovery: 0.7202, mutation_recovery_per_seq: 0.0415, mutation_recovery_union: 0.9206, mutation_targets: 22815
+2026-09-11 09:41:10,519 - step: 36350, lr: 5.000e-04, loss: 3.30372e+01, overall_recovery: 0.7403, mutation_recovery_per_seq: 0.0349, mutation_recovery_union: 0.9144, mutation_targets: 23355
+2026-09-11 09:41:49,850 - step: 36400, lr: 5.000e-04, loss: 2.91836e+01, overall_recovery: 0.7357, mutation_recovery_per_seq: 0.0363, mutation_recovery_union: 0.9186, mutation_targets: 23493
+2026-09-11 09:42:28,980 - step: 36450, lr: 5.000e-04, loss: 2.81955e+01, overall_recovery: 0.7172, mutation_recovery_per_seq: 0.0413, mutation_recovery_union: 0.9150, mutation_targets: 22666
+2026-09-11 09:43:08,101 - step: 36500, lr: 5.000e-04, loss: 2.90159e+01, overall_recovery: 0.7316, mutation_recovery_per_seq: 0.0451, mutation_recovery_union: 0.9151, mutation_targets: 23418
+2026-09-11 09:43:08,271 - step: 36500, eval_loss: 2.85080e+01, eval_overall_recovery_rate: 0.7379, eval_mutation_recovery_rate: 0.0531, eval_mutation_targets: 471
+2026-09-11 09:43:47,119 - step: 36550, lr: 5.000e-04, loss: 2.60109e+01, overall_recovery: 0.7283, mutation_recovery_per_seq: 0.0406, mutation_recovery_union: 0.9118, mutation_targets: 23242
+2026-09-11 09:44:26,067 - step: 36600, lr: 5.000e-04, loss: 3.57530e+01, overall_recovery: 0.7156, mutation_recovery_per_seq: 0.0398, mutation_recovery_union: 0.9146, mutation_targets: 23431
+2026-09-11 09:45:04,925 - step: 36650, lr: 5.000e-04, loss: 3.30532e+01, overall_recovery: 0.7375, mutation_recovery_per_seq: 0.0401, mutation_recovery_union: 0.9284, mutation_targets: 22902
+2026-09-11 09:45:44,003 - step: 36700, lr: 5.000e-04, loss: 3.09367e+01, overall_recovery: 0.7299, mutation_recovery_per_seq: 0.0397, mutation_recovery_union: 0.9180, mutation_targets: 23277
+2026-09-11 09:46:22,967 - step: 36750, lr: 5.000e-04, loss: 3.19501e+01, overall_recovery: 0.7229, mutation_recovery_per_seq: 0.0435, mutation_recovery_union: 0.9200, mutation_targets: 23307
+2026-09-11 09:47:01,895 - step: 36800, lr: 5.000e-04, loss: 2.93348e+01, overall_recovery: 0.7181, mutation_recovery_per_seq: 0.0376, mutation_recovery_union: 0.9198, mutation_targets: 23048
+2026-09-11 09:47:40,958 - step: 36850, lr: 5.000e-04, loss: 3.32581e+01, overall_recovery: 0.7510, mutation_recovery_per_seq: 0.0364, mutation_recovery_union: 0.9214, mutation_targets: 23437
+2026-09-11 09:48:20,127 - step: 36900, lr: 5.000e-04, loss: 2.82512e+01, overall_recovery: 0.7269, mutation_recovery_per_seq: 0.0413, mutation_recovery_union: 0.9168, mutation_targets: 23820
+2026-09-11 09:48:59,515 - step: 36950, lr: 5.000e-04, loss: 3.21651e+01, overall_recovery: 0.7211, mutation_recovery_per_seq: 0.0415, mutation_recovery_union: 0.9282, mutation_targets: 23446
+2026-09-11 09:49:38,440 - step: 37000, lr: 5.000e-04, loss: 3.13572e+01, overall_recovery: 0.7345, mutation_recovery_per_seq: 0.0365, mutation_recovery_union: 0.9293, mutation_targets: 23105
+2026-09-11 09:49:38,608 - step: 37000, eval_loss: 2.93207e+01, eval_overall_recovery_rate: 0.6889, eval_mutation_recovery_rate: 0.0714, eval_mutation_targets: 420
+2026-09-11 09:50:17,573 - step: 37050, lr: 5.000e-04, loss: 3.47349e+01, overall_recovery: 0.7188, mutation_recovery_per_seq: 0.0454, mutation_recovery_union: 0.9208, mutation_targets: 22963
+2026-09-11 09:50:56,453 - step: 37100, lr: 5.000e-04, loss: 3.00026e+01, overall_recovery: 0.7195, mutation_recovery_per_seq: 0.0473, mutation_recovery_union: 0.9239, mutation_targets: 22810
+2026-09-11 09:51:35,347 - step: 37150, lr: 5.000e-04, loss: 2.60181e+01, overall_recovery: 0.7154, mutation_recovery_per_seq: 0.0433, mutation_recovery_union: 0.9302, mutation_targets: 23409
+2026-09-11 09:52:14,353 - step: 37200, lr: 5.000e-04, loss: 3.24397e+01, overall_recovery: 0.7227, mutation_recovery_per_seq: 0.0421, mutation_recovery_union: 0.9207, mutation_targets: 23165
+2026-09-11 09:52:53,588 - step: 37250, lr: 5.000e-04, loss: 3.16654e+01, overall_recovery: 0.7127, mutation_recovery_per_seq: 0.0445, mutation_recovery_union: 0.9217, mutation_targets: 23511
+2026-09-11 09:53:32,585 - step: 37300, lr: 5.000e-04, loss: 3.22224e+01, overall_recovery: 0.7206, mutation_recovery_per_seq: 0.0464, mutation_recovery_union: 0.9259, mutation_targets: 23439
+2026-09-11 09:54:11,536 - step: 37350, lr: 5.000e-04, loss: 3.18971e+01, overall_recovery: 0.7135, mutation_recovery_per_seq: 0.0464, mutation_recovery_union: 0.9214, mutation_targets: 22845
+2026-09-11 09:54:50,400 - step: 37400, lr: 5.000e-04, loss: 3.47073e+01, overall_recovery: 0.7179, mutation_recovery_per_seq: 0.0420, mutation_recovery_union: 0.9164, mutation_targets: 23059
+2026-09-11 09:55:29,405 - step: 37450, lr: 5.000e-04, loss: 2.90108e+01, overall_recovery: 0.7172, mutation_recovery_per_seq: 0.0443, mutation_recovery_union: 0.9258, mutation_targets: 23319
+2026-09-11 09:56:08,414 - step: 37500, lr: 5.000e-04, loss: 2.82219e+01, overall_recovery: 0.7179, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9210, mutation_targets: 23324
+2026-09-11 09:56:08,584 - step: 37500, eval_loss: 3.02542e+01, eval_overall_recovery_rate: 0.6652, eval_mutation_recovery_rate: 0.0512, eval_mutation_targets: 449
+2026-09-11 09:56:47,730 - step: 37550, lr: 5.000e-04, loss: 2.71392e+01, overall_recovery: 0.7234, mutation_recovery_per_seq: 0.0437, mutation_recovery_union: 0.9223, mutation_targets: 23385
+2026-09-11 09:57:26,870 - step: 37600, lr: 5.000e-04, loss: 3.15288e+01, overall_recovery: 0.7208, mutation_recovery_per_seq: 0.0459, mutation_recovery_union: 0.9188, mutation_targets: 23334
+2026-09-11 09:58:05,802 - step: 37650, lr: 5.000e-04, loss: 3.16563e+01, overall_recovery: 0.7251, mutation_recovery_per_seq: 0.0449, mutation_recovery_union: 0.9313, mutation_targets: 23509
+2026-09-11 09:58:44,703 - step: 37700, lr: 5.000e-04, loss: 4.68233e+01, overall_recovery: 0.7144, mutation_recovery_per_seq: 0.0440, mutation_recovery_union: 0.9217, mutation_targets: 23141
+2026-09-11 09:59:23,731 - step: 37750, lr: 5.000e-04, loss: 3.74205e+01, overall_recovery: 0.7348, mutation_recovery_per_seq: 0.0162, mutation_recovery_union: 0.8974, mutation_targets: 23456
+2026-09-11 10:00:02,587 - step: 37800, lr: 5.000e-04, loss: 2.70823e+01, overall_recovery: 0.7418, mutation_recovery_per_seq: 0.0396, mutation_recovery_union: 0.9257, mutation_targets: 23427
+2026-09-11 10:00:41,510 - step: 37850, lr: 5.000e-04, loss: 3.31228e+01, overall_recovery: 0.7245, mutation_recovery_per_seq: 0.0424, mutation_recovery_union: 0.9290, mutation_targets: 23123
+2026-09-11 10:01:20,492 - step: 37900, lr: 5.000e-04, loss: 3.07427e+01, overall_recovery: 0.7103, mutation_recovery_per_seq: 0.0431, mutation_recovery_union: 0.9143, mutation_targets: 22869
+2026-09-11 10:01:59,363 - step: 37950, lr: 5.000e-04, loss: 2.78854e+01, overall_recovery: 0.7193, mutation_recovery_per_seq: 0.0422, mutation_recovery_union: 0.9199, mutation_targets: 23631
+2026-09-11 10:02:38,401 - step: 38000, lr: 5.000e-04, loss: 3.67699e+01, overall_recovery: 0.7226, mutation_recovery_per_seq: 0.0435, mutation_recovery_union: 0.9200, mutation_targets: 23481
+2026-09-11 10:02:38,582 - step: 38000, eval_loss: 3.28259e+01, eval_overall_recovery_rate: 0.6892, eval_mutation_recovery_rate: 0.0488, eval_mutation_targets: 471
+2026-09-11 10:03:17,499 - step: 38050, lr: 5.000e-04, loss: 2.97650e+01, overall_recovery: 0.7233, mutation_recovery_per_seq: 0.0392, mutation_recovery_union: 0.9171, mutation_targets: 23620
+2026-09-11 10:03:56,511 - step: 38100, lr: 5.000e-04, loss: 3.24413e+01, overall_recovery: 0.7232, mutation_recovery_per_seq: 0.0426, mutation_recovery_union: 0.9309, mutation_targets: 23182
+2026-09-11 10:04:35,445 - step: 38150, lr: 5.000e-04, loss: 3.85534e+01, overall_recovery: 0.7154, mutation_recovery_per_seq: 0.0408, mutation_recovery_union: 0.9184, mutation_targets: 23109
+2026-09-11 10:05:14,377 - step: 38200, lr: 5.000e-04, loss: 3.60012e+01, overall_recovery: 0.7676, mutation_recovery_per_seq: 0.0296, mutation_recovery_union: 0.9135, mutation_targets: 23308
+2026-09-11 10:05:53,152 - step: 38250, lr: 5.000e-04, loss: 3.25541e+01, overall_recovery: 0.7543, mutation_recovery_per_seq: 0.0323, mutation_recovery_union: 0.9160, mutation_targets: 23298
+2026-09-11 10:06:32,385 - step: 38300, lr: 5.000e-04, loss: 3.63140e+01, overall_recovery: 0.8126, mutation_recovery_per_seq: 0.0189, mutation_recovery_union: 0.9166, mutation_targets: 23345
+2026-09-11 10:07:11,227 - step: 38350, lr: 5.000e-04, loss: 4.15693e+01, overall_recovery: 0.7964, mutation_recovery_per_seq: 0.0111, mutation_recovery_union: 0.9139, mutation_targets: 23346
+2026-09-11 10:07:50,114 - step: 38400, lr: 5.000e-04, loss: 4.42819e+01, overall_recovery: 0.7951, mutation_recovery_per_seq: 0.0028, mutation_recovery_union: 0.8983, mutation_targets: 23167
+2026-09-11 10:08:29,080 - step: 38450, lr: 5.000e-04, loss: 3.10149e+01, overall_recovery: 0.7786, mutation_recovery_per_seq: 0.0261, mutation_recovery_union: 0.9284, mutation_targets: 24074
+2026-09-11 10:09:07,995 - step: 38500, lr: 5.000e-04, loss: 4.14126e+01, overall_recovery: 0.8248, mutation_recovery_per_seq: 0.0131, mutation_recovery_union: 0.9092, mutation_targets: 23877
+2026-09-11 10:09:08,165 - step: 38500, eval_loss: 3.11026e+01, eval_overall_recovery_rate: 0.7983, eval_mutation_recovery_rate: 0.0000, eval_mutation_targets: 523
+2026-09-11 10:09:47,238 - step: 38550, lr: 5.000e-04, loss: 3.91752e+01, overall_recovery: 0.8112, mutation_recovery_per_seq: 0.0025, mutation_recovery_union: 0.9026, mutation_targets: 23128
+2026-09-11 10:10:26,134 - step: 38600, lr: 5.000e-04, loss: 4.56442e+01, overall_recovery: 0.8176, mutation_recovery_per_seq: 0.0036, mutation_recovery_union: 0.9031, mutation_targets: 23163
+2026-09-11 10:11:05,045 - step: 38650, lr: 5.000e-04, loss: 4.73843e+01, overall_recovery: 0.8058, mutation_recovery_per_seq: 0.0046, mutation_recovery_union: 0.8965, mutation_targets: 23039
+2026-09-11 10:11:43,987 - step: 38700, lr: 5.000e-04, loss: 4.22946e+01, overall_recovery: 0.8070, mutation_recovery_per_seq: 0.0088, mutation_recovery_union: 0.9064, mutation_targets: 23037
+2026-09-11 10:12:22,995 - step: 38750, lr: 5.000e-04, loss: 3.64427e+01, overall_recovery: 0.8053, mutation_recovery_per_seq: 0.0108, mutation_recovery_union: 0.9048, mutation_targets: 23154
+2026-09-11 10:13:02,130 - step: 38800, lr: 5.000e-04, loss: 4.07083e+01, overall_recovery: 0.8197, mutation_recovery_per_seq: 0.0111, mutation_recovery_union: 0.9044, mutation_targets: 23560
+2026-09-11 10:13:40,962 - step: 38850, lr: 5.000e-04, loss: 3.93753e+01, overall_recovery: 0.7935, mutation_recovery_per_seq: 0.0163, mutation_recovery_union: 0.9108, mutation_targets: 23246
+2026-09-11 10:14:19,788 - step: 38900, lr: 5.000e-04, loss: 4.14606e+01, overall_recovery: 0.7956, mutation_recovery_per_seq: 0.0153, mutation_recovery_union: 0.9116, mutation_targets: 22639
+2026-09-11 10:14:58,478 - step: 38950, lr: 5.000e-04, loss: 3.62722e+01, overall_recovery: 0.7960, mutation_recovery_per_seq: 0.0101, mutation_recovery_union: 0.9080, mutation_targets: 23121
+2026-09-11 10:15:37,216 - step: 39000, lr: 5.000e-04, loss: 3.38331e+01, overall_recovery: 0.8147, mutation_recovery_per_seq: 0.0152, mutation_recovery_union: 0.9131, mutation_targets: 23480
+2026-09-11 10:15:37,380 - step: 39000, eval_loss: 2.89789e+01, eval_overall_recovery_rate: 0.7632, eval_mutation_recovery_rate: 0.0137, eval_mutation_targets: 510
+2026-09-11 10:16:16,410 - step: 39050, lr: 5.000e-04, loss: 3.91215e+01, overall_recovery: 0.7973, mutation_recovery_per_seq: 0.0126, mutation_recovery_union: 0.9047, mutation_targets: 23446
+2026-09-11 10:16:55,261 - step: 39100, lr: 5.000e-04, loss: 3.28138e+01, overall_recovery: 0.7979, mutation_recovery_per_seq: 0.0177, mutation_recovery_union: 0.9281, mutation_targets: 23561
+2026-09-11 10:17:34,077 - step: 39150, lr: 5.000e-04, loss: 3.94545e+01, overall_recovery: 0.8010, mutation_recovery_per_seq: 0.0171, mutation_recovery_union: 0.9136, mutation_targets: 23795
+2026-09-11 10:18:12,882 - step: 39200, lr: 5.000e-04, loss: 3.51549e+01, overall_recovery: 0.7904, mutation_recovery_per_seq: 0.0208, mutation_recovery_union: 0.9162, mutation_targets: 23468
+2026-09-11 10:18:51,870 - step: 39250, lr: 5.000e-04, loss: 2.99675e+01, overall_recovery: 0.7875, mutation_recovery_per_seq: 0.0201, mutation_recovery_union: 0.9269, mutation_targets: 24036
+2026-09-11 10:19:30,863 - step: 39300, lr: 5.000e-04, loss: 3.65665e+01, overall_recovery: 0.7793, mutation_recovery_per_seq: 0.0254, mutation_recovery_union: 0.9165, mutation_targets: 22880
+2026-09-11 10:20:09,852 - step: 39350, lr: 5.000e-04, loss: 3.59081e+01, overall_recovery: 0.7950, mutation_recovery_per_seq: 0.0215, mutation_recovery_union: 0.9143, mutation_targets: 23675
+2026-09-11 10:20:48,804 - step: 39400, lr: 5.000e-04, loss: 3.55285e+01, overall_recovery: 0.7882, mutation_recovery_per_seq: 0.0212, mutation_recovery_union: 0.9225, mutation_targets: 23850
+2026-09-11 10:21:27,701 - step: 39450, lr: 5.000e-04, loss: 4.36950e+01, overall_recovery: 0.7899, mutation_recovery_per_seq: 0.0216, mutation_recovery_union: 0.9373, mutation_targets: 23495
+2026-09-11 10:22:07,067 - step: 39500, lr: 5.000e-04, loss: 3.52848e+01, overall_recovery: 0.8020, mutation_recovery_per_seq: 0.0111, mutation_recovery_union: 0.9174, mutation_targets: 23477
+2026-09-11 10:22:07,238 - step: 39500, eval_loss: 2.96098e+01, eval_overall_recovery_rate: 0.8665, eval_mutation_recovery_rate: 0.0000, eval_mutation_targets: 391
+2026-09-11 10:22:46,185 - step: 39550, lr: 5.000e-04, loss: 4.37985e+01, overall_recovery: 0.8123, mutation_recovery_per_seq: 0.0088, mutation_recovery_union: 0.9053, mutation_targets: 23272
+2026-09-11 10:23:25,368 - step: 39600, lr: 5.000e-04, loss: 3.15017e+01, overall_recovery: 0.8108, mutation_recovery_per_seq: 0.0181, mutation_recovery_union: 0.9101, mutation_targets: 23144
+2026-09-11 10:24:04,310 - step: 39650, lr: 5.000e-04, loss: 2.92664e+01, overall_recovery: 0.7740, mutation_recovery_per_seq: 0.0183, mutation_recovery_union: 0.9154, mutation_targets: 23727
+2026-09-11 10:24:43,132 - step: 39700, lr: 5.000e-04, loss: 3.75655e+01, overall_recovery: 0.7901, mutation_recovery_per_seq: 0.0225, mutation_recovery_union: 0.9165, mutation_targets: 23516
+2026-09-11 10:25:22,105 - step: 39750, lr: 5.000e-04, loss: 3.47079e+01, overall_recovery: 0.7669, mutation_recovery_per_seq: 0.0236, mutation_recovery_union: 0.9160, mutation_targets: 23461
+2026-09-11 10:26:01,024 - step: 39800, lr: 5.000e-04, loss: 3.30840e+01, overall_recovery: 0.7713, mutation_recovery_per_seq: 0.0223, mutation_recovery_union: 0.9252, mutation_targets: 23516
+2026-09-11 10:26:40,339 - step: 39850, lr: 5.000e-04, loss: 3.49340e+01, overall_recovery: 0.7849, mutation_recovery_per_seq: 0.0251, mutation_recovery_union: 0.9198, mutation_targets: 23668
+2026-09-11 10:27:19,243 - step: 39900, lr: 5.000e-04, loss: 3.93432e+01, overall_recovery: 0.7763, mutation_recovery_per_seq: 0.0233, mutation_recovery_union: 0.9152, mutation_targets: 23659
+2026-09-11 10:27:58,182 - step: 39950, lr: 5.000e-04, loss: 3.74860e+01, overall_recovery: 0.7713, mutation_recovery_per_seq: 0.0226, mutation_recovery_union: 0.9116, mutation_targets: 23539
+2026-09-11 10:28:37,061 - step: 40000, lr: 5.000e-04, loss: 3.62150e+01, overall_recovery: 0.7750, mutation_recovery_per_seq: 0.0214, mutation_recovery_union: 0.9146, mutation_targets: 23112
+2026-09-11 10:28:38,933 - step: 40000, eval_loss: 2.86616e+01, eval_overall_recovery_rate: 0.7016, eval_mutation_recovery_rate: 0.0352, eval_mutation_targets: 398
+2026-09-11 10:28:42,218 - Generating VHH samples at step 40000
+2026-09-11 10:29:23,966 - step: 40050, lr: 5.000e-04, loss: 3.37427e+01, overall_recovery: 0.7749, mutation_recovery_per_seq: 0.0265, mutation_recovery_union: 0.9146, mutation_targets: 23588
+2026-09-11 10:30:03,014 - step: 40100, lr: 5.000e-04, loss: 3.51735e+01, overall_recovery: 0.7688, mutation_recovery_per_seq: 0.0258, mutation_recovery_union: 0.9265, mutation_targets: 23298
+2026-09-11 10:30:41,970 - step: 40150, lr: 5.000e-04, loss: 3.31057e+01, overall_recovery: 0.7739, mutation_recovery_per_seq: 0.0249, mutation_recovery_union: 0.9147, mutation_targets: 23512
+2026-09-11 10:31:20,777 - step: 40200, lr: 5.000e-04, loss: 3.29926e+01, overall_recovery: 0.7622, mutation_recovery_per_seq: 0.0259, mutation_recovery_union: 0.9174, mutation_targets: 23516
+2026-09-11 10:31:59,577 - step: 40250, lr: 5.000e-04, loss: 3.87351e+01, overall_recovery: 0.7620, mutation_recovery_per_seq: 0.0291, mutation_recovery_union: 0.9184, mutation_targets: 23540
+2026-09-11 10:32:38,404 - step: 40300, lr: 5.000e-04, loss: 3.24536e+01, overall_recovery: 0.7688, mutation_recovery_per_seq: 0.0259, mutation_recovery_union: 0.9125, mutation_targets: 23315
+2026-09-11 10:33:17,484 - step: 40350, lr: 5.000e-04, loss: 3.13752e+01, overall_recovery: 0.7588, mutation_recovery_per_seq: 0.0276, mutation_recovery_union: 0.9123, mutation_targets: 23167
+2026-09-11 10:33:56,397 - step: 40400, lr: 5.000e-04, loss: 2.91471e+01, overall_recovery: 0.7510, mutation_recovery_per_seq: 0.0273, mutation_recovery_union: 0.9176, mutation_targets: 23492
+2026-09-11 10:34:35,262 - step: 40450, lr: 5.000e-04, loss: 3.31248e+01, overall_recovery: 0.7705, mutation_recovery_per_seq: 0.0256, mutation_recovery_union: 0.9162, mutation_targets: 23089
+2026-09-11 10:35:14,249 - step: 40500, lr: 5.000e-04, loss: 4.27533e+01, overall_recovery: 0.7620, mutation_recovery_per_seq: 0.0277, mutation_recovery_union: 0.9112, mutation_targets: 23699
+2026-09-11 10:35:14,412 - step: 40500, eval_loss: 3.43970e+01, eval_overall_recovery_rate: 0.7611, eval_mutation_recovery_rate: 0.0198, eval_mutation_targets: 506
+2026-09-11 10:35:53,331 - step: 40550, lr: 5.000e-04, loss: 3.65783e+01, overall_recovery: 0.7592, mutation_recovery_per_seq: 0.0264, mutation_recovery_union: 0.9148, mutation_targets: 23562
+2026-09-11 10:36:32,235 - step: 40600, lr: 5.000e-04, loss: 3.45954e+01, overall_recovery: 0.7522, mutation_recovery_per_seq: 0.0281, mutation_recovery_union: 0.9185, mutation_targets: 23072
+2026-09-11 10:37:11,282 - step: 40650, lr: 5.000e-04, loss: 3.39056e+01, overall_recovery: 0.7574, mutation_recovery_per_seq: 0.0316, mutation_recovery_union: 0.9259, mutation_targets: 22712
+2026-09-11 10:37:50,045 - step: 40700, lr: 5.000e-04, loss: 3.40236e+01, overall_recovery: 0.7598, mutation_recovery_per_seq: 0.0269, mutation_recovery_union: 0.9181, mutation_targets: 23495
+2026-09-11 10:38:28,907 - step: 40750, lr: 5.000e-04, loss: 3.59986e+01, overall_recovery: 0.7667, mutation_recovery_per_seq: 0.0292, mutation_recovery_union: 0.9139, mutation_targets: 22599
+2026-09-11 10:39:07,831 - step: 40800, lr: 5.000e-04, loss: 3.51850e+01, overall_recovery: 0.7698, mutation_recovery_per_seq: 0.0267, mutation_recovery_union: 0.9123, mutation_targets: 23410
+2026-09-11 10:39:46,690 - step: 40850, lr: 5.000e-04, loss: 4.09050e+01, overall_recovery: 0.7763, mutation_recovery_per_seq: 0.0289, mutation_recovery_union: 0.9274, mutation_targets: 23082
+2026-09-11 10:40:25,827 - step: 40900, lr: 5.000e-04, loss: 3.37899e+01, overall_recovery: 0.7757, mutation_recovery_per_seq: 0.0297, mutation_recovery_union: 0.9213, mutation_targets: 22800
+2026-09-11 10:41:04,819 - step: 40950, lr: 5.000e-04, loss: 3.32054e+01, overall_recovery: 0.7728, mutation_recovery_per_seq: 0.0267, mutation_recovery_union: 0.9158, mutation_targets: 23245
+2026-09-11 10:41:44,116 - step: 41000, lr: 5.000e-04, loss: 3.70446e+01, overall_recovery: 0.7714, mutation_recovery_per_seq: 0.0294, mutation_recovery_union: 0.9188, mutation_targets: 23495
+2026-09-11 10:41:44,279 - step: 41000, eval_loss: 4.03805e+01, eval_overall_recovery_rate: 0.6706, eval_mutation_recovery_rate: 0.0415, eval_mutation_targets: 410
+2026-09-11 10:42:23,045 - step: 41050, lr: 5.000e-04, loss: 3.30231e+01, overall_recovery: 0.7672, mutation_recovery_per_seq: 0.0311, mutation_recovery_union: 0.9149, mutation_targets: 23182
+2026-09-11 10:43:01,994 - step: 41100, lr: 5.000e-04, loss: 3.61627e+01, overall_recovery: 0.7602, mutation_recovery_per_seq: 0.0286, mutation_recovery_union: 0.9161, mutation_targets: 23371
+2026-09-11 10:43:40,846 - step: 41150, lr: 5.000e-04, loss: 3.65771e+01, overall_recovery: 0.7884, mutation_recovery_per_seq: 0.0172, mutation_recovery_union: 0.9084, mutation_targets: 23154
+2026-09-11 10:44:19,919 - step: 41200, lr: 5.000e-04, loss: 3.69270e+01, overall_recovery: 0.7951, mutation_recovery_per_seq: 0.0271, mutation_recovery_union: 0.9193, mutation_targets: 23180
+2026-09-11 10:44:58,665 - step: 41250, lr: 5.000e-04, loss: 3.47090e+01, overall_recovery: 0.7682, mutation_recovery_per_seq: 0.0289, mutation_recovery_union: 0.9184, mutation_targets: 23437
+2026-09-11 10:45:37,448 - step: 41300, lr: 5.000e-04, loss: 3.53317e+01, overall_recovery: 0.7611, mutation_recovery_per_seq: 0.0318, mutation_recovery_union: 0.9192, mutation_targets: 23365
+2026-09-11 10:46:16,184 - step: 41350, lr: 5.000e-04, loss: 3.66800e+01, overall_recovery: 0.7730, mutation_recovery_per_seq: 0.0294, mutation_recovery_union: 0.9204, mutation_targets: 23369
+2026-09-11 10:46:55,043 - step: 41400, lr: 5.000e-04, loss: 3.53525e+01, overall_recovery: 0.7583, mutation_recovery_per_seq: 0.0290, mutation_recovery_union: 0.9240, mutation_targets: 23309
+2026-09-11 10:47:33,986 - step: 41450, lr: 5.000e-04, loss: 4.15611e+01, overall_recovery: 0.7654, mutation_recovery_per_seq: 0.0302, mutation_recovery_union: 0.9190, mutation_targets: 23564
+2026-09-11 10:48:12,896 - step: 41500, lr: 5.000e-04, loss: 4.07756e+01, overall_recovery: 0.7536, mutation_recovery_per_seq: 0.0329, mutation_recovery_union: 0.9222, mutation_targets: 22873
+2026-09-11 10:48:13,067 - step: 41500, eval_loss: 4.29687e+01, eval_overall_recovery_rate: 0.6568, eval_mutation_recovery_rate: 0.0376, eval_mutation_targets: 479
+2026-09-11 10:48:51,963 - step: 41550, lr: 5.000e-04, loss: 3.52235e+01, overall_recovery: 0.7727, mutation_recovery_per_seq: 0.0275, mutation_recovery_union: 0.9108, mutation_targets: 23549
+2026-09-11 10:49:30,803 - step: 41600, lr: 5.000e-04, loss: 3.68909e+01, overall_recovery: 0.7620, mutation_recovery_per_seq: 0.0337, mutation_recovery_union: 0.9218, mutation_targets: 23296
+2026-09-11 10:50:09,636 - step: 41650, lr: 5.000e-04, loss: 3.16213e+01, overall_recovery: 0.7492, mutation_recovery_per_seq: 0.0290, mutation_recovery_union: 0.9162, mutation_targets: 23686
+2026-09-11 10:50:48,599 - step: 41700, lr: 5.000e-04, loss: 3.50361e+01, overall_recovery: 0.7561, mutation_recovery_per_seq: 0.0334, mutation_recovery_union: 0.9160, mutation_targets: 23026
+2026-09-11 10:51:27,471 - step: 41750, lr: 5.000e-04, loss: 3.85301e+01, overall_recovery: 0.7599, mutation_recovery_per_seq: 0.0310, mutation_recovery_union: 0.9208, mutation_targets: 22958
+2026-09-11 10:52:06,455 - step: 41800, lr: 5.000e-04, loss: 3.22725e+01, overall_recovery: 0.7376, mutation_recovery_per_seq: 0.0273, mutation_recovery_union: 0.9121, mutation_targets: 23138
+2026-09-11 10:52:45,290 - step: 41850, lr: 5.000e-04, loss: 3.27525e+01, overall_recovery: 0.7980, mutation_recovery_per_seq: 0.0267, mutation_recovery_union: 0.9171, mutation_targets: 23216
+2026-09-11 10:53:24,232 - step: 41900, lr: 5.000e-04, loss: 4.17360e+01, overall_recovery: 0.7432, mutation_recovery_per_seq: 0.0294, mutation_recovery_union: 0.9174, mutation_targets: 22893
+2026-09-11 10:54:03,206 - step: 41950, lr: 5.000e-04, loss: 3.57568e+01, overall_recovery: 0.7574, mutation_recovery_per_seq: 0.0333, mutation_recovery_union: 0.9206, mutation_targets: 23271
+2026-09-11 10:54:42,315 - step: 42000, lr: 5.000e-04, loss: 2.92487e+01, overall_recovery: 0.7502, mutation_recovery_per_seq: 0.0321, mutation_recovery_union: 0.9256, mutation_targets: 23459
+2026-09-11 10:54:42,485 - step: 42000, eval_loss: 5.11173e+01, eval_overall_recovery_rate: 0.7289, eval_mutation_recovery_rate: 0.0655, eval_mutation_targets: 473
+2026-09-11 10:55:21,267 - step: 42050, lr: 5.000e-04, loss: 3.45312e+01, overall_recovery: 0.7463, mutation_recovery_per_seq: 0.0337, mutation_recovery_union: 0.9135, mutation_targets: 22912
+2026-09-11 10:56:00,140 - step: 42100, lr: 5.000e-04, loss: 3.61672e+01, overall_recovery: 0.7576, mutation_recovery_per_seq: 0.0336, mutation_recovery_union: 0.9200, mutation_targets: 23792
+2026-09-11 10:56:38,958 - step: 42150, lr: 5.000e-04, loss: 3.67605e+01, overall_recovery: 0.7699, mutation_recovery_per_seq: 0.0320, mutation_recovery_union: 0.9288, mutation_targets: 22987
+2026-09-11 10:57:17,797 - step: 42200, lr: 5.000e-04, loss: 3.91577e+01, overall_recovery: 0.7505, mutation_recovery_per_seq: 0.0351, mutation_recovery_union: 0.9262, mutation_targets: 23250
+2026-09-11 10:57:56,884 - step: 42250, lr: 5.000e-04, loss: 3.53381e+01, overall_recovery: 0.7511, mutation_recovery_per_seq: 0.0339, mutation_recovery_union: 0.9122, mutation_targets: 22921
+2026-09-11 10:58:35,644 - step: 42300, lr: 5.000e-04, loss: 3.81786e+01, overall_recovery: 0.7478, mutation_recovery_per_seq: 0.0366, mutation_recovery_union: 0.9198, mutation_targets: 23107
+2026-09-11 10:59:14,460 - step: 42350, lr: 5.000e-04, loss: 3.63871e+01, overall_recovery: 0.7536, mutation_recovery_per_seq: 0.0335, mutation_recovery_union: 0.9191, mutation_targets: 23523
+2026-09-11 10:59:53,168 - step: 42400, lr: 5.000e-04, loss: 3.09259e+01, overall_recovery: 0.7471, mutation_recovery_per_seq: 0.0372, mutation_recovery_union: 0.9211, mutation_targets: 22947
+2026-09-11 11:00:32,132 - step: 42450, lr: 5.000e-04, loss: 3.06842e+01, overall_recovery: 0.7527, mutation_recovery_per_seq: 0.0346, mutation_recovery_union: 0.9196, mutation_targets: 23376
+2026-09-11 11:01:11,305 - step: 42500, lr: 5.000e-04, loss: 3.45509e+01, overall_recovery: 0.7572, mutation_recovery_per_seq: 0.0340, mutation_recovery_union: 0.9198, mutation_targets: 23653
+2026-09-11 11:01:11,484 - step: 42500, eval_loss: 5.93297e+01, eval_overall_recovery_rate: 0.6772, eval_mutation_recovery_rate: 0.0489, eval_mutation_targets: 491
+2026-09-11 11:01:50,232 - step: 42550, lr: 5.000e-04, loss: 3.23404e+01, overall_recovery: 0.7406, mutation_recovery_per_seq: 0.0380, mutation_recovery_union: 0.9268, mutation_targets: 23456
+2026-09-11 11:02:29,164 - step: 42600, lr: 5.000e-04, loss: 3.57904e+01, overall_recovery: 0.7495, mutation_recovery_per_seq: 0.0334, mutation_recovery_union: 0.9241, mutation_targets: 23169
+2026-09-11 11:03:08,085 - step: 42650, lr: 5.000e-04, loss: 3.51779e+01, overall_recovery: 0.7402, mutation_recovery_per_seq: 0.0395, mutation_recovery_union: 0.9185, mutation_targets: 22872
+2026-09-11 11:03:47,264 - step: 42700, lr: 5.000e-04, loss: 2.75083e+01, overall_recovery: 0.7447, mutation_recovery_per_seq: 0.0367, mutation_recovery_union: 0.9258, mutation_targets: 23574
+2026-09-11 11:04:26,689 - step: 42750, lr: 5.000e-04, loss: 2.89286e+01, overall_recovery: 0.7416, mutation_recovery_per_seq: 0.0372, mutation_recovery_union: 0.9153, mutation_targets: 23294
+2026-09-11 11:05:05,581 - step: 42800, lr: 5.000e-04, loss: 2.92379e+01, overall_recovery: 0.7238, mutation_recovery_per_seq: 0.0347, mutation_recovery_union: 0.9216, mutation_targets: 23225
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 2925676 ON gpu3090n2 CANCELLED AT 2026-09-11T11:05:10 ***

@@ -145,15 +145,11 @@ def _run(rank, world_size, cfg):
         "samples",
     )
 
-    checkpoint_dir = os.path.join(
-        work_dir,
-        "checkpoints",
-    )
+    checkpoint_dir = work_dir
 
     checkpoint_meta_path = os.path.join(
         work_dir,
-        "checkpoints-meta",
-        "checkpoint.pth",
+        "checkpoint_meta.pth",
     )
 
     if rank == 0:
@@ -163,13 +159,7 @@ def _run(rank, world_size, cfg):
         )
 
         utils.makedirs(
-            checkpoint_dir
-        )
-
-        utils.makedirs(
-            os.path.dirname(
-                checkpoint_meta_path
-            )
+            work_dir
         )
 
         logger = utils.get_logger(
@@ -290,12 +280,23 @@ def _run(rank, world_size, cfg):
     # --------------------------------------------------------
     # Restore checkpoint if present
     # --------------------------------------------------------
-
-    state = utils.restore_checkpoint(
-        checkpoint_meta_path,
-        state,
-        device,
-    )
+    
+    # Check if resume_checkpoint is specified in config
+    if hasattr(cfg.training, 'resume_checkpoint') and cfg.training.resume_checkpoint is not None:
+        resume_path = cfg.training.resume_checkpoint
+        mprint(f"Resuming from specified checkpoint: {resume_path}")
+        state = utils.restore_checkpoint(
+            resume_path,
+            state,
+            device,
+        )
+    else:
+        # Try to restore from meta checkpoint
+        state = utils.restore_checkpoint(
+            checkpoint_meta_path,
+            state,
+            device,
+        )
 
     initial_step = int(
         state["step"]
@@ -429,6 +430,10 @@ def _run(rank, world_size, cfg):
 
     mutation_correct_accum = 0
     mutation_total_accum = 0
+    
+    # Union recovery: accumulate germline groups
+    from collections import defaultdict
+    union_germline_groups = defaultdict(list)
 
     # ========================================================
     # Main training loop
@@ -607,6 +612,24 @@ def _run(rank, world_size, cfg):
             mutation_total_accum += (
                 mutation_target_mask.sum().item()
             )
+            
+            # ===============================================
+            # Union recovery accumulation
+            #
+            # Store batch data grouped by germline for union recovery
+            # ===============================================
+            
+            for i in range(batch.shape[0]):
+                # Convert germline to tuple (hashable)
+                germline_key = tuple(germline[i].cpu().tolist())
+                
+                union_germline_groups[germline_key].append({
+                    'mature': batch[i],
+                    'pred': pred[i],
+                    'perturbed': perturbed[i],
+                    'germline': germline[i],
+                    'mask': valid_mask[i],
+                })
 
         # ====================================================
         # Training log
@@ -643,6 +666,56 @@ def _run(rank, world_size, cfg):
                     1,
                 )
             )
+            
+            # ===============================================
+            # Union recovery calculation
+            # ===============================================
+            
+            union_correct_total = 0
+            union_mutation_total = 0
+            
+            for germline_key, group_data in union_germline_groups.items():
+                if len(group_data) == 0:
+                    continue
+                
+                # Get sequence length from first item
+                seq_len = group_data[0]['mask'].sum().item()
+                
+                # Build union set for each position
+                position_unions = [set() for _ in range(seq_len)]
+                
+                for data in group_data:
+                    mature = data['mature']
+                    for pos in range(seq_len):
+                        position_unions[pos].add(mature[pos].item())
+                
+                # Check predictions against union
+                for data in group_data:
+                    mature = data['mature']
+                    pred_seq = data['pred']
+                    perturbed_seq = data['perturbed']
+                    germline_seq = data['germline']
+                    mask = data['mask']
+                    
+                    for pos in range(seq_len):
+                        if not mask[pos].item():
+                            continue
+                        
+                        is_mutation = (mature[pos].item() != germline_seq[pos].item())
+                        is_absorbed = (perturbed_seq[pos].item() == germline_seq[pos].item())
+                        
+                        if is_mutation and is_absorbed:
+                            pred_aa = pred_seq[pos].item()
+                            
+                            if pred_aa in position_unions[pos]:
+                                union_correct_total += 1
+                            
+                            union_mutation_total += 1
+            
+            avg_union_recovery = (
+                union_correct_total
+                / max(union_mutation_total, 1)
+            )
 
             # ===============================================
             # IMPORTANT:
@@ -661,10 +734,12 @@ def _run(rank, world_size, cfg):
                 f"step: {step}, "
                 f"lr: {current_lr:.3e}, "
                 f"loss: {reduced_loss.item():.5e}, "
-                f"overall_recovery_rate: "
+                f"overall_recovery: "
                 f"{avg_overall_recovery:.4f}, "
-                f"mutation_recovery_rate: "
+                f"mutation_recovery_per_seq: "
                 f"{avg_mutation_recovery:.4f}, "
+                f"mutation_recovery_union: "
+                f"{avg_union_recovery:.4f}, "
                 f"mutation_targets: "
                 f"{mutation_total_accum}"
             )
@@ -688,8 +763,11 @@ def _run(rank, world_size, cfg):
                         "overall_rec": (
                             f"{avg_overall_recovery:.3f}"
                         ),
-                        "mutation_rec": (
+                        "mutation_per_seq": (
                             f"{avg_mutation_recovery:.3f}"
+                        ),
+                        "mutation_union": (
+                            f"{avg_union_recovery:.3f}"
                         ),
                     }
                 )
@@ -703,6 +781,8 @@ def _run(rank, world_size, cfg):
 
             mutation_correct_accum = 0
             mutation_total_accum = 0
+            
+            union_germline_groups.clear()
 
         # ====================================================
         # Preemption / recovery checkpoint

@@ -16,7 +16,7 @@ training:
   accum: 1
 
   # Number of optimizer updates.
-  n_iters: 500000
+  n_iters: 1000000
 
   log_freq: 50
   eval_freq: 500
@@ -30,6 +30,10 @@ training:
 
   # Exponential moving average decay for model parameters.
   ema: 0.9999
+
+  # Optional: resume from specific checkpoint (set to null to start from scratch)
+  # DO NOT use old checkpoints - model architecture changed (512->768, 4->12 layers)
+  resume_checkpoint: null
 
 data:
   tsv_path: /gpfs/work/bio/zhengtaoqi24/germline/VHHCorpus-2M_top1_pairs_clean.tsv
@@ -58,26 +62,26 @@ sampling:
 
 optim:
   optimizer: AdamW
-  lr: 1e-5
+  lr: 5e-4  # FIXED: Increased from 1e-5 for faster convergence
   weight_decay: 0.01
   beta1: 0.9
   beta2: 0.999
   eps: 1e-8
-  warmup: 2000
+  warmup: 5000  # FIXED: Increased from 2000 for more stable warmup
   grad_clip: 1.0
 
 model:
-  hidden_size: 512
-  cond_dim: 512
+  hidden_size: 768  # FIXED: Increased from 512 for more capacity
+  cond_dim: 768     # FIXED: Match hidden_size
 
   # Keep one source of truth for padded sequence length.
   length: ${data.max_length}
 
-  n_blocks: 4
-  n_heads: 8
-  dropout: 0.0
+  n_blocks: 12  # FIXED: Increased from 4 for better representation
+  n_heads: 12   # FIXED: Increased from 8 to match standard transformer ratios
+  dropout: 0.1  # FIXED: Added dropout for regularization
   scale_by_sigma: false
 
 hydra:
   run:
-    dir: exp_local/germline_vhh/${now:%Y.%m.%d}/${now:%H%M%S}
+    dir: checkpoints/${now:%Y.%m.%d}/${now:%H%M%S}
