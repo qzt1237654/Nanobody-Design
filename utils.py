@@ -58,10 +58,11 @@ def restore_checkpoint(ckpt_dir, state, device):
         return state
     else:
         loaded_state = torch.load(ckpt_dir, map_location=device, weights_only=False)
+        validate_checkpoint_parameterization(loaded_state, state['model'])
         state['optimizer'].load_state_dict(loaded_state['optimizer'])
         
         model_to_load = unwrap_model(state['model'])
-        model_to_load.load_state_dict(loaded_state['model'], strict=False)
+        model_to_load.load_state_dict(loaded_state['model'], strict=True)
         
         state['ema'].load_state_dict(loaded_state['ema'])
         state['step'] = loaded_state['step']
@@ -80,10 +81,22 @@ def save_checkpoint(ckpt_dir, state):
         'optimizer': state['optimizer'].state_dict(),
         'model': model_to_save.state_dict(),
         'ema': state['ema'].state_dict(),
-        'step': state['step']
+        'step': state['step'],
+        'score_parameterization': getattr(model_to_save, 'score_parameterization', 'raw'),
     }
     
     if 'scaler' in state:
         saved_state['scaler'] = state['scaler'].state_dict()
     
     torch.save(saved_state, ckpt_dir)
+
+
+def validate_checkpoint_parameterization(checkpoint, model):
+    expected = getattr(unwrap_model(model), 'score_parameterization', 'raw')
+    actual = checkpoint.get('score_parameterization', 'raw')
+    if actual != expected:
+        raise ValueError(
+            f"Checkpoint score parameterization {actual!r} is incompatible with "
+            f"{expected!r}. Start a new training run after the germline DSE fix; "
+            "legacy raw-score weights cannot be resumed as posterior logits."
+        )

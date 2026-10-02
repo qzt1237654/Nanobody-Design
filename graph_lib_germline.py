@@ -140,92 +140,40 @@ class GermlineAbsorbing(Graph):
         return normalized_rate
 
     def score_entropy(self, score, sigma, x, x0, germline=None):
-        """
-        Denoising score-entropy loss for germline-absorbing diffusion.
-        
-        FIXED: Now computes loss at ALL mutation positions (x0 != germline),
-        not just absorbed positions. This provides training signal for:
-        1. Absorbed positions (x == g, x0 != g): learn to recover x0 from g
-        2. Preserved positions (x == x0, x0 != g): learn to maintain x0
-        
-        This dramatically increases training signal efficiency.
+        """DSE for all absorbing sites, including clean germline residues.
+
+        Every x_t == g site contributes sum_{y != g} exp(log_score_y).
+        Only absorbed mutations have a nonzero denoising target ratio.
+        Non-germline sites have no reverse edges and contribute zero.
         """
         self._require_germline(x, germline)
+        if x0.shape != x.shape:
+            raise ValueError("x0 and x must have the same shape")
 
-        # All mutation positions, regardless of whether absorbed or preserved
-        mutation_mask = (x0 != germline)
+        at_germline = (x == germline)
+        # Keep backward valid even when no site has been absorbed.
+        entropy = score[..., 0] * 0.0
+        if not at_germline.any():
+            return entropy
 
-        if not mutation_mask.any():
-            # No mutations in this batch; return zero loss
-            return score[..., 0] * 0.0
-
-        # Compute esigm1 = exp(sigma) - 1 with numerical stability
-        esigm1 = torch.where(
-            sigma < 0.5,
-            torch.expm1(sigma),
-            torch.exp(sigma) - 1.0,
+        active_scores = score[at_germline].scatter(
+            -1, germline[at_germline][..., None], -torch.inf
         )
-        
-        # Add numerical stability: clamp to avoid division by very small numbers
-        esigm1 = esigm1.clamp(min=1e-8)
-        
-        # Expand to match shape
-        esigm1_expanded = esigm1.expand_as(x)
+        entropy = entropy.masked_scatter(
+            at_germline, active_scores.exp().sum(dim=-1)
+        )
 
-        # For germline-absorbing diffusion, we compute loss differently based on
-        # whether the position is currently absorbed or preserved:
-        
-        # Case 1: Absorbed positions (x == g, x0 != g)
-        absorbed_mask = mutation_mask & (x == germline)
-        
-        # Case 2: Preserved positions (x == x0, x0 != g)  
-        preserved_mask = mutation_mask & (x == x0)
-        
-        entropy = torch.zeros(x.shape, device=x.device, dtype=score.dtype)
-        
-        # ---- Handle absorbed positions ----
-        if absorbed_mask.any():
-            ratio_absorbed = 1.0 / esigm1_expanded[absorbed_mask]
-            
-            true_token_absorbed = x0[absorbed_mask]
-            neg_term = ratio_absorbed * torch.gather(
-                score[absorbed_mask], -1, true_token_absorbed[..., None]
+        absorbed_mutation = at_germline & (x0 != germline)
+        if absorbed_mutation.any():
+            sigma = unsqueeze_as(sigma, x).expand_as(x)
+            active_sigma = sigma[absorbed_mutation]
+            # alpha / (1-alpha), without exp(sigma) overflow.
+            ratio = torch.exp(-active_sigma) / (-torch.expm1(-active_sigma))
+            target_log_score = score[absorbed_mutation].gather(
+                -1, x0[absorbed_mutation][..., None]
             ).squeeze(-1)
-
-            germline_token_absorbed = germline[absorbed_mask]
-            non_germline_mask = torch.ones_like(score[absorbed_mask])
-            non_germline_mask.scatter_(-1, germline_token_absorbed[..., None], 0.0)
-            pos_term = (score[absorbed_mask].exp() * non_germline_mask).sum(dim=-1)
-
-            const = ratio_absorbed * (ratio_absorbed.log() - 1.0)
-            
-            entropy[absorbed_mask] = pos_term - neg_term + const
-        
-        # ---- Handle preserved positions ----
-        # For preserved positions, use cross-entropy loss: -log p(x0 | x_t, g)
-        # The model should learn to maintain the correct residue
-        if preserved_mask.any():
-            # Standard cross-entropy: -log_softmax(score)[x0]
-            # = -score[x0] + log_sum_exp(score)
-            
-            true_token_preserved = x0[preserved_mask]
-            
-            # Negative log probability
-            log_prob_true = torch.gather(
-                score[preserved_mask], -1, true_token_preserved[..., None]
-            ).squeeze(-1)
-            
-            # Numerically stable log_sum_exp
-            log_sum_exp = torch.logsumexp(score[preserved_mask], dim=-1)
-            
-            # Cross-entropy loss
-            ce_loss = log_sum_exp - log_prob_true
-            
-            # Weight by sigma: at small sigma, preservation is very likely
-            # so we weight this loss by (1 - exp(-sigma)) to match the
-            # probability of having been absorbed and recovered
-            preservation_weight = 1.0 - torch.exp(-esigm1_expanded[preserved_mask])
-            
-            entropy[preserved_mask] = ce_loss * preservation_weight
-        
+            correction = torch.xlogy(ratio, ratio) - ratio * (1.0 + target_log_score)
+            entropy = entropy + torch.zeros_like(entropy).masked_scatter(
+                absorbed_mutation, correction
+            )
         return entropy

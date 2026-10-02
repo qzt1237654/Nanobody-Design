@@ -53,16 +53,14 @@ class Denoiser:
             attention_mask=attention_mask,
         )
 
-        staggered_score = self.graph.staggered_score(
-            score,
-            sigma,
-            germline=germline,
-        )
-        probs = staggered_score * self.graph.transp_transition(
-            x,
-            sigma,
-            germline=germline,
-        )
+        # Exact one-site clean posterior at an absorbing position. Construct
+        # the residual directly instead of subtracting staggered score terms.
+        # The bounded posterior score head guarantees nonnegative mass.
+        probs = score * torch.expm1(sigma)[..., None]
+        probs = probs.scatter(-1, germline[..., None], 0.0)
+        probs = probs.scatter(-1, germline[..., None], 1.0 - probs.sum(-1, keepdim=True))
+        fixed = torch.nn.functional.one_hot(x, self.graph.dim).to(probs)
+        probs = torch.where((x == germline)[..., None], probs, fixed)
 
         x_new = sample_categorical(probs)
         return torch.where(attention_mask.bool(), x_new, germline)
@@ -121,6 +119,8 @@ def get_pc_sampler(
         raise ValueError("attention_mask and germline must have the same shape")
     if steps < 1:
         raise ValueError(f"sampling.steps must be >= 1, got {steps}")
+    if not 0 < eps < 1:
+        raise ValueError("sampling eps must be between 0 and 1")
 
     germline = germline.to(device)
     attention_mask = attention_mask.to(device)

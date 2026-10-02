@@ -55,6 +55,7 @@ def load_model_and_config(checkpoint_path, device, config_path=None):
     
     # Load checkpoint
     checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
+    utils.validate_checkpoint_parameterization(checkpoint, model)
     
     # Load EMA parameters
     ema = ExponentialMovingAverage(

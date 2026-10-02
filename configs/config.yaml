@@ -32,7 +32,8 @@ training:
   ema: 0.9999
 
   # Optional: resume from specific checkpoint (set to null to start from scratch)
-  # DO NOT use old checkpoints - model architecture changed (512->768, 4->12 layers)
+  # Only checkpoints with score_parameterization=germline_posterior_v1 can resume.
+  # Legacy raw-score checkpoints require a fresh training run after the DSE fix.
   resume_checkpoint: null
 
 data:
@@ -53,6 +54,7 @@ noise:
 
 sampling:
   # Reverse-process numerical solver.
+  # With the bounded posterior head and loglinear noise, Euler leave mass <= dt/t.
   predictor: euler
   steps: 128
   noise_removal: true

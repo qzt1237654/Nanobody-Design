@@ -9,6 +9,9 @@ from huggingface_hub import PyTorchModelHubMixin
 from omegaconf import OmegaConf
 
 from . import rotary
+from .score_parameterization import (
+    GERMLINE_SCORE_PARAMETERIZATION, germline_log_scores,
+)
 from .fused_add_dropout_scale import (
     bias_dropout_add_scale_fused_train, 
     bias_dropout_add_scale_fused_inference, 
@@ -267,6 +270,9 @@ class SEDD(nn.Module, PyTorchModelHubMixin):
         # state at each position is the germline amino-acid token itself.
         self.absorb = config.graph.type == "absorb"
         self.germline_conditioning = config.graph.type == "germline_absorb"
+        self.score_parameterization = (
+            GERMLINE_SCORE_PARAMETERIZATION if self.germline_conditioning else "raw"
+        )
         vocab_size = config.tokens + (1 if self.absorb else 0)
 
         self.vocab_embed = EmbeddingLayer(config.model.hidden_size, vocab_size)
@@ -353,12 +359,15 @@ class SEDD(nn.Module, PyTorchModelHubMixin):
 
         rotary_cos_sin = self.rotary_emb(x)
 
-        with torch.amp.autocast('cuda', dtype=torch.bfloat16):
+        with torch.amp.autocast('cuda', dtype=torch.bfloat16, enabled=x.is_cuda):
             for i in range(len(self.blocks)):
                 x = self.blocks[i](x, rotary_cos_sin, c, seqlens=None, attention_mask=attention_mask)
 
             x = self.output_layer(x, c)
 
+
+        if self.germline_conditioning:
+            return germline_log_scores(x, sigma, indices)
 
         if self.scale_by_sigma:
             assert self.absorb, "Haven't configured this to work."

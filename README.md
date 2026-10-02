@@ -2,6 +2,21 @@
 
 基于 SEDD 框架实现的 germline-absorbing discrete diffusion 模型，用于纳米抗体（VHH）序列生成。
 
+## P1 数学修复（2026-10-02）
+
+- DSE 在全部 `x_t == germline` 位点上计算非 germline score 的正项，包含原本未突变的位点。只有被吸收的突变位点带负项和常数项；已保留的非 germline 位点损失为零，移除额外的 preserved CE。
+- 模型输出带时间条件的完整 clean-token posterior（包含 germline 类别），再转换为 concrete score：`s(y) = exp(-sigma)/(1-exp(-sigma)) * p_theta(x0=y | xt,g,t)`。在吸收位点，非 germline score 总和因此有界。
+- 对当前 loglinear 噪声和合法时间网格，Euler 的离开概率不超过 `dt/t <= 1`；最终 denoiser 用同一个 posterior 构造概率。categorical sampler 拒绝 NaN、Inf、明显负值及全零行，仅容忍浮点舍入量级的负残差。
+- **需要重新训练。** 旧模型输出是未约束的 raw log score，不能当作 posterior logits 续训。新 checkpoint 保存 `score_parameterization=germline_posterior_v1`，训练恢复与分析入口会拒绝旧格式。
+
+运行 P1 回归测试（需项目依赖和 `pytest`）：
+
+```bash
+python -m pytest -q tests/test_germline_correctness.py
+```
+
+测试包含有限状态生成元对照、loss 梯度、概率有效性、解析分布采样、padding，以及小模型正式训练/采样/续训。它不验证 GPU 性能或最终生成质量。本次修复仅涉及 loss 与采样；现有 V-region 数据的覆盖范围及 recovery 评估协议不变。
+
 ---
 
 ## 1. 环境安装
